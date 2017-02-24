@@ -1,0 +1,81 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<div class="main_ct2" style="margin-top:6px">
+<div style="height:24px; line-height:24px; font-weight:bold; background:#666;"><span style="margin-left:20px; color:#ffffff"><{$lg.cart_title}></span></div>
+<{if $items!=0}>
+<script language="javascript">
+function submit_shopcart_data()
+{
+	$("#gonextpage").val("yes");
+	$("#uio_order").submit();
+}
+</script><form name="uio_order" id="uio_order" action="<{$folder}>shopcart.php?action=edit" method="post"><input id="gonextpage" name="gonextpage" type="hidden" value="" />
+<table width="100%" border="0" cellpadding="5" cellspacing="0" style="border:0px #E7E7E7 solid;">
+
+			  <tr>
+                <td width="470" height="16"  align="left" bgcolor="#eeeeee" class="weight"><{$lg.products}></td>
+                <td align="center" bgcolor="#eeeeee" class="weight"><{$lg.unit_price}></td>
+                <td align="center"  bgcolor="#eeeeee" class="weight"><{$lg.quantity}></td>
+                <td align="center"  bgcolor="#eeeeee" class="weight"><{$lg.sub_total}></td>
+                <td align="center" width="120"  bgcolor="#eeeeee" class="weight">&nbsp;</td>
+    </tr>
+            
+ <{foreach key=index item=rows from=$rs_sc}>
+                <tr>
+                  <td align="center" class="xuxian">
+				  
+				  <table width="100%" border="0" cellspacing="8" cellpadding="0">
+  <tr>
+    <td width="100" align="center" valign="top"> <a  target="_blank" class="shopcartimga"  href="<{$rows.rewrite}>"><img alt="<{$rows.name}>" title="<{$rows.name}>" src="<{$rows.realpic}>" border="0" /></a></td>
+    <td align="left" valign="top" class="linh"><a target="_blank" class="shopcartas"  href="<{$rows.rewrite}>">
+      <span ><{$rows.name}></span>
+    </a><br />
+    <em>
+    <{$rows.pstyle}></em><br>
+<textarea name="content<{$index}>" style="width:200px; height:50px; border:1px #7F9DB9 solid; overflow-y:scroll"><{$rows.pcontent}></textarea></td>
+  </tr>
+</table>				 </td>
+<td align="center" valign="top" class="xuxian shopcartpadding"><{$coin}> <{$rows.price}></td>
+                  <td align="center" valign="top" class="xuxian shopcartpadding">  <input class="shopcartinput" style="text-align:center" name="num<{$index}>" type="text"  value="<{$rows.pnum}>" size="16" maxlength="16" ></td>
+                  <td align="center" valign="top"  class="xuxian shopcartpadding"><{$coin}> <{$rows.itemprice}></td>
+                  <td align="center" valign="top" class="xuxian shopcartpadding"><a href="<{$folder}>shopcart.php?action=delete&index=<{$index}>"><span class="red"><{$lg.remove_item}></span></a></td>
+                </tr>
+                
+				<{/foreach}>
+                <tr>
+                  <td colspan="2" align="right" ></td>
+                  <td align="center" valign="top" ><input name="cqtysubmit" class="profilebutton" type="submit" value="<{$lg.update_qty_remark}>" /></td>
+                  <td colspan="2" align="right"  ><input name="cqtysubmit" class="profilebutton" onclick="location.href='<{$folder}>shopcart.php?action=clean'" type="button" value="<{$lg.remove_all}>" />
+</td>
+      </tr>
+ 
+</table><table width="100%" border="0">
+  <tr>
+    <td align="right"><div style="font-size:14px; margin-top:8px; color:#666666" class="weight"><{$lg.products_price}>: <span class="red"><{$coin}> <{$totalprice}></span></div>
+<div style="font-size:14px; margin-top:8px; color:#666666" class="weight"> <{$lg.discount_price}>: <span class="red"><{$coin}> <{$sub4}></span></div>
+
+ <{if $sub3!=0}>
+    
+                   <div style="font-size:14px; margin-top:8px; color:#666666" class="weight"> <{$lg.order_additional_price}> : <span class="impc"><{$coin}><{$sub3}></span></div>
+                 <{/if}>
+
+<div style="font-size:14px; margin-top:8px; color:#666666" class="weight"><{$lg.sub_total}> : <span class="red"><{$coin}> <{$totalprice+$sub3+$sub4}></span></div></td>
+  </tr>
+</table>
+ 
+<div style="margin-top:20px; border-bottom:2px #cccccc solid;"></div>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+<tr>
+	<td  align="right" ><a href="products.php"><img src="../pic/continueshopping.jpg" /></a></td>
+    <td width="160"  >&nbsp; </td>
+    <td  align="left" ><a  href="javascript:submit_shopcart_data()"><img src="../pic/checkout_button1.gif" width="169" height="31" border="0" /></a></td>
+</tr>
+  </table></form>
+<{else}>
+<div style="padding:10px">
+<span class="weight"><{$lg.cart_is_empty}></span><br>
+<br>
+<{$lg.cart_is_empty_content}>
+</div>
+<{/if}>
+</div>

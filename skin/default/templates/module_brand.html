@@ -1,0 +1,23 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<script type="text/JavaScript">
+<!--
+function MM_brand_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='products.php?brandid="+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<table width="170" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;">
+  <tr>
+    <td  valign="top"  style="height:26px;  background:url(../pic/title_2_bg.gif) no-repeat"><span class="index_title">Brand</span></td>
+  </tr>
+  <tr>
+    <td style="padding:5px; border:1px #ECECEC solid">
+	<select style="width:152px" id="coin" name="coin" onChange="MM_brand_jumpMenu('parent',this,0)">
+<{foreach key=key1 item=rows from=$rs_b}>
+		<option value="<{$rows.id}>"><{$rows.name}></option>
+	<{/foreach}>
+	</select>
+	</td>
+  </tr>
+</table>

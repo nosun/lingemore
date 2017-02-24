@@ -1,0 +1,15 @@
+<table id="priceTable"  style="background-color:#cccccc; " width="100%" border="0" b cellpadding="2" cellspacing="1">
+<tr bgcolor="#EBEBEB">
+<td style="font-size:11px;" ><{$lg.quantity_piece}></td>
+<td style="font-size:11px;"><{$lg.price_per_piece}></td>
+<td style="font-size:11px;"><{$lg.processing_time}></td>
+</tr>
+<{foreach key=index item=rows from=$p.wholesaleprice name=wholesaleprice}>
+<tr style="font-size:11px">
+<td align="center" style="font-size:11px; background-color:#FFF" ><{$rows.numitem}></td>
+<td align="center" style="font-size:11px; background-color:#FFF" >
+<span class="red"><{$coin}> <{$rows.price}></span>
+</td>
+<td  align="center" style="font-size:11px; background-color:#FFF"><{$rows.remark}></td>
+</tr>
+<{/foreach}></table>

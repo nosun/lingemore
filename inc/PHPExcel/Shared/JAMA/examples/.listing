@@ -1,0 +1,11 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    6 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       2030 Aug 27  2010 LMQuadTest.php
+-rw-r--r--    1 48       apache       1305 Aug 27  2010 LagrangeInterpolation.php
+-rw-r--r--    1 48       apache       1420 Aug 27  2010 LagrangeInterpolation2.php
+-rw-r--r--    1 48       apache       5216 Aug 27  2010 LevenbergMarquardt.php
+-rw-r--r--    1 48       apache       4495 Aug 27  2010 MagicSquareExample.php
+-rw-r--r--    1 48       apache      55778 Aug 27  2010 Stats.php
+-rw-r--r--    1 48       apache       6781 Aug 27  2010 benchmark.php
+-rw-r--r--    1 48       apache       1814 Aug 27  2010 polyfit.php
+-rw-r--r--    1 48       apache       1476 Aug 27  2010 tile.php

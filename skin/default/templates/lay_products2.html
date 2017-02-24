@@ -1,0 +1,216 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<{include file="module_head.html"}>
+<!--头部开始-->
+<div id="header_box">
+	<{include file="module_top.html"}>
+</div>
+<!--头部结束-->
+<!--主体开始-->
+<div id="body_box">
+	<div id="left_box"><{include file="module_left.html"}></div>
+    <div id="inner_main_box">
+    	<div class="daohang"><{$str_url}></div><div class="bigdao"><{$str_url_2}></div>
+        <{if $categorybigpic!=""}>
+        <div style="margin-bottom:10px;">
+         <a href="<{$categorypicurl}>"><img border="0" src="<{$categorypic}>" /></a></span></a>
+        </div>
+        <{/if}>
+        <div style="line-height:30px; font-size:14px;" class="weight">Best Seller Products</div>
+        <div class="w888 boxborder_gray" style="background:#FFF; margin-bottom:10px;">
+            <table width="100%" border="0" align="center" cellspacing="0" cellpadding="0" style="margin-top:10px; margin-bottom:10px;">
+              <tr>
+                <td width="23" align="center"><img style="cursor:pointer" onmousemove="javascript:gogo=true;bln=false;"  src="../pic/goleft.jpg" /></td>
+                <td height="85" valign="middle"><div id=demo style="overflow:hidden;width:826px; margin:auto;">
+              <table  border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td id=demo1 valign="top">
+                  <table  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+            <{foreach key=key1 item=rows from=$rs_bestseller name=rs_bestseller}>
+            <td>
+            <table width="118" border="0"  cellspacing="0" cellpadding="0" style="margin-left:5px; margin-right:5px;">  <tr>
+                <td  height="150"  align="center" style=""><a href="<{$rows.rewrite}>"><img  src="<{$rows.realpic}>"  lazy_data_src="<{$rows.realpic}>" border="0"/></a></td>
+              </tr>
+              <tr>
+                <td align="center" height="25">
+                <a class="producta" href="<{$rows.rewrite}>"><{$rows.name}></a><br />
+                <span class="price"><{$coin}><{$rows.price}></span>
+                </td>
+              </tr>
+            </table>
+            </td>
+            <{/foreach}>
+            </tr>
+                  </table></td>
+                  <td id=demo2 valign="top"></td>
+                </tr>
+              </table>
+            </div></td>
+                <td width="23" align="center"><img style="cursor:pointer" onmousemove="javascript:gogo=true;bln=true;" src="../pic/goright.jpg" /></td>
+              </tr>
+            </table>
+					<script language="javascript">
+                      var speed=10;
+                      var gogo= true;
+                      var bln=true;
+                      var demo = document.getElementById("demo");
+                      var demo1 = document.getElementById("demo1");
+                      var demo2 = document.getElementById("demo2");
+                      
+                      demo2.innerHTML=demo1.innerHTML
+                      function Marquee(){
+                      if(!gogo)
+                        return ;
+                      if(bln)
+                      {
+                          if(demo.scrollWidth-demo.scrollLeft-demo1.offsetWidth<=0)
+                          {
+                          
+                          demo.scrollLeft=0;
+                           }
+                           else{
+                          demo.scrollLeft++
+                          //alert(demo.offsetWidth+" "+demo.scrollWidth+" "+demo.scrollLeft);
+                          }
+                        }
+                        else
+                        {
+                            if(demo.scrollLeft<=0)
+                                 {
+                                 demo.scrollLeft=demo1.scrollWidth
+                                 }
+                             else
+                             {
+                                demo.scrollLeft--;
+                             }
+                        }
+                      }
+                      var MyMar=setInterval(Marquee,speed)
+                      demo.onmouseover=function() {clearInterval(MyMar)}
+                      demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+                    </script>
+        </div>
+        <div class="w888 boxborder_darkgray" style="background:#FFF; margin-bottom:10px;">
+           <div>
+              <{include file="module_page.html"}>
+              <div style="height:30px; line-height:30px; float:right; display:inline-block;">
+                  Show:
+                  <{foreach key=key1 item=rows from=$mode name=mode}>
+                  <a class="mode <{if $key1==$numindex}>mode_now<{/if}>" rel="nofollow" href="<{$rewrite[$rows]}>"><{$rows}></a>
+                  <{/foreach}>
+              </div>
+              <div class="clear1"></div>
+           </div>
+           <div>
+                <table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-top:1px solid #cccccc;background:#FAFAFA;">
+                  <tr>
+                    <td width="200">View as: <a class="list_on" rel="nofollow" href="<{$rewrite.list}>"></a> List <a class="grid" rel="nofollow" href="<{$rewrite.grid}>"></a> Grid<!-- <a class="gallery" rel="nofollow" href="<{$rewrite.gallery}>"></a>--></td>
+                    <td width="250">
+                     Filter:
+                     <{if $filteritem==1 || $filteritem==2}>
+                      <a class="filter" href="<{$rewrite.filter0}>">All</a>
+                      <{else}>
+                      <span class="filteron">All</span> 
+                      <{/if}>
+                     <{if $filteritem==1}>
+                     <span class="filteron">Spical Offers</span>
+                     <{else}>
+                     <a class="filter" href="<{$rewrite.filter1}>">Spical Offers</a>
+                     <{/if}>
+                    </td>
+                    <td></td>
+                    <td width="74">Order By </td>
+                    <td width="240">
+                    <select rel="nofollow" id="orderitem" name="orderitem"   onchange="MM_jumpMenu('parent',this,0)">
+                    <option value="<{$rewrite.orderid}>">Product ID</option>
+                    <option value="<{$rewrite.orderitemno}>">Itemno ID</option>
+                    <option value="<{$rewrite.ordername}>">Product Name</option>
+                    <option value="<{$rewrite.orderprice}>">Product Price</option>
+                    <option value="<{$rewrite.ordertime}>">Product Addtime</option>
+                    <option value="<{$rewrite.ordersort}>">Product Sort</option>
+                    <option value="<{$rewrite.orderview}>">Product Views</option>
+                      </select>
+                      <select rel="nofollow" id="orderby" name="orderby"  onchange="MM_jumpMenu('parent',this,0)">
+                      <option value="<{$rewrite.bydesc}>">Descendingly</option>
+                       <option value="<{$rewrite.byasc}>">Ascendingly</option>
+                      
+                      </select>
+                      <script language="javascript">
+                      try{
+                          EnterSelectIndex("orderitem",<{$orderindex}>);
+                          EnterSelectIndex("orderby",<{$orderbyindex}>);
+                          //document.getElementById("imgNum" + <{$numindex}>).src="../pic/ps_<{$pagesize}>_i.gif";
+                         }
+                         catch(e)
+                         {}
+                      </script> </td>
+                  </tr>
+                </table>
+           </div>
+        </div>
+        <{include file="uio_products2.html"}>
+        <div class="w888 boxborder_darkgray" style="background:#FFF; margin-top:10px;">
+           <div>
+              <{include file="module_page.html"}>
+              <div style="height:30px; line-height:30px; float:right; display:inline-block;">
+                  Show:
+                  <{foreach key=key1 item=rows from=$mode name=mode}>
+                  <a class="mode <{if $key1==$numindex}>mode_now<{/if}>" rel="nofollow" href="<{$rewrite[$rows]}>"><{$rows}></a>
+                  <{/foreach}>
+              </div>
+              <div class="clear1"></div>
+           </div>
+           <div>
+                <table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-top:1px solid #cccccc;background:#FAFAFA;">
+                  <tr>
+                    <td width="200">View as: <a class="list_on" rel="nofollow" href="<{$rewrite.list}>"></a> List <a class="grid" rel="nofollow" href="<{$rewrite.grid}>"></a> Grid<!-- <a class="gallery" rel="nofollow" href="<{$rewrite.gallery}>"></a>--></td>
+                    <td width="250">
+                     Filter:
+                     <{if $filteritem==1 || $filteritem==2}>
+                      <a class="filter" href="<{$rewrite.filter0}>">All</a>
+                      <{else}>
+                      <span class="filteron">All</span> 
+                      <{/if}>
+                     <{if $filteritem==1}>
+                     <span class="filteron">Spical Offers</span>
+                     <{else}>
+                     <a class="filter" href="<{$rewrite.filter1}>">Spical Offers</a>
+                     <{/if}>
+                    </td>
+                    <td></td>
+                    <td width="74">Order By </td>
+                    <td width="240">
+                    <select rel="nofollow" id="orderitem1" name="orderitem"   onchange="MM_jumpMenu('parent',this,0)">
+                    <option value="<{$rewrite.orderid}>">Product ID</option>
+                    <option value="<{$rewrite.orderitemno}>">Itemno ID</option>
+                    <option value="<{$rewrite.ordername}>">Product Name</option>
+                    <option value="<{$rewrite.orderprice}>">Product Price</option>
+                    <option value="<{$rewrite.ordertime}>">Product Addtime</option>
+                    <option value="<{$rewrite.ordersort}>">Product Sort</option>
+                    <option value="<{$rewrite.orderview}>">Product Views</option>
+                      </select>
+                      <select rel="nofollow" id="orderby" name="orderby"  onchange="MM_jumpMenu('parent',this,0)">
+                      <option value="<{$rewrite.bydesc}>">Descendingly</option>
+                       <option value="<{$rewrite.byasc}>">Ascendingly</option>
+                      
+                      </select>
+                      <script language="javascript">
+                      try{
+                          EnterSelectIndex("orderitem1",<{$orderindex}>);
+                          EnterSelectIndex("orderby1",<{$orderbyindex}>);
+                          //document.getElementById("imgNum" + <{$numindex}>).src="../pic/ps_<{$pagesize}>_i.gif";
+                         }
+                         catch(e)
+                         {}
+                      </script> </td>
+                  </tr>
+                </table>
+           </div>
+        </div>
+    </div>
+</div>
+<!--主体结束-->
+<!--底部开始-->
+<div id="bottom_box"><{include file="module_bom.html"}></div>
+<!--底部结束-->
+<{include file="module_foot.html"}>

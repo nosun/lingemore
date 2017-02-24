@@ -1,0 +1,13 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    4 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       8724 Aug 27  2010 Comments.php
+-rw-r--r--    1 48       apache       8120 Aug 27  2010 ContentTypes.php
+-rw-r--r--    1 48       apache       6559 Aug 27  2010 DocProps.php
+-rw-r--r--    1 48       apache      16117 Aug 27  2010 Drawing.php
+-rw-r--r--    1 48       apache      11114 Aug 27  2010 Rels.php
+-rw-r--r--    1 48       apache       7983 Aug 27  2010 StringTable.php
+-rw-r--r--    1 48       apache      22743 Aug 27  2010 Style.php
+-rw-r--r--    1 48       apache      36200 Aug 27  2010 Theme.php
+-rw-r--r--    1 48       apache      14269 Aug 27  2010 Workbook.php
+-rw-r--r--    1 48       apache      39399 Aug 27  2010 Worksheet.php
+-rw-r--r--    1 48       apache       1954 Aug 27  2010 WriterPart.php

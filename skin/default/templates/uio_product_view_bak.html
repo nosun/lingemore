@@ -1,0 +1,280 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="main_ct">
+<script language="javascript"  src="../pic/jquery.lightbox-0.5.min.js" type="text/javascript"></script>
+<script language="javascript">
+function _ajax_quick_addtoshopcart()
+{
+if( ! checkShopCartStyle() )
+	return ;
+var pars = ''; 
+$('#ajax_result_div').html("loading...");
+var surl = '<{$folder}>miniShopcart.php?action=add&alert=1'; 
+for(var i=0;i<document.formshopcart.elements.length;i++ )
+{
+	if( document.formshopcart.elements[i].type.toLowerCase()!="checkbox" )
+		pars += document.formshopcart.elements[i].name + "=" + document.formshopcart.elements[i].value + "&";
+	else if( document.formshopcart.elements[i].checked )
+	{
+		pars += document.formshopcart.elements[i].name + "=" + document.formshopcart.elements[i].value + "&";
+	}
+}
+$.ajax({ url: surl,async: true,cache: false,data:pars,type:'post',success: ajax_getResultContent}); 
+var p = $("#btn_quick");
+var offset = p.offset();
+var top2 = offset.top + $("#btn_quick").height() + 1 ;
+$("#_divShoppingcart").css("left",offset.left + "px");
+$("#_divShoppingcart").css("top",top2 + "px");
+$("#_divShoppingcart").show();
+return false;
+}
+
+function ajax_getResultContent(xmlhttp)
+{
+	$('#ajax_result_div').html(xmlhttp);
+	//xmlhttp.evalScripts();
+	executeScript(xmlhttp);
+	window.setTimeout( "_close_divShoppingcart()" , 2000 );
+}
+
+function _close_divShoppingcart()
+{
+	$("#_divShoppingcart").hide();
+}
+
+function span_style_chekck2(obj,style,indexm,total,pic)
+{
+	for(index=0;index<total;index++)
+	{
+		//$("#span_style_" +indexm + "_" + index).attr('class','span_bg');
+		$("#span_style_" +indexm + "_" + index).removeClass('span_bg_check2');
+	}
+	$(obj).addClass('span_bg_check2');
+	//obj.style.border="2px #FF6701 solid";
+	//obj.style.border="2px #FF6701 solid";
+	document.formshopcart["style" + indexm].value = style;
+	strs="";
+	for(index=0;index<=10;index++)
+	{
+		var sobj = $FF("formshopcart","style" + index) ;
+		if( sobj )
+		{
+			if(sobj!="")
+			{
+				strs += "\"" + sobj + "\" " ;
+			}
+		}
+		//else
+			//break;
+	}
+	//$('#img1').src(pic);
+	$('#img1').attr('src',pic);
+	$('#span_select').html(strs);
+}
+
+function span_style_chekck(obj,style,indexm,total)
+{
+	for(index=0;index<total;index++)
+	{
+		$("#span_style_" +indexm + "_" + index).attr('class','span_bg');
+	}
+	$(obj).attr('class','span_bg_check')
+	document.formshopcart["style" + indexm].value = style;
+	strs="";
+	for(index=0;index<=10;index++)
+	{
+		var sobj = $FF("formshopcart","style" + index) ;
+		if( sobj )
+		{
+			if(sobj!="")
+			{
+				strs += "\"" + sobj + "\" " ;
+			}
+		}
+		//else
+			//break;
+	}
+	$('#span_select').html(strs);
+}
+
+function $FF(form,name)
+{
+	var objform = document.forms[form] ;
+	var arr = document.getElementsByName( name );
+	if( arr.length>0 )
+	{
+		if( arr[0].type=="hidden" )
+		{
+			return arr[0].value ;
+		}
+		else if( arr[0].type=="select-one" )
+		{
+			return arr[0].value ;
+		}
+		else if( arr[0].type=="checkbox" )
+		{
+			var arrosj = [] ; 
+			for(sindex=0;sindex<arr.length;sindex++)
+			{
+				if( arr[sindex].checked )
+				{
+					arrosj.push( arr[sindex].value );
+				}
+			}
+			//return arrosj.join(',');
+			return "@";
+		}
+		else if( arr[0].type=="radio" )
+		{
+			for(sindex=0;sindex<arr.length;sindex++)
+			{
+				if( arr[sindex].checked )
+				{
+					return arr[0].value ;
+				}
+			}
+		}
+		else if( arr[0].type=="text" )
+		{
+			return arr[0].value ;
+		}
+	}
+	else
+	{
+		return null;
+	}
+}
+
+function checkShopCartStyle()
+{
+	for(index=0;index<=10;index++)
+	{
+		var obj = $FF("formshopcart","style" + index) ;
+		if(obj!=null)
+		{
+			if(obj=="")
+			{
+				alert("Please Select " +  document.formshopcart["key" + index].value );
+				return false;
+			}
+		}
+		else
+			return true;
+	}
+}
+</script>
+
+ <table width="100%" border="0" cellpadding="0" cellspacing="8">
+<tr>
+                    <td width="350" height="350" align="center" valign="top" style="background:url(images/showimg.gif) no-repeat center; padding-top:10px; border:1px #A6A6A6 solid"><a  title="<{$p.name}>" id="lightbox"  href="<{$p.pic1}>"  >
+                      <img  alt="<{$p.name}>" src="<{$p.realpic}>" name="img1"  border="0" id="img1"></a>
+					  <br />
+<table border="0" cellspacing="0" cellpadding="0" style="margin-top:15px">
+  <tr>
+    <td align="center"><div id="otherImage"><{foreach key=key1 item=rows name=otherimage from=$rs_o[0]}>
+<a href="<{$rows.bigpic}>" title="<{$rows.name}>"  >
+<img style="margin:4px; border:1px #eeeeee solid" alt="<{$rows.name}>" src="<{$rows.realpic}>"  /></a>
+<{/foreach}></div></td>
+  </tr>
+</table>
+
+	  </td>
+<td  valign="top" style="padding:5px;">
+					
+					<table width="100%" border="0" cellpadding="5" cellspacing="0">
+                        <tr>
+                          <td><h1><{$p.name}> <a rel="nofollow" href="<{$folder}>index.php?action=add_favorite&pid=<{$p.id}>"><img src="../pic/file.gif" alt="Add to Favorites" hspace="10" border="0" /></a></h1></td>
+                        </tr>
+						   <tr>
+                          <td >Item No :  <{$p.itemno}></td>
+                        </tr>
+                        <tr>
+                          <td >Sales Price :  <span style="font-weight:bold; font-size:14px; color:#FF3300; padding-right:10px;"><{$coin}><{$p.realprice1}></span></td>
+                        </tr>
+						<tr><td>
+						Tag : <{foreach key=key1 item=orows from=$p.tag name=rowstag}>
+<a href="<{$orows.rewrite}>"  class="tag"><{$orows.name}></a>
+<{/foreach}>
+						</td></tr>
+						 <tr>
+                          <td >Disp :  
+						  <{foreach key=index item=rows from=$arrdispname}>
+						  <a href="products.php?disp=<{$arrdisp[$index]}>"><span class="impc" style="text-decoration:underline"><{$rows}></span></a>
+						  <{/foreach}>
+						  </td>
+                        </tr>
+						 <tr>
+                          <td >Update time :  <{$p.addtime}>
+						  </td>
+                        </tr>
+						<tr>
+                          <td style="border-bottom:1px #A6A6A6 dotted">
+						<{foreach key=index item=rows from=$p.pkey2}>
+						<div style="line-height:22px"> <{$p.pkey2[$index]}> : <{$p.pvalue2[$index]}></div>
+						<{/foreach}></td>
+                        </tr>
+						 <tr>
+                          <td ><span style="color:#FF3300; ">Please Select the Style before you put the items into  the Shopping Cart</span></td>
+                        </tr>
+        </table>
+ <br />
+
+ <form method="post" name="formshopcart" action="<{$folder}>shopcart.php?action=add" enctype="application/x-www-form-urlencoded">					  
+<table width="100%" border="0" cellpadding="0" cellspacing="5" bgcolor="#FFF3D9" style="border:1px #FCBB29 solid; color:#000000">
+						<{foreach key=index item=rows from=$p.ckey}>
+<tr><td width="70" align="right" ><{$p.ckey[$index]}> : <input name="key<{$index}>" type="hidden" value="<{$p.ckey[$index]}>" /></td>
+                          <td><{$p.cHTML[$index]}></td>
+            </tr>
+						<{/foreach}>
+			<{if $showAmount}> 
+			<tr>
+				<td align="right" class="weight">I Select : </td>
+		        <td id="span_select" style="color:#FF3300; font-weight:bold">Please select the Style</td>
+		  	</tr>
+			<tr>
+				<td align="right">Quantity : </td>
+		        <td><input name="num" value="1" size="5" maxlength="5" type="text" /></td>
+		  	</tr>
+			<{/if}>
+		  	<tr>
+				<td>&nbsp;</td>
+	          <td><input type="image" src="../pic/checkorder.gif" name="Submit" onclick="return checkShopCartStyle()" value="Check Order" /> <a href="javascript:void(0)" onclick="_ajax_quick_addtoshopcart()"><img id="btn_quick" src="../pic/addtocart.gif"  /></a>
+	            <input name="id" type="hidden" value="<{$pid}>" />
+              </td>
+		  	</tr>
+		  </table>
+	  
+ </form>
+  <br />
+  <div style=" position:absolute; display:none; background-color:#FFFFFF" id="_divShoppingcart">
+  <table width="350"  border="0" cellpadding="5" cellspacing="0" style="border:1px #BADBF2 solid" >
+    <tr>
+      <td bgcolor="#EDF7FD" style="border-bottom:1px dotted #CCCCCC"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../pic/right.jpg" width="16" height="16" hspace="5" align="absmiddle" />Add Success </td>
+    <td width="30" align="center"><a href="javascript:void(0)" onclick="_close_divShoppingcart()"><strong>X</strong></a></td>
+  </tr>
+</table>
+ </td>
+    </tr>
+    <tr>
+      <td align="center" id="ajax_result_div"> </td>
+    </tr>
+	<tr>
+      <td align="center"><input type="button" onclick="location.href='<{$folder}>shopcart.php'" name="Submit2" value="Shopping Cart" />
+        &nbsp;&nbsp; &nbsp;<input onclick="_close_divShoppingcart()" type="button" value="Continue" /></td>
+    </tr>
+  </table> 
+  </div>
+      </td>
+   </tr>
+ </table>
+			  
+ <fieldset>
+<legend>Description</legend>
+ <{$p.content}>
+</fieldset>
+</div>
+<script type="text/javascript">
+	$('#lightbox').lightBox();
+	$('#otherImage a').lightBox();
+</script>

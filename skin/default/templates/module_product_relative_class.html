@@ -1,0 +1,19 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<{if $rs_relate}>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px #FFC44C dotted; margin-bottom:5px; padding:5px;">
+  <tr>
+    <td><div>
+	<span style="font-size:14px; font-weight:bold">Search Results of "<span class="red weight"><{$search_keywords}></span>" from <{$categoryname}></span><br />
+	<span style="font-size:11px; padding-left:10px"><img align="absmiddle" src="../pic/search_result.jpg" /> about <{$search_totalnum}> related products has been found</span>
+</div>
+	<{foreach key=key1 item=rows from=$rs_relate name=rs_relate}>
+        <div class="searchclassdiv">
+         <a href="<{$rows.rewrite}>"><{$rows.name}> <span>(<{$rows.t}>)</span></a>
+        </div>
+        <{if $smarty.foreach.rs_relate.iteration%4==0}>
+        <div class="clear1"></div>
+        <{/if}><{/foreach}>
+	</td>
+  </tr>
+</table>
+<{/if}>

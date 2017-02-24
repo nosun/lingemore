@@ -1,0 +1,5 @@
+<div class="main_ct">
+<{foreach key=key1 item=rows from=$rs_tag name=rs_tag}>
+<a href="<{$rows.rewrite}>" style=" font-size:<{$rows.font}>pt" class="tag"><{$rows.name}> (<{$rows.count}>)</a>
+<{/foreach}>
+</div>

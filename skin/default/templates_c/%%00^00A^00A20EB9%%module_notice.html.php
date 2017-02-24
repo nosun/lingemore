@@ -1,0 +1,74 @@
+<?php /* Smarty version 2.6.26, created on 2012-05-10 10:39:53
+         compiled from module_notice.html */ ?>
+<style>
+#notice{height:auto; width:578px; left:28%; right:28%;
+position:fixed !important; top/**/:150px; 
+position:absolute; z-index:300; top:expression(offsetParent.scrollTop+150);} 
+
+.webnotice{width:578px; margin:auto;}
+.webnotice_top{width:578px; height:13px; background:url(../pic/webnotice_top.png) no-repeat; overflow:hidden;_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src="skin/default/pic/webnotice_top.png");
+_background:none;
+}
+.webnotice_bom{width:578px; height:13px; background:url(../pic/webnotice_bom.png) no-repeat; overflow:hidden;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src="skin/default/pic/webnotice_bom.png");
+_background:none;}
+.webnotice_mid{width:538px; padding:10px 20px; background:url(../pic/webnotice_bg.png) repeat-y; overflow:hidden;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src="../pic/webnotice_bg.png");
+_background:none;}
+.webnotice_close{height:20px; margin-bottom:5px; text-align:right;}
+.webnotice_title{text-align:center; line-height:25px; font-weight:bold; font-size:16px; color:#000}
+a.webnoticeclose{height:20px; line-height:20px; display:inline-block; padding-right:20px; background:url(../pic/webnotice_close.png) right center no-repeat; position:relative;}
+
+</style>
+<script type="text/javascript">
+function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
+{
+    var Days = 0.1; //此 cookie 将被保存 0.1 天
+    var exp  = new Date();    //new Date("December 31, 9998");
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+function getCookie(name)//取cookies函数        
+{
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+
+}
+function delCookie(name)//删除cookie
+{
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+}
+
+function notice_close()
+{
+	$("#notice").css("display","none");
+	SetCookie("noticeisreaded","noticeisreaded");
+}
+</script>
+
+
+<div id="notice">
+  <div class="webnotice">
+    <div class="webnotice_top"></div>
+    <div class="webnotice_mid">
+      <div class="webnotice_close"><a class="webnoticeclose" rel="nofollow" href="javascript:;" onclick="notice_close()">close</a></div>
+      <div class="webnotice_title"><?php echo $this->_tpl_vars['webnotice_title']; ?>
+</div>
+      <div style="padding:20px; line-height:25px;">
+        <span class="weight red"><?php echo $this->_tpl_vars['lg']['noticedear']; ?>
+</span><br>
+        <?php echo $this->_tpl_vars['content_105']; ?>
+
+      </div>
+    </div>
+    <div class="webnotice_bom"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  if(getCookie("noticeisreaded"))
+  {
+	  $("#notice").css("display","none");
+	  delCookie("noticeisreaded");
+  }
+</script>

@@ -1,0 +1,138 @@
+
+ <{if $rs_comment}>
+ <div style="width:100%;">
+    <{foreach key=key1 item=rows from=$rs_comment}>
+		<div class="comment_item">
+             <div class="rating_div"><img height="11" src="../pic/star-<{$rows.rating}>.gif" /></div>
+             <div>
+             <div class="comment_left"><div><span class="gray">By</span> <span class="username"><{$rows.username}></span></div><div class="gray" style="padding-top:3px"><{$rows.addtime}></div><img vspace="5" width="16" height="11" src="http://img01.open.35zh.com/cgi-bin/?do=iptocountry&type=3&ip=<{$rows.ip}>" align="absmiddle" hspace="2">
+</div>
+             <div  class="comment_content"><{$rows.content}>
+             <{if $rows.state==1 && $rows.reply!=""}>
+                    <div class="servicereply" >Service's Reply</div>
+                    <div class="servicereplycontent" ><{$rows.reply}></div><{/if}>
+             </div><div class="clear"></div></div></div>
+	<{/foreach}>
+   <div style="text-align:right; height:25px; line-height:25px"><a href="<{$folder}>comment.php?cid=1&pid=<{$p.id}>">More&gt;&gt;</a></div>
+</div>
+<{/if}>
+<link href="../pic/rating_star.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../pic/rating_star.js"></script> 
+<table  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style=" font-size:16px; height:27px; font-weight:bold; text-indent:20px; color:#AB0000; font-family:Georgia, 'Times New Roman', Times, serif"><{$lg.write_a_review}>:</td>
+  </tr><tr>
+    <td class="linh">
+	<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+	<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top"><table border="0" cellpadding="0" cellspacing="10">
+            <form name="reginfo" enctype="multipart/form-data" onsubmit="return CheckForm()" method="post" action="<{$folder}>index.php?action=add_message_save" >
+                <tr>
+                  <td width="60"><{$lg.rating}>:</td>
+                  <td align="left">
+                  <input name="rating" value="0" id="rating_simple1" type="hidden" />
+                  </td>
+                </tr>
+              <tr>
+                <td  colspan="2" >Name : </td>
+                </tr>
+              <tr style="">
+                <td colspan="2"   >
+                  <input name="username" type="text" value="<{$user.firstname}>"  class="review_input" maxlength="100" />
+                  			  
+                  <input name="userid" type="hidden" id="userid" value="<{$userid}>" />
+                  <input name="cid" type="hidden" id="cid" value="1" />
+                  <input name="pid" type="hidden" id="pid" value="<{$p.id}>" /></td>
+              </tr>
+              <tr style="display:none;">
+                <td colspan="2"   ><{$lg.youremail}>: <span class="red">*	</span></td>
+                </tr>
+              <tr style="display:none;">
+                <td colspan="2"   >
+                <input name="contact0"  value="<{$user.name}>"  type="text"  class="input001" maxlength="100"></td>
+              </tr>
+              
+              <tr style="display:none;">
+                <td  colspan="2" ><{$lg.review_title}> : </td>
+                </tr>
+              <tr style="display:none;">
+                <td colspan="2"   >
+                <input name="name"  type="text" id="name" value="Review:<{$p.name}>"  class="review_input" maxlength="100"></td>
+</tr>
+             
+              <tr>
+                <td  colspan="2" ><{$lg.review_content}> :</td>
+                </tr>
+              <tr>
+                <td colspan="2"   ><textarea name="content"  class="review_content" id="content"></textarea></td>
+                </tr> 
+              <tr>
+                <td  colspan="2" >
+                Remaining characters:3000 Please don't exceed 3,000 characters.
+                </td>
+                </tr>
+              <{if 1==2}>
+              <tr>
+                <td  colspan="2" >
+                <input name="pic"  type="file" > 
+                </td>
+                </tr>
+              <tr>
+                <td  colspan="2" >
+                <input name="pic1"  type="file" > 
+                </td>
+                </tr>
+              <tr>
+                <td  colspan="2" >
+                Please only provide JPG files. Individual photo size cannot exceed 2MB
+                </td>
+                </tr>
+			   <{/if}>
+			   <tr>
+			  <{if $config[43]!=""}>
+			  
+                <td   ><{$lg.code}>:</td>
+                <td align="left"><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			  <{/if}>
+              <tr>
+                <td   ><input type="image" src="../pic/submit_review.jpg" /></td>
+                <td><input type="reset" value="Cancel" style="background:none; border:none; text-decoration:underline;" /></td>
+              </tr>
+            </form>
+          </table></td>
+  </tr>
+ 
+</table>
+
+	</td>
+  </tr>
+</table>
+
+	</td>
+  </tr>
+</table>
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+if(!CheckIsNull("reginfo","username","Sorry, Name cannot be left blank!!!")) 
+	return false;
+//if(!CheckIsNull("reginfo","contact0","<{$lg.msg_email_null}>")) return false;
+//if(!CheckIsEmail("reginfo","contact0","<{$lg.msg_email_error}>")) return false;
+if(!CheckIsNull("reginfo","content","<{$lg.msg_content_null}>")) return false;
+ <{if $config[43]!=""}> if(!CheckIsNull("reginfo","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>
+<script language="javascript" type="text/javascript">
+            $(function() {
+                $("#rating_simple1").webwidget_rating_sex({
+                    rating_star_length: '5',
+                    rating_initial_value: '0',
+                    rating_function_name: '',//this is function name for click
+                    directory: '../pic/'
+                });
+            });
+        </script>

@@ -1,0 +1,9 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    7 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       8641 Aug 27  2010 bestFitClass.php
+-rw-r--r--    1 48       apache       2891 Aug 27  2010 exponentialBestFitClass.php
+-rw-r--r--    1 48       apache       2307 Aug 27  2010 linearBestFitClass.php
+-rw-r--r--    1 48       apache       2549 Aug 27  2010 logarithmicBestFitClass.php
+-rw-r--r--    1 48       apache       4775 Aug 27  2010 polynomialBestFitClass.php
+-rw-r--r--    1 48       apache       2863 Aug 27  2010 powerBestFitClass.php
+-rw-r--r--    1 48       apache       4100 Aug 27  2010 trendClass.php

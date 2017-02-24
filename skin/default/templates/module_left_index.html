@@ -1,0 +1,54 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+
+<{include file="module_class.html"}>
+
+<div class="w198 boxborder_gray" style="margin-bottom:10px; background:url(../pic/contactusbg.jpg) top repeat-x;">
+  <div style="padding:5px;">
+    <{$content_71}>
+  </div>
+</div>
+
+
+<div class="w198  boxborder_gray" style="margin-bottom:10px;">
+  <div class="pinkboxtop_198">What's News</div>
+  <div class="w198">
+         <ul class="newsul">         
+         <{foreach key=key1 item=rows from=$rs_n_1 name=rs_n_1}>
+            <li style="line-height:22px;"><a href="<{$rows.rewrite}>" title="<{$rows.name}>"><{$rows.name|truncate:30:"...":true}></a></li>
+         <{/foreach}>
+         </ul>
+  </div>
+</div>
+
+<div class="w198 boxborder_gray" style="margin-bottom:10px; background:url(../pic/newsletterbg.jpg) top repeat-x #DBDBDB;">
+   <div class="w198" style="height:47px;"><img src="../pic/newslettertop.jpg" /></div>
+   <div style="padding:12px; font-size:11px;">
+      <div style="margin-bottom:20px;">
+      <strong>Specail Offers</strong> - Enjoy specail offers available only to our email subscribers.
+      </div>
+      <div style="margin-bottom:10px;">
+      <strong>Get In The Know</strong> - Be the first to see ther latest styles and more events
+      </div>
+      <form onsubmit="return CheckNewsletterForm()" action="<{$folder}>index.php?action=add_newsletter" name="newletterform" method="post"  enctype="application/x-www-form-urlencoded">
+      <div style="margin-bottom:10px;">
+        <input name="email" id="email" style="width:150px; height:18px; border:1px #BEBEBE solid;  padding:0px; line-height:18px; background:#FFF;" value="Your Email Address" onfocus="if(this.value=='Your Email Address') this.value=''" onblur="if(this.value=='') this.value='Your Email Address'" />
+      </div>
+      <div><input type="image" src="../pic/newsletterbtn.jpg" /></div>
+      </form>
+      <script language="javascript">
+        function CheckNewsletterForm()
+        { 
+            if(!CheckIsEmail("newletterform","email","<{$lg.msg_email_error}>")) return false;
+        }
+        </script>
+   </div>
+</div>
+
+
+<div class="w198  boxborder_gray" style="margin-bottom:10px;">
+  <div class="pinkboxtop_198">Payment And Shipping</div>
+  <div class="w198">
+       <{$content_158}>
+  </div>
+</div>

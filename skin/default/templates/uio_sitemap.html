@@ -1,0 +1,45 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<style>
+.smc1{ line-height:25px; padding-left:5px; height:25px;   }
+.smc2{padding-left:20px; line-height:23px; }
+.smc3{padding-left:35px;  line-height:23px;}
+.smc4{ padding-left:45px; line-height:23px;}
+.smc5{padding-left:60px; line-height:23px;}
+a.sma1{color: #686868;font-weight:bold; font-size:14px; padding:5px;}
+a.sma1:hover{color:#686868;font-weight:bold; font-size:14px}
+
+a.sma2{color:#686868;}
+a.sma2:hover{color: #686868;}
+
+a.sma3{color: #ffffff;}
+a.sma3:hover{color:#ffffff;}
+
+a.sma4{color: #ffffff;}
+a.sma4:hover{color:#ffffff;}
+
+a.sma5{color: #ffffff;}
+a.sma5:hover{color:#ffffff;}
+</style>
+<div class="main_ct">
+<div style="text-align:center">
+<{foreach key=key1 item=rows from=$rs_top name=rs_top}>
+<a href="<{$rows.url}>" class="sma1"><{$rows.name}></a>
+<{/foreach}>
+</div>
+<div style=" margin-top:30px">
+
+<{foreach key=key1 item=rows from=$rs_index name=rs_index}>
+	 <div style="float:left; width:185px; margin-top:10px;">
+	<div style="line-height:21px; width:185px;   height:21px;  "> <a href="<{$rows.rewrite}>" class="a1"><{$rows.name}></a></div>
+	 <{foreach key=key1 item=orows from=$rows.arrson name=rs_help}>
+	 <div style="line-height:26px;   height:26px;"><a href="<{$orows.rewrite}>" class="a2"><{$orows.name}></a></div>
+	  <{/foreach}>
+	  </div>
+	  <{if $smarty.foreach.rs_index.iteration%4==0}>
+<div class="clear1" style="border-bottom:1px #cccccc solid"></div>
+<{/if}>
+	 <{/foreach}>
+<div class="clear1"></div>
+</div>
+<div class="clear1"></div>
+</div>

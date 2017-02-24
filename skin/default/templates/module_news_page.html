@@ -1,0 +1,55 @@
+<{if $pagetotal>=2}>
+<{if $isRewrite eq 0}>
+<div style="width:730px; height:30px; line-height:30px; text-align:center; clear:both;">
+	<{if $pagenow >=2}>
+        <a class="page"  href="<{$pageurl}>&page=<{$pagepre}>">&lt;</a> 
+    <{/if}>
+    
+    <{if $pagetmp >=1}> 
+     <a class="page"  href="<{$pageurl}>&page=<{math equation='x * y' x=$pagetmp y=10}>">&lt;&lt;</a> 
+    <{/if}>
+    
+    <{section name=page start=1 loop=$maxpagenum+1 }>
+    <{if $pagenow !=  ( $pagetmp*10 + $smarty.section.page.index )  }> 
+     <a class="page"  href="<{$pageurl}>&page=<{math equation='x * 10 + y' x=$pagetmp y=$smarty.section.page.index}>"><{math equation='x * 10 + y' x=$pagetmp y=$smarty.section.page.index}></a> 
+    <{else}>
+        <span class="pageon"><{$pagenow}></span>
+    <{/if}>
+    <{/section}>
+    
+    <{if $pagenow < $pagetotal}>
+     <a class="page"  href="<{$pageurl}>&page=<{math equation='x + y' x=$pagenow y=1}>">&gt;</a> 
+    <{/if}>
+    
+    <{if $pagetmp < $pagemaxnum }> 
+     <a class="page" href="<{$pageurl}>&page=<{math equation=' ( x + 1 ) * 10 + 1' x=$pagetmp}>">&gt;&gt;</a> 
+    <{/if}>
+</div>
+<{else}>
+<div style="width:730px; height:30px; line-height:30px; text-align:center; clear:both;">
+    <{if $pagenow >=2}>
+        <a class="page"  href="<{$rewriteurl}>-<{$pagepre}>.html">&lt;</a> 
+    <{/if}>
+    
+    <{if $pagetmp >=1}> 
+     <a class="page"  href="<{$rewriteurl}>-<{math equation='x * y' x=$pagetmp y=10}>.html">&lt;&lt;</a> 
+    <{/if}>
+    
+    <{section name=page start=1 loop=$maxpagenum+1 }>
+    <{if $pagenow !=  ( $pagetmp*10 + $smarty.section.page.index )  }> 
+     <a class="page"  href="<{$rewriteurl}>-<{math equation='x * 10 + y' x=$pagetmp y=$smarty.section.page.index}>.html"><{math equation='x * 10 + y' x=$pagetmp y=$smarty.section.page.index}></a> 
+    <{else}>
+        <span class="pageon"><{$pagenow}></span>
+    <{/if}>
+    <{/section}>
+    
+    <{if $pagenow < $pagetotal}>
+     <a class="page"  href="<{$rewriteurl}>-<{math equation='x + y' x=$pagenow y=1}>.html">&gt;</a> 
+    <{/if}>
+    
+    <{if $pagetmp < $pagemaxnum }> 
+     <a class="page" href="<{$rewriteurl}>-<{math equation=' ( x + 1 ) * 10 + 1' x=$pagetmp}>.html">&gt;&gt;</a> 
+    <{/if}>
+</div>
+<{/if}>
+<{/if}>

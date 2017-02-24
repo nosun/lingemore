@@ -1,0 +1,11 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div>
+<{foreach key=key1 item=rows from=$rs_filter}>
+  <div class="filtertitle">Refine by <{$rows.name}></div>
+  <div class="filtercontent">
+<{foreach key=key1 item=srows from=$rows.son}>
+  <div class="filtertitem"><a href="<{$srows.rewrite}>"><{$srows.name}></a><span class="filtercount">(<{$srows.num}>)</span></div>
+<{/foreach}>
+</div>
+<{/foreach}>
+</div>

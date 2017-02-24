@@ -1,0 +1,13 @@
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x   12 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       8137 Aug 27  2010 CSV.php
+-rw-r--r--    1 48       apache       2069 Aug 27  2010 DefaultReadFilter.php
+-rw-r--r--    1 48       apache      21787 Aug 27  2010 Excel2003XML.php
+-rw-r--r--    1 48       apache      70246 Aug 27  2010 Excel2007.php
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 Excel5
+-rw-r--r--    1 48       apache     208981 Aug 27  2010 Excel5.php
+-rw-r--r--    1 48       apache       1537 Aug 27  2010 IReadFilter.php
+-rw-r--r--    1 48       apache       1582 Aug 27  2010 IReader.php
+-rw-r--r--    1 48       apache      15691 Aug 27  2010 OOCalc.php
+-rw-r--r--    1 48       apache      14377 Aug 27  2010 SYLK.php
+-rw-r--r--    1 48       apache       4063 Aug 27  2010 Serialized.php

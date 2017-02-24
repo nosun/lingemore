@@ -1,0 +1,5 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x   12 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       1658 Aug 27  2010 ITextElement.php
+-rw-r--r--    1 48       apache       2518 Aug 27  2010 Run.php
+-rw-r--r--    1 48       apache       2443 Aug 27  2010 TextElement.php

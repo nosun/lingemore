@@ -1,0 +1,11 @@
+<{if $isnotice==1}>
+  <{include file="module_notice.html"}>
+<{/if}>
+<{if $lazy!=""}>
+<script language="javascript" type="text/javascript" src="../pic/lazy_image.js"></script>
+<script language="javascript">
+lazyLoad.init();
+</script>
+<{/if}>
+</body>
+</html>

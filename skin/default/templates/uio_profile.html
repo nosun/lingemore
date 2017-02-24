@@ -1,0 +1,1040 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="main_ct3" id="main_profile">
+
+<{if $action==""}>
+<div class="profilemain" style="margin-bottom:8px">
+<div style="font-size:14px; font-weight:bold"><{$lg.hi}>, <span class="red"><{$user.name}></span> <{$lg.from}> <img src="http://open.35zh.com/cgi-bin/?do=iptocountry&type=3&ip=<{$user.nowip}>" align="absmiddle" hspace="2"> , <{$lg.welcome_to_our_website}>! </div>
+
+<div  style="font-size:12px; line-height:19px; margin-left:10px; margin-top:5px">
+<{if $pc!=100}>
+<table border="0" cellspacing="0" cellpadding="0" style="margin-top:8px; margin-bottom:4px">
+  <tr>
+    <td width="6"><img src="../pic/profile_complete_left.gif" height="38" /></td>
+    <td style="padding-left:8px; padding-right:8px;border-top:1px #D1DDEB solid;border-bottom:1px #D1DDEB solid; background-color:#FFFFFF"><table  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><span style="font-size:11px"><{$lg.profile_complete}></span></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><div style="border:1px #A2B4DA solid; width:140px;height:8px; line-height:8px; font-size:0px"><div style="width:<{$pc}>%; background-color:#A2B4DA;height:8px;"></div></div></td>
+    <td><span style="font-size:11px; padding-left:5px"><strong>100%</strong></span></td>
+  </tr>
+</table>
+</td>
+        </tr>
+      </table></td>
+    <td width="130" align="center" style="border-top:1px #D1DDEB solid;border-bottom:1px #D1DDEB solid; background-color:#FFFFFF"><a class="red normalfont weight" href="profile.php?action=info_view"><{$lg.complete_my_profile}></a></td>
+    <td width="6"><img src="../pic/profile_complete_right.gif"  height="38" /></td>
+  </tr>
+</table>
+<{/if}>
+<div>
+<div style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.pending}> : <a href="<{$folder}>profile.php?action=order_list&state=0"><{$sum_o[0]}> <{$lg.orders_s}></a></div>
+<div style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.unpaid}>  :   <a href="<{$folder}>profile.php?action=order_list&state=1"><{$sum_o[1]}> <{$lg.orders_s}></a></div>
+<div style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.paid}>  :  <a href="<{$folder}>profile.php?action=order_list&state=2"><{$sum_o[2]}> <{$lg.orders_s}></a></div>
+<div style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.processing}>  :  <a href="<{$folder}>profile.php?action=order_list&state=3"><{$sum_o[3]}> <{$lg.orders_s}></a></div>
+<div style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.shipped}>  : <a href="<{$folder}>profile.php?action=order_list&state=4"><{$sum_o[4]}> <{$lg.orders_s}></a></div>
+<div  style="height:20px"><img src="../pic/order-biao.gif" />&nbsp;&nbsp; <{$lg.completed}> : <a href="<{$folder}>profile.php?action=order_list&state=5"><{$sum_o[5]}> <{$lg.orders_s}></a></div>
+</div>
+</div>
+</div>
+<div class="profilemain" style="margin-bottom:8px"><{$lg.profile_default_msg1}></div>
+<div style="margin-bottom:8px; font-size:12px" class="red weight"><{$lg.my_recent_order}> :</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.order_no}> </td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="160" class="profiletabletitle_td"><{$lg.tracking_no}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="80" class="profiletabletitle_td"><{$lg.state}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="130" class="profiletabletitle_td"><{$lg.creation_date}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="100" class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+  <{foreach key=key1 item=rows from=$rs_ro}>
+  <tr class="profiletablelisttr">
+    <td class="pad5px" height="32"><{$rows.itemno}></td>
+    <td></td>
+    <td ><{$rows.shipno}>&nbsp;</td>
+    <td></td>
+    <td ><span class="red"><{$arrstate[$rows.state]}></span></td>
+    <td></td>
+    <td ><{$rows.addtime}></td>
+    <td ></td>
+	<td><input type="button" onclick="javascript:location.href='profile.php?action=order_view&itemno=<{$rows.itemno}>'" class="profilebutton"  value="<{$lg.profile_detail}>" /></td>
+  </tr>
+  <{/foreach}>
+</table>
+<div style="margin-bottom:8px;margin-top:8px; font-size:12px" class="red weight"><{$lg.system_information}>:</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.subject}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="80" class="profiletabletitle_td"><{$lg.to}></td>
+   <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="130" class="profiletabletitle_td"><{$lg.creation_date}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="100" class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+
+
+			<{foreach key=key1 item=rows from=$rs_mm}>
+    <tr class="profiletablelisttr">
+	
+              <td class="pad5px" height="32"><{$rows.name}></td>
+              <td></td>
+			  <td ><{$lg.all_users}></td>
+              <td></td>
+			  <td ><{$rows.addtime}></td>
+			   <td></td>
+			  <td ><input type="button" onclick="javascript:location.href='profile.php?action=message_view&id=<{$rows.id}>'" class="profilebutton"  value="<{$lg.profile_detail}>" /></td>
+    </tr>
+           <{/foreach}>
+</table>
+<{elseif $action=="login"}>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    
+    <td height="150" width="360" valign="top" style="">
+	<div style="background-color:#F9F9F9; border:1px #DBDBDB solid; padding:15px">
+	<div style=" color:#D15400; font-weight:bold; font-size:18px; padding-left:45px"><{$lg.login}></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="10" >
+  <form  name="formlogin"  onsubmit="return CheckForm()" enctype="application/x-www-form-urlencoded" method="post" action="<{$folder}>index.php?action=login">
+    <tr>
+      <td width="90" align="right"><{$lg.your_account}> :</td>
+      <td><input name="name" type="text" class="input001" style="width:160px" maxlength="100" />      </td>
+    </tr>
+    <tr>
+      <td align="right"><{$lg.password}>:</td>
+      <td><input name="pwd" type="password"  class="input001" style="width:160px" maxlength="20" /></td>
+    </tr>
+	<{if $config[42]!=""}>
+    <tr>
+      <td align="right"><{$lg.code}>:</td>
+      <td><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+    </tr>
+	<{/if}>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" class="profilebutton"  name="Submit" value="Sign in" />&nbsp;<a href="get-pwd.php"><span  style="padding-bottom:3px"><{$lg.forget_password}>?</span></a></td>
+    </tr>
+  </form>
+</table>
+</div>
+
+	</td>
+	<td width="50%" valign="top">
+<div style=" color:#D15400; border-bottom:2px #D15400 solid ;font-weight:bold; font-size:18px; padding-bottom:4px">New Customer</div>
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td>By creating an account ,you will be able to shop faster, be up to   date on an orders status, and keep track of the orders you have previously made.<br />
+        <br />
+        <a href="<{$folder}>register.php"><span class="weight">Creating an account &gt;&gt;</span></a></td>
+  </tr>
+  <tr>
+    <td>Don't want to register an account? Just proceed with purchase. <br />
+        <br />
+        <a class="red" href="<{$folder}>step.php?action=step_1"><span class="weight">Checkout As Guest &gt;&gt;</span></a></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+<script language="javascript">
+function CheckForm()
+{
+	if(!CheckIsNull("formlogin","name","Username")) return false;
+	if(!CheckIsNull("formlogin","pwd","Password")) return false;
+<{if $config[42]!=""}>	if(!CheckIsNull("formlogin","code","code")) return false; <{/if}>
+}
+</script>
+
+<{elseif $action=="account_view"}>
+<div class="profiletableform" >
+<form name="formdel" method="post" action="<{$folder}>profile.php?action=sec_edit_save">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+ <tr>
+    <td  width="250" align="right"     ><{$lg.Username}>&nbsp;&nbsp;: </td>
+    <td  ><{$username}></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.new_password}>&nbsp;&nbsp;: </td>
+    <td  ><input name="pwd" type="password"  class="input001" id="tbContent" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.retype_password}>&nbsp;&nbsp;: </td>
+    <td  ><input name="pwd1" type="password"  class="input001" id="tbContent" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right" ><{$lg.question}>&nbsp;&nbsp;: </td>
+    <td  ><input name="question" type="text"  class="input001" value="<{$user.question}>" maxlength="50" /></td>
+  </tr>
+   <tr>
+    <td align="right"   ><{$lg.answer}>&nbsp;&nbsp;: </td>
+    <td  ><input  name="answer" type="text"  class="input001"  maxlength="50"   /></td>
+  </tr>
+  
+  
+  <tr>
+    <td align="right" >&nbsp;</td>
+    <td ><input type="submit" name="Submit42" class="profilebutton"   onclick="return CheckForm();" value="<{$lg.change}>" />
+    <script>
+function CheckForm()
+  { 
+if(!CheckIsNull("formdel","pwd","<{$lg.msg_password_null}>")) return false;
+if(!CheckLength("formdel","pwd","pwd",6,20)) return false;
+if(!CheckIsSame("formdel","pwd","pwd1","password","confirm password")) return false;
+if(!CheckIsNull("formdel","question","<{$lg.msg_question_null}>")) return false;
+}
+</script></td>
+  </tr>
+</table>
+</form>
+</div>
+<{elseif $action=="info_view"}>
+
+<div class="profiletableform">
+<form name="formreg" method="post" action="<{$folder}>profile.php?action=info_edit_save">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+
+   <tr>
+                <td width="250" align="right"  ><{$lg.first_name}>&nbsp;&nbsp;:</td>
+                <td ><input name="firstname" type="text" value="<{$user.firstname}>"  class="input001" maxlength="50" /></td>
+    </tr>
+              <tr>
+                <td align="right"  ><{$lg.last_name}>&nbsp;&nbsp;:</td>
+                <td ><input name="lastname" type="text" value="<{$user.lastname}>"  class="input001" maxlength="50" /></td>
+              </tr>
+              <tr>
+                <td align="right"  ><{$lg.gender}>&nbsp;&nbsp;:</td>
+                <td >
+				<input name="sex"  type="radio" checked="checked" value="1" /><{$lg.male}> <input type="radio" name="sex"  value="0" /><{$lg.female}>				</td>
+				<script>
+				EnterRadio("sex","<{$user.sex}>");
+				</script>
+              </tr>
+  <tr>
+    <td align="right"   ><{$lg.email}>&nbsp;&nbsp;:</td>
+    <td ><input  name="email" type="text"  class="input001" id="email"  value="<{$user.email}>" maxlength="100" /></td>
+  </tr>
+  <tr>
+    <td align="right"   >MSN&nbsp;&nbsp;:</td>
+    <td ><input  name="msn" type="text"  class="input001" id="msn"  value="<{$user.msn}>" maxlength="100" /></td>
+  </tr>
+  
+   
+ <tr>
+    <td align="right"   ><{$lg.address}>&nbsp;&nbsp;:</td>
+    <td ><input name="street"  type="text"  class="input001" id="street" value="<{$user.street}>" maxlength="200" /></td>
+    <tr>
+    <td align="right"   ><{$lg.zip}>&nbsp;&nbsp;:</td>
+    <td ><input  name="postcode"  type="text"  class="input001" id="postcode" value="<{$user.postcode}>" maxlength="20" /></td>
+  </tr>
+	 <tr>
+    <td align="right"   ><{$lg.city}>&nbsp;&nbsp;:</td>
+    <td ><input name="city" type="text"   class="input001" id="city" value="<{$user.city}>" maxlength="50" /></td>
+  </tr> 
+  <tr>
+    <td align="right"   ><{$lg.province}>&nbsp;&nbsp;:</td>
+    <td ><input name="province"  type="text"  class="input001" id="province" value="<{$user.province}>" maxlength="50" /></td>
+  </tr>
+  
+  <tr>
+    <td align="right"><{$lg.country}>&nbsp;&nbsp;:</td>
+    <td ><input name="country" id="country" type="hidden" value="" /><{include file="module_country.html"}><script>
+function setCountryValue(str)
+{
+	$("#country").val(str);
+}
+changeCountry('<{$user.country}>');
+  </script></td>
+  </tr>
+  
+
+  <tr>
+    <td   >&nbsp;</td>
+    <td ><input type="submit"  class="profilebutton"   name="Submit74" value="<{$lg.change}>" />
+ </td>
+  </tr>
+</table>
+</form>
+</div>
+<{elseif $action=="newsletter_sub"}>
+
+<div class="profiletableform">
+<form name="formreg" method="post" action="<{$folder}>profile.php?action=newsletter_sub_save">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+
+   <tr>
+        <td width="250" align="right"  ><{$lg.subscribe}>&nbsp;&nbsp;:</td>
+        <td >
+	    <input name="newsletter_exists"  type="radio"  value="yes" /> <{$lg.yes}>&nbsp;&nbsp;&nbsp;<input type="radio" name="newsletter_exists"  value="no" /> <{$lg.no}>				</td>
+		<script>
+				EnterRadio("newsletter_exists","<{$user.newsletter_exists}>");
+				</script>
+        </tr>
+  
+
+  <tr>
+    <td   >&nbsp;</td>
+    <td ><input type="submit"  class="profilebutton"   name="Submit74" value="<{$lg.change}>" />
+      </td>
+  </tr>
+</table>
+</form>
+</div>
+<{elseif $action=="favorite_list"}>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.product}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.product_name}> </td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.creation_date}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+<{foreach key=key1 item=rows from=$rs_f}>
+ <tr class="profiletablelisttr">
+    <td height="100"><a href="<{$rows.rewrite}>"><img src="<{$rows.realpic}>" border="0"></a></td>
+    <td></td>
+	<td ><a target="_blank" href="<{$rows.rewrite}>"><span class="mainc"><{$rows.pname}></span></a>
+</td>
+    <td></td>
+	<td><{$rows.addtime}></td>
+    <td></td>
+	<td >
+	<input type="button" onclick="javascript:location.href='profile.php?action=favorite_delete_save&id=<{$rows.id}>'" class="profilebutton"  value="<{$lg.profile_remvoe}>" /></td>
+  </tr>
+<{/foreach}>
+</table>
+<{include file="module_profile_page.html"}>
+
+<{elseif $action=="coupon_list"}>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td width="80" height="28"  class="profiletabletitle_td"><{$lg.code}> </td>
+   
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="70" class="profiletabletitle_td"><{$lg.state}></td>
+     <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="50" class="profiletabletitle_td"><{$lg.my_price}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="100" class="profiletabletitle_td"><{$lg.expired_time}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+      <td class="profiletabletitle_td"><{$lg.descript}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="80" class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+<{foreach key=key1 item=rows from=$rs_coupon}>
+ <tr class="profiletablelisttr">
+	<td  height="28" ><{$rows.name}></td>
+   
+     <td></td>
+	<td><{$rows.strstate}></td>
+     <td></td>
+	<td><span class="red">$ <{$rows.price}></span></td>
+     <td></td>
+	<td><{$rows.strtime}></td>
+    <td></td>
+    <td><{$rows.descript}></td>
+    <td></td>
+	<td >
+	<input type="button" onclick="javascript:location.href='profile.php?action=coupon_view&name=<{$rows.name}>'" class="profilebutton"  value="<{$lg.profile_detail}>" /></td>
+  </tr>
+<{/foreach}>
+</table>
+<{include file="module_profile_page.html"}>
+<{elseif $action=="coupon_view"}>
+<div class="profiletableform" style="margin-top:8px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">    
+  <tr>
+              <td width="150" align="right"   ><strong><{$lg.code}> </strong>:</td>
+              <td > 
+             <{$coupon.name}></td>
+      </tr>
+			  <tr>
+			    <td align="right"   ><strong><{$lg.my_price}></strong>:</td>
+			    <td ><span class="red">$ <{$coupon.price}></span></td>
+    </tr>
+			  <tr>
+			    <td align="right"   ><strong><{$lg.state}> </strong>:</td>
+			    <td >
+<{$coupon.strstate}></td>
+		      </tr>
+			  
+			  <tr>
+			    <td align="right"   ><strong><{$lg.expired_time}> </strong>:</td>
+			    <td ><{$coupon.strtime}></td>
+      </tr>
+			  <tr>
+			    <td align="right" valign="top"  ><strong><{$lg.descript}> </strong>:</td>
+			    <td ><{$coupon.descript}></td>
+		      </tr>
+			  <{if $message.state==1}>
+			  <tr>
+                <td   ></td>
+                <td ><div class="div3"><{$message.replyname}>:<{$message.reply}><span class="sec">[<{$message.replytime}>]</span></div>				</td>
+              </tr>
+			  <{/if}>
+ </table>
+<{elseif $action=="order_list"}>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.order_no}> </td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.state}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.order_price}></td>
+   <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.creation_date}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+      <{foreach key=key1 item=rows from=$rs_o}>     
+            <tr class="profiletablelisttr">
+              <td height="28" ><a href="profile.php?action=order_view&itemno=<{$rows.itemno}>"><{$rows.itemno}></a></td>
+              <td></td>
+			  <td><span class="red"><{$arrstate[$rows.state]}></span></td>
+             <td></td>
+			  <td ><span class="impc"><{$rows.coin}><{$rows.orderprice}></span></td>
+              <td></td>
+			  <td><{$rows.addtime}></td>
+			   <td></td>
+    <td ><input type="button" onclick="javascript:location.href='profile.php?action=order_view&itemno=<{$rows.itemno}>'" class="profilebutton"  value="<{$lg.profile_detail}>" /></td>
+            </tr>
+         <{/foreach}>
+</table>
+<{include file="module_profile_page.html"}>
+
+
+
+<{elseif $action=="order_view"}>
+<div class="profiletableform" style="margin-bottom:8px"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%" valign="top"><table width="100%" border="0" cellspacing="8" cellpadding="0">
+  <tr>
+    <td width="110" align="right"><strong><{$lg.order_no}> :</strong></td>
+    <td><{$order.itemno}> <{if $order.state<=1}> <span style="margin-left:10px">
+	<input type="button" onclick="javascript:location.href='step.php?action=step_3&itemno=<{$order.itemno}>'" class="profilebutton impc"  value="<{$lg.checkout}>" />
+	<{/if}>
+    <input type="button" onclick="scroll(0, $('#message_content').offset().top)" class="profilebutton"  value="<{$lg.leave_a_message}>" />
+    
+    </td>
+    </tr> 
+  <tr>
+    <td align="right"><strong><{$lg.total_price}> :</strong></td>
+    <td><span class="red weight"><{$order.coin}> <{$order.totalprices}></span></td>
+  </tr>
+  <tr>
+    <td align="right"><strong><{$lg.order_status}> :</strong></td>
+    <td><span class="red weight"><{$arrstate[$order.state]}></span></td>
+  </tr>
+ <tr>
+    <td align="right"><strong><{$lg.tracking_no}> :</strong></td>
+    <td><{$order.shipno}></td>
+  </tr>
+
+  <tr>
+    <td align="right"><strong><{$lg.creation_date}> :</strong></td>
+    <td><{$order.addtime}></td>
+    </tr>
+	 <tr>
+    <td align="right"><strong><{$lg.remark}> :</strong></td>
+    <td><{$order.content}></td>
+    </tr>
+</table></td>
+    </tr>
+</table>
+
+
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:8px">
+  <tr>
+    <td width="50%" style="padding-right:8px"  valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable" >
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.shipping_address}> </td>
+    </tr>
+    <tr class="profiletablelisttr">
+<td class="pad5px">
+<div class="linh" style="color:#000000">
+<strong><{$order.arraddress[0]}> <{$order.arraddress[8]}></strong><br /> 
+<{$lg.street}> : <{$order.arraddress[1]}><br />
+<{$lg.location}> : <{$order.arraddress[3]}> <{$order.arraddress[4]}> <{$order.arraddress[2]}> <br />
+<{$lg.country}> : <{$order.arraddress[5]}>
+<br />
+<{$lg.tel}> : <{$order.arraddress[6]}> , <{$lg.email}> : <{$order.arraddress[7]}>
+</div>
+</td>
+    </tr>
+ </table></td>
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable" >
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.billing_information}> </td>
+    </tr>
+    <tr class="profiletablelisttr">
+<td class="pad5px">
+<div class="linh">
+<{$lg.products_price}> : <span class="red weight"><{$order.coin}> <{$order.productprice}></span><br />
+<{$lg.shipping_price}> : <span class="red weight"><{$order.coin}> <{$order.sub1}></span><br />
+<{$lg.payment_price}> : <span class="red weight"><{$order.coin}> <{$order.sub2}></span><br />
+<{$lg.discount_price}> : <span class="red weight"><{$order.coin}> <{$order.sub3}></span><br />
+<{$lg.system_discount}> : <span class="red weight"><{$order.coin}> <{$order.sub4}></span>
+</div>
+</td>
+    </tr>
+ </table></td>
+  </tr>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable" style="margin-bottom:8px">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.shipping_information}></td>
+    </tr>
+    <tr class="profiletablelisttr">
+<td class="pad5px" height="28">
+<{$order.express}> <span class="red"><{$order.coin}> <{$order.sub1}></span> 
+</td>
+    </tr>
+ </table>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable" style="margin-bottom:8px">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.payment_information}></td>
+    </tr>
+    <tr class="profiletablelisttr">
+<td class="pad5px" height="28">
+<{$order.payment}>&nbsp;
+</td>
+    </tr>
+ </table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" width="110" class="profiletabletitle_td"><{$lg.items}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td >&nbsp;</td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="80" align="center" class="profiletabletitle_td"><{$lg.unit_price}></td>
+   <td width="1" align="center"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="40"  align="center" class="profiletabletitle_td"><{$lg.qty}></td>
+	 <td width="1" align="center"><img src="../pic/profile_bg_shuxian.gif" /></td>
+	  <td width="80"  align="center" class="profiletabletitle_td"><{$lg.sub_price}></td>
+    </tr>
+                  <{foreach key=key1 item=rows from=$rs_o}>
+                 <tr class="profiletablelisttr">
+    <td style="padding:8px"><a href="<{$rows.rewrite}>"><img src="<{$rows.realpic}>" border="0"></a></td>
+    <td></td>
+	<td  ><a href="<{$rows.rewrite}>"><span class="mainc"><{$rows.pname}></span></a><br><em><{$rows.pstyle}></em><br />
+<{$lg.remark}>:<{$rows.premark}></td>
+    <td></td>
+	<td align="center" class="pad5px"><span class="red"><{$order.coin}><{$rows.pprice}></span></td>
+    <td align="center"></td>
+	<td align="center"  class="pad5px"><{$rows.pnum}></td>
+    <td align="center"></td>
+	<td align="center"  class="pad5px"><span class="red"><{$order.coin}> <{$rows.itemprice}></span></td>
+	</tr>
+<{/foreach}>
+ </table>
+
+<div class="profiletableform" style="margin-top:8px"><table id="message_content" width="100%" border="0" cellspacing="10" cellpadding="0">
+
+            <form name="messageadd" method="post" action="<{$folder}>index.php?action=add_message_save" >
+              <tr>
+                <td width="250" align="right"   ><{$lg.topics}>&nbsp;&nbsp;:</td>
+                <td ><input name="name" value="<{$lg.order_no}>:<{$order.itemno}>" type="text" id="name" class="input002" maxlength="50">
+                    <input name="username" type="hidden" value="<{$username}>">
+                    <input name="userid" type="hidden" id="userid" value="<{$userid}>">
+                    <input name="cid" type="hidden" id="cid" value="4">
+					<input name="pid" type="hidden" id="pid" value="<{$order.id}>"></td>
+              </tr>
+              <tr>
+                <td align="right" ><{$lg.content}>&nbsp;&nbsp;:</td>
+                <td ><textarea name="content" class="input003"   id="content"></textarea></td>
+              </tr><{if $config[43]!=""}>
+			   <tr>
+                <td align="right"   ><{$lg.code}>&nbsp;&nbsp;:</td>
+                <td><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			   <{/if}>
+              <tr>
+                <td >&nbsp;</td>
+                <td ><input type="submit" name="Submitsend" class="profilebutton"   onclick="return CheckForm1();" value="<{$lg.submit}>"  >
+               </td>
+              </tr>
+            </form>
+ </table></div>
+
+ <script language="javascript" type="text/javascript">
+  function CheckForm1()
+  { 
+if(!CheckIsNull("messageadd","username","<{$lg.msg_username_null}>")) return false;
+if(!CheckIsNull("messageadd","name","<{$lg.msg_title_null}>")) return false;
+if(!CheckIsNull("messageadd","content","<{$lg.msg_content_null}>")) return false;
+<{if $config[43]!=""}> if(!CheckIsNull("messageadd","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>	  
+
+ <{elseif $action=="search_order"}>
+<div class="profiletableform" style="margin-bottom:8px"><table width="100%" border="0" cellspacing="8" cellpadding="0">
+  <tr>
+    <td width="110" align="right"><strong><{$lg.order_no}> :</strong></td>
+    <td><{$order.itemno}></td>
+    </tr> <tr>
+    <td align="right"><strong><{$lg.order_status}>:</strong></td>
+    <td><{$arrstate[$order.state]}></td>
+  </tr>
+
+  <tr>
+    <td align="right"><strong><{$lg.creation_date}> :</strong></td>
+    <td><{$order.addtime}></td>
+    </tr>
+	 <tr>
+    <td align="right"><strong><{$lg.total_price}> :</strong></td>
+    <td><span class="red weight"><{$order.coin}> <{$order.totalprices}></span></td>
+    </tr>
+	 <tr>
+    <td align="right"><strong><{$lg.tracking_no}> :</strong></td>
+    <td><span class="red weight"><{$order.shipno}></span></td>
+    </tr>
+</table>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" width="110" class="profiletabletitle_td"><{$lg.items}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td >&nbsp;</td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="80" align="center" class="profiletabletitle_td"><{$lg.unit_price}></td>
+   <td width="1" align="center"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="40"  align="center" class="profiletabletitle_td"><{$lg.qty}></td>
+	 <td width="1" align="center"><img src="../pic/profile_bg_shuxian.gif" /></td>
+	  <td width="80"  align="center" class="profiletabletitle_td"><{$lg.sub_price}></td>
+    </tr>
+                  <{foreach key=key1 item=rows from=$rs_o}>
+                 <tr class="profiletablelisttr">
+    <td style="padding:8px"><a href="<{$rows.rewrite}>"><img src="<{$rows.realpic}>" border="0"></a></td>
+    <td></td>
+	<td  ><a href="<{$rows.rewrite}>"><span class="mainc"><{$rows.pname}></span></a><br><em><{$rows.pstyle}></em><br />
+<{$lg.remark}>:<{$rows.premark}></td>
+    <td></td>
+	<td align="center" class="pad5px"><span class="red"><{$order.coin}><{$rows.pprice}></span></td>
+    <td align="center"></td>
+	<td align="center"  class="pad5px"><{$rows.pnum}></td>
+    <td align="center"></td>
+	<td align="center"  class="pad5px"><span class="red"><{$order.coin}> <{$rows.itemprice}></span></td>
+	</tr>
+<{/foreach}>
+ </table>
+ <{elseif $action=="leave_message"}>
+ 
+ <div class="profiletableform" style="margin-top:8px">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+            <form name="messageadd" method="post" action="<{$folder}>index.php?action=add_message_save">
+              <tr>
+                <td width="250" align="right"   ><{$lg.username}>&nbsp;&nbsp;:</td>
+                <td >  <input name="username" type="text"    class="input001"  maxlength="50"  value="<{$user.firstname}> <{$user.lastname}>">
+                    <input name="userid" type="hidden" id="userid" value="<{$user.id}>">
+                    <input name="cid" type="hidden" id="cid" value="0">			    </td>
+              </tr>
+                <tr>
+                <td align="right" ><{$lg.email}>&nbsp;&nbsp;:</td>
+                <td ><input name="contact0"  value="<{$user.name}>"  type="text"  class="input001" maxlength="100">
+                *</td>
+              </tr>
+              <tr>
+                <td align="right" >Msn&nbsp;&nbsp;:</td>
+                <td ><input name="contact1" value="<{$user.msn}>"  type="text"   class="input001" maxlength="100">                </td>
+              </tr>
+             
+              <tr>
+                <td align="right"   ><{$lg.topics}>&nbsp;&nbsp;:</td>
+                <td ><input name="name" type="text" id="name" class="input002" maxlength="100"> 
+                *                  </td>
+              </tr>
+              <tr>
+                <td align="right"   ><{$lg.content}>&nbsp;&nbsp;:</td>
+                <td ><textarea name="content" class="input003" id="content"></textarea></td>
+              </tr><{if $config[43]!=""}>
+			   <tr>
+                <td align="right"   ><{$lg.code}>&nbsp;&nbsp;:</td>
+                <td><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr><{/if}>
+              <tr>
+                <td   >&nbsp;</td>
+                <td ><input type="submit" class="profilebutton"   onclick="return CheckForm1();" name="Submitsend" value="<{$lg.add_new_message}>" >
+               </td>
+              </tr>
+            </form>
+ </table>
+</div>
+  <script language="javascript" type="text/javascript">
+  function CheckForm1()
+  { 
+if(!CheckIsNull("messageadd","username","<{$lg.msg_username_null}>")) return false;
+if(!CheckIsNull("messageadd","name","<{$lg.msg_title_null}>")) return false;
+if(!CheckIsNull("messageadd","content","<{$lg.msg_content_null}>")) return false;
+<{if $config[43]!=""}> if(!CheckIsNull("messageadd","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>	  
+ <{elseif $action=="message_list"}>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.subject}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.type}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.state}></td>
+   <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.creation_date}></td>
+	 <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+
+
+			<{foreach key=key1 item=rows from=$rs_mes}>
+    <tr class="profiletablelisttr">
+	
+              <td class="pad5px" height="32"><{$rows.name}></td>
+              <td></td>
+			  <td><{$rows.stitle}></td>
+              <td></td>
+			  <td ><{$rows.displaystate}></td>
+              <td></td>
+			  <td ><{$rows.addtime}></td>
+			   <td></td>
+			  <td ><input type="button" onclick="javascript:location.href='profile.php?action=message_view&id=<{$rows.id}>'" class="profilebutton"  value="<{$lg.profile_detail}>" /></td>
+    </tr>
+           <{/foreach}>
+ </table>
+ <{include file="module_profile_page.html"}>
+
+
+
+ <{elseif $action=="message_view"}>
+<{if $message.cid!=0 and $message.cid!=4}>
+<div class="profiletableform" style="margin-top:8px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">    
+  <tr>
+              <td width="150" align="right"   ><strong><{$lg.topics}> </strong>:</td>
+              <td > 
+             <{$message.name}></td>
+      </tr>
+			  <tr>
+			    <td align="right"   ><strong><{$lg.relate}> </strong>:</td>
+			    <td >
+<{$message.stitle}></td>
+		      </tr>
+			  
+			  <tr>
+			    <td align="right"   ><strong><{$lg.creation_date}> </strong>:</td>
+			    <td ><{$message.addtime}></td>
+      </tr>
+			  <tr>
+			    <td align="right" valign="top"  ><strong><{$lg.content}> </strong>:</td>
+			    <td ><{$message.content}></td>
+		      </tr>
+			  <{if $message.state==1}>
+			  <tr>
+                <td   ></td>
+                <td ><div class="div3"><{$message.replyname}>:<{$message.reply}><span class="sec">[<{$message.replytime}>]</span></div>				</td>
+              </tr>
+			  <{/if}>
+ </table>
+ </div>
+ <{else}>
+ <div class="profiletableform" style="margin-top:8px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="10">    
+        <tr>
+          <td width="150" align="right"   ><strong><{$lg.topics}>  </strong>:</td>
+          <td > 
+         <{$message.name}></td>
+      </tr>
+                  
+          <tr>
+            <td align="right"   ><strong><{$lg.creation_date}> </strong>:</td>
+            <td ><{$message.addtime}></td>
+          </tr>
+          <tr>
+            <td align="right"   ><strong><{$lg.content}> </strong>:</td>
+            <td ><{$message.content}></td>
+          </tr>  
+        <tr>
+          <td width="150" align="right" valign="top" style="line-height:25px;" ><strong><{$lg.reply_content}> </strong>:</td>
+          <td style="border:1px #CCC solid;"> 
+          <div style="line-height:18px; padding:5px">
+          <{foreach key=key1 item=rows from=$rs_reply name=rs_reply}>   
+             <div style="color:<{$rows.color}>"><{$rows.replyname}>  &nbsp; <{$rows.addtime}></div>
+             <div style="padding-left:12px"><{$rows.content}></div>
+            
+           <{/foreach}>     </div>  
+          </td>
+      </tr>
+    </table>
+  </div>
+      <div class="profiletableform" style="margin-top:8px"><table width="100%" border="0" cellspacing="10" cellpadding="0">
+
+            <form name="messageadd" method="post" action="<{$folder}>profile.php?action=add_message_reply_save&id=<{$message.id}>" >
+            
+              <tr>
+                <td width="250" align="right" ><{$lg.content}>&nbsp;&nbsp;:</td>
+                <td ><textarea name="content" class="input003"   id="content"></textarea><input name="name"  type="hidden" id="name" >
+                    <input name="replyname" type="hidden" value="<{$username}>">
+                    <input name="replyid" type="hidden" id="replyid" value="<{$userid}>">
+                    <input name="cid" type="hidden" id="cid" value="<{$message.cid}>">
+					<input name="mid" type="hidden" id="mid" value="<{$message.id}>"></td>
+              </tr><{if $config[43]!=""}>
+			   <tr>
+                <td align="right"   ><{$lg.code}>&nbsp;&nbsp;:</td>
+                <td><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			   <{/if}>
+              <tr>
+                <td >&nbsp;</td>
+                <td ><input type="submit" name="Submitsend" class="profilebutton"   onclick="return CheckForm1();" value="<{$lg.reply}>"  >
+               </td>
+              </tr>
+            </form>
+ </table></div>
+  
+    
+ <{/if}>
+ 
+
+  <{elseif $action=="address_list"}>
+ 
+   
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.full_name}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.address}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.email}></td>
+   <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td class="profiletabletitle_td"><{$lg.action}></td>
+  </tr>
+  <{foreach key=key1 item=rows from=$rs_address}>
+  <tr class="profiletablelisttr">
+    <td height="32"><{$rows.address[0]}> <{$rows.address[8]}></td>
+    <td>&nbsp;</td>
+    <td><{$rows.address[1]}> (<{$rows.address[2]}>) <{$rows.address[3]}> <{$rows.address[4]}> <{$rows.address[5]}></td>
+    <td>&nbsp;</td>
+    <td><{$rows.address[7]}></td>
+    <td>&nbsp;</td>
+    <td><input type="button" onclick="javascript:location.href='profile.php?action=address_edit&id=<{$rows.id}>'" class="profilebutton"  value="<{$lg.profile_modify}>" />&nbsp;<input type="button" onclick="javascript:if(confirm('are you sure to delete?'))location.href='profile.php?action=address_delete_save&id=<{$rows.id}>'" class="profilebutton"  value="<{$lg.profile_remvoe}>" /></td>
+  </tr> <{/foreach}>
+</table>
+
+<form id="form3" name="addressform" method="post" action="<{$folder}>profile.php?action=address_add_save">
+<div class="profiletableform" style="margin-top:10px">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+ <tr>
+    <td width="250" align="right"   ><{$lg.first_name}>&nbsp;&nbsp;:</td>
+    <td  ><input name="content0" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.last_name}>&nbsp;&nbsp;:</td>
+    <td  ><input name="content8" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.address}>&nbsp;&nbsp;:</td>
+    <td >
+        <textarea name="content1" class="input003" style="color:#777" onblur="javascript:if($.trim(this.value).length == 0){this.value='<{$lg.address_input_place_holder}>';this.style.color='#777';}"
+      onfocus="javascript:if($.trim(this.value)=='<{$lg.address_input_place_holder}>'){this.select();this.value='';this.style.color='#000';}"><{$lg.address_input_place_holder}></textarea></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.zip}>&nbsp;&nbsp;:</td>
+    <td ><input name="content2" type="text"  class="input001" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.city}>&nbsp;&nbsp;:</td>
+    <td ><input name="content3" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.province}>&nbsp;&nbsp;:</td>
+    <td ><input name="content4" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.country}>&nbsp;&nbsp;:</td>
+    <td ><input name="content5" id="content5" type="hidden" value="" /><{include file="module_country.html"}>
+	<script language="javascript">
+	function setCountryValue(str)
+{
+	$("#content5").val(str);
+}
+	if(openapi!="")
+		includeJsFile("script_api",openapi+"/cgi-bin/?do=iptocountryselect&verson=2&fun=changeCountry&param=2");
+	</script>
+	</td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.tel}>&nbsp;&nbsp;:</td>
+    <td ><input name="content6" type="text"  class="input001" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.email}>&nbsp;&nbsp;:</td>
+    <td ><input name="content7" type="text"  class="input001" /></td>
+  </tr>
+  <tr>
+    <td   >&nbsp;</td>
+    <td >
+      <input type="submit"  name="Submit2" class="profilebutton"   onclick="return CheckForm()" value="<{$lg.add_new}>" />
+     </td>
+  </tr>
+</table>
+</div>
+</form>
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+   if(!CheckIsNull("addressform","content0","<{$lg.msg_firstname_null}>")) return false;
+if(!CheckIsNull("addressform","content8","<{$lg.msg_lastname_null}>")) return false;
+ if ($.trim(document.addressform.content1.value) == "<{$lg.address_input_place_holder}>") {
+			document.addressform.content1.focus();
+			alert('<{$lg.msg_address_null}>');
+			return false;
+		}
+if(!CheckIsNull("addressform","content1","<{$lg.msg_address_null}>")) return false;
+if(!CheckIsNull("addressform","content2","<{$lg.msg_zipcode_null}>")) return false;
+if(!CheckIsNull("addressform","content3","<{$lg.msg_city_null}>")) return false;
+if(!CheckIsNull("addressform","content5","<{$lg.msg_country_null}>")) return false;
+if(!CheckIsNull("addressform","content6","<{$lg.msg_tel_null}>")) return false;
+if(!CheckIsNull("addressform","content7","<{$lg.msg_email_null}>")) return false;
+if(!CheckIsEmail("addressform","content7","<{$lg.msg_email_error}>")) return false;
+
+}
+</script>
+
+<{elseif $action=="address_edit"}>
+
+<form id="form3" name="addressform" method="post" action="<{$folder}>profile.php?action=address_edit_save&id=<{$addressid}>">
+<div class="profiletableform">
+<table width="100%" border="0" cellpadding="0" cellspacing="10">
+ <tr>
+    <td width="250" align="right"   ><{$lg.first_name}>&nbsp;&nbsp;:</td>
+    <td  ><input name="content0" value="<{$address[0]}>" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td  align="right"   ><{$lg.last_name}>&nbsp;&nbsp;:</td>
+    <td  ><input name="content8" value="<{$address[8]}>" type="text"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.address}>&nbsp;&nbsp;:</td>
+    <td >
+<textarea name="content1" class="input003" onblur="javascript:if($.trim(this.value).length == 0){this.value='<{$lg.address_input_place_holder}>';this.style.color='#777';}" 
+    	onfocus="javascript:if($.trim(this.value)=='<{$lg.address_input_place_holder}>'){this.select();this.value='';this.style.color='#000';}"><{$address[1]}></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.zip}>&nbsp;&nbsp;:</td>
+    <td ><input name="content2" type="text" value="<{$address[2]}>"   class="input001" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.city}>&nbsp;&nbsp;:</td>
+    <td ><input name="content3" type="text"  value="<{$address[3]}>"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.province}>&nbsp;&nbsp;:</td>
+    <td ><input name="content4" type="text"  value="<{$address[4]}>"  class="input001" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.country}>&nbsp;&nbsp;:</td>
+    <td ><input name="content5" id="content5" type="hidden" value="" /><{include file="module_country.html"}><script>
+function setCountryValue(str)
+{
+	$("#content5").val(str);
+}
+changeCountry('<{$address[5]}>');
+  </script></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.tel}>&nbsp;&nbsp;:</td>
+    <td ><input name="content6" type="text" value="<{$address[6]}>"   class="input001" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right"   ><{$lg.email}>&nbsp;&nbsp;:</td>
+    <td ><input name="content7" value="<{$address[7]}>"  type="text"  class="input001" /></td>
+  </tr>
+  <tr>
+    <td   >&nbsp;</td>
+    <td >
+      <input type="submit" name="Submit2"  class="profilebutton"  onclick="return CheckForm()" value="<{$lg.submit}>" /><input name="redirectURL" type="hidden" value="<{$refererURL}>" />
+     </td>
+  </tr>
+</table>
+</div>
+</form>
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+if(!CheckIsNull("addressform","content0","<{$lg.msg_firstname_null}>")) return false;
+if(!CheckIsNull("addressform","content8","<{$lg.msg_lastname_null}>")) return false;
+if ($.trim(document.addressform.content1.value) == "<{$lg.address_input_place_holder}>") {
+			document.addressform.content1.focus();
+			alert('<{$lg.msg_address_null}>');
+			return false;
+		}
+if(!CheckIsNull("addressform","content1","<{$lg.msg_address_null}>")) return false;
+if(!CheckIsNull("addressform","content2","<{$lg.msg_zipcode_null}>")) return false;
+if(!CheckIsNull("addressform","content3","<{$lg.msg_city_null}>")) return false;
+if(!CheckIsNull("addressform","content5","<{$lg.msg_country_null}>")) return false;
+if(!CheckIsNull("addressform","content6","<{$lg.msg_tel_null}>")) return false;
+if(!CheckIsNull("addressform","content7","<{$lg.msg_email_null}>")) return false;
+if(!CheckIsEmail("addressform","content7","<{$lg.msg_email_error}>")) return false;
+
+}
+</script>
+<{elseif $action=="invite"}>
+<script language="javascript" type="text/javascript">
+  function CheckForm1()
+  { 
+if(!CheckIsNull("addressform","username","<{$lg.username}>")) return false;
+if(!CheckIsNull("addressform","emails","<{$lg.friends_e_mail}>")) return false;
+}
+</script>
+<div class="profiletableform" style="margin-top:8px"><table width="100%" border="0" cellspacing="10" cellpadding="0">
+
+            <form name="messageadd" method="post" action="<{$folder}>profile.php?action=invite_save" >
+            
+              <tr>
+                <td align="right" ><{$lg.username}>&nbsp;&nbsp;:</td>
+                <td ><input name="username" type="text" value="<{$user.firstname}>"   class="input001" maxlength="20" /></td>
+              </tr>
+              <tr>
+                <td width="250" align="right" valign="top" ><{$lg.friends_e_mail}>&nbsp;&nbsp;:</td>
+                <td ><textarea name="emails" class="input003" style="height:120px"   id="emails"></textarea><br />
+<span class="red"><{$lg.invite_email_line}></span></td>
+              </tr>
+              <tr>
+                <td >&nbsp;</td>
+                <td ><input type="submit" name="Submitsend" class="profilebutton"   onclick="return CheckForm1();" value="<{$lg.submit}>"  >
+               </td>
+              </tr>
+            </form>
+ </table></div>
+ <{elseif $action=="invite_list"}><table width="100%" border="0" cellspacing="0" cellpadding="0" class="profiletable">
+  <tr class="profiletabletitle">
+    <td height="28" class="profiletabletitle_td"><{$lg.friends_e_mail}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="90" align="center" class="profiletabletitle_td_nopad"><{$lg.registered}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="90" align="center" class="profiletabletitle_td_nopad"><{$lg.rewarded}></td>
+    <td width="1"><img src="../pic/profile_bg_shuxian.gif" /></td>
+    <td width="120" class="profiletabletitle_td"><{$lg.creation_date}></td>
+    </tr>
+  <{foreach key=key1 item=rows from=$rs_invite}>
+  <tr class="profiletablelisttr">
+    <td height="32"><{$rows.name}></td>
+    <td>&nbsp;</td>
+    <td align="center"><{$rows.reg_state}></td>
+    <td>&nbsp;</td>
+    <td align="center"><{$rows.rew_state}></td>
+     <td>&nbsp;</td>
+    <td><{$rows.addtime}></td>
+    </tr> <{/foreach}>
+</table>
+<{include file="module_profile_page.html"}>
+<{/if}>
+</div>

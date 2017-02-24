@@ -1,0 +1,84 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<div id="link" style="margin-bottom:10px;">
+   <div class="linktop">Payment And Shipping</div>
+   <div class="linkcon">
+            <table width="100%" border="0" align="center" cellspacing="0" cellpadding="0" style="">
+              <tr>
+                <td height="85" valign="middle">
+                     <div id=demo style="overflow:hidden;width:1004px; margin:auto;">
+                      <table  border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td id=demo1 valign="top">
+                          <table  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                    <{foreach key=key1 item=rows from=$rs_link name=rs_link}>
+                    <td>
+                    <table border="0"  cellspacing="0" cellpadding="0" style="margin-left:10px; margin-right:10px;">  <tr>
+                        <td  align="center" style=""><a href="<{$rows.rewrite}>"><img src="<{$rows.realpic}>"  lazy_data_src="<{$rows.realpic}>" border="0"/></a></td>
+                      </tr>
+                    </table>
+                    </td>
+                    <{/foreach}>
+                    </tr>
+                          </table></td>
+                          <td id=demo2 valign="top"></td>
+                        </tr>
+                      </table>
+                    </div>
+               </td>
+              </tr>
+            </table>
+					<script language="javascript">
+/*                      var speed=10;
+                      var gogo= true;
+                      var bln=true;
+                      var demo = document.getElementById("demo");
+                      var demo1 = document.getElementById("demo1");
+                      var demo2 = document.getElementById("demo2");
+                      
+                      demo2.innerHTML=demo1.innerHTML
+                      function Marquee(){
+                      if(!gogo)
+                        return ;
+                      if(bln)
+                      {
+                          if(demo.scrollWidth-demo.scrollLeft-demo1.offsetWidth<=0)
+                          {
+                          
+                          demo.scrollLeft=0;
+                           }
+                           else{
+                          demo.scrollLeft++
+                          //alert(demo.offsetWidth+" "+demo.scrollWidth+" "+demo.scrollLeft);
+                          }
+                        }
+                        else
+                        {
+                            if(demo.scrollLeft<=0)
+                                 {
+                                 demo.scrollLeft=demo1.scrollWidth
+                                 }
+                             else
+                             {
+                                demo.scrollLeft--;
+                             }
+                        }
+                      }
+                      var MyMar=setInterval(Marquee,speed)
+                      demo.onmouseover=function() {clearInterval(MyMar)}
+                      demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}*/
+                    </script>
+   </div>
+</div>
+
+<div class="w1004" style="">
+    <div class="text-align-center">
+        <{$content_25}><a style="position:absolute; top:-1000px;" target="_blank" href="http://www.35zh.com">ZHTX</a><br />
+        <{$content_67}>
+        <div style="display:none;"><br />Process Time:<{$process}> ms , Memery:<{$memry}>K ,  <br />
+         <{$queryHTML}></div>
+         <div style="display:none;"><{$kfcode}><{$tjcode}></div>
+         <div class="clear"></div>
+    </div>
+</div>

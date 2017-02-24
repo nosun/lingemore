@@ -1,0 +1,13 @@
+drwxr-xr-x    6 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    7 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache        500 Aug 27  2010 CHANGELOG.TXT
+-rw-r--r--    1 48       apache       3274 Aug 27  2010 CholeskyDecomposition.php
+-rw-r--r--    1 48       apache      22708 Aug 27  2010 EigenvalueDecomposition.php
+-rw-r--r--    1 48       apache       5834 Aug 27  2010 LUDecomposition.php
+-rw-r--r--    1 48       apache      37579 Aug 27  2010 Matrix.php
+-rw-r--r--    1 48       apache       5473 Aug 27  2010 QRDecomposition.php
+-rw-r--r--    1 48       apache      13005 Aug 27  2010 SingularValueDecomposition.php
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:16 docs
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 examples
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 tests
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 utils

@@ -1,0 +1,65 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<style>
+.zoom2 { border:1px #A6A6A6 solid}
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<{include file="module_product_relative_class.html"}>
+
+<table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;">
+  <tr>
+    <td width="431"><a class="list" rel="nofollow" href="<{$rewrite.list}>"></a> <a class="grid" rel="nofollow" href="<{$rewrite.grid}>"></a> <a class="gallery_on" rel="nofollow" href="<{$rewrite.gallery}>"></a></td>
+    <td width="176" id="pronumbersel">
+    <{foreach key=key1 item=rows from=$mode name=mode}>
+    <a class="mode <{if $key1==$numindex}>mode_now<{/if}>" rel="nofollow" href="<{$rewrite[$rows]}>"><{$rows}></a>
+    <{/foreach}>
+    </td>
+    <td width="74">Order By </td>
+    <td width="323">
+    <select rel="nofollow" id="orderitem" name="orderitem"   onchange="MM_jumpMenu('parent',this,0)">
+	<option value="<{$rewrite.orderid}>">Product ID</option>
+	<option value="<{$rewrite.orderitemno}>">Itemno ID</option>
+	<option value="<{$rewrite.ordername}>">Product Name</option>
+	<option value="<{$rewrite.orderprice}>">Product Price</option>
+	<option value="<{$rewrite.ordertime}>">Product Addtime</option>
+	<option value="<{$rewrite.ordersort}>">Product Sort</option>
+	<option value="<{$rewrite.orderview}>">Product Views</option>
+      </select>
+      <select rel="nofollow" id="orderby" name="orderby"  onchange="MM_jumpMenu('parent',this,0)">
+	  <option value="<{$rewrite.bydesc}>">Descendingly</option>
+	   <option value="<{$rewrite.byasc}>">Ascendingly</option>
+	  
+      </select>
+	  <script language="javascript">
+	  try{
+		  EnterSelectIndex("orderitem",<{$orderindex}>);
+		  EnterSelectIndex("orderby",<{$orderbyindex}>);
+		  //document.getElementById("imgNum" + <{$numindex}>).src="../pic/ps_<{$pagesize}>_i.gif";
+		 }
+		 catch(e)
+		 {}
+	  </script> </td>
+  </tr>
+</table>
+
+  <{foreach key=key1 item=rows from=$rs_p name=rs_p}>
+      <div class="productdiv3">
+             <div class="productdiv3img">
+              <p><a  href="<{$rows.rewrite}>"><img title="<{$rows.name}>" alt="<{$rows.largerpic}>" lazy_data_src="<{$rows.largerpic}>"  src="../pic/blankpic.gif"  border="0"/></a></p>
+             </div>
+              <div class="productdiv3info">
+                 <a class="producta" href="<{$rows.rewrite}>"><{$rows.name}></a><br />
+                 <span class="red weight"><{$coin}> <{$rows.price}></span>
+              </div>
+          </div>
+          <{if $smarty.foreach.rs_p.iteration%3==0}>
+          <div class="clear1"></div>
+          <{/if}>
+  <{/foreach}>
+ <div class="clear1"></div>

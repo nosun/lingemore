@@ -1,0 +1,27 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+
+<{include file="module_class.html"}>
+
+<div class="w198 boxborder_gray" style="margin-bottom:10px; background:url(../pic/contactusbg.jpg) top repeat-x;">
+  <div style="padding:5px;">
+    <{$content_71}>
+  </div>
+</div>
+
+<div class="w198  boxborder_gray" style="margin-bottom:10px;">
+  <div class="pinkboxtop_198">What's News</div>
+  <div class="w198">
+         <ul class="newsul">         
+         <{foreach key=key1 item=rows from=$rs_n_1 name=rs_n_1}>
+            <li style="line-height:22px;"><a href="<{$rows.rewrite}>" title="<{$rows.name}>"><{$rows.name|truncate:30:"...":true}></a></li>
+         <{/foreach}>
+         </ul>
+  </div>
+</div>
+
+<div class="w198 boxborder_gray">
+  <div class="" >
+    <{$content_121}>
+  </div>
+</div>

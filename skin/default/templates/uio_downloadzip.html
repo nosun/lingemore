@@ -1,0 +1,58 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<style>
+.smc1{padding-left:5px; clear:both; line-height:24px; height:24px; border-bottom:1px #E6E6E6 solid; }
+.smc2{padding-left:20px; line-height:24px;clear:both; height:24px; border-bottom:1px #E6E6E6 dotted; background-color:#FFF9E9; }
+.smc3{padding-left:35px;  line-height:23px;}
+.smc1 .namediv{ width:230px; float:left;background:url(../pic/cd1_bg.jpg)  9px no-repeat ;}
+.smc1 .downloaddiv{width:20px; float:right; display:inline-block; text-align:center;}
+.smc1 .timediv{ width:100px; float:right; text-align:center;}
+.smc2 .namediv{ width:230px; float:left;background:url(../pic/cd2_bg.jpg) 8px 9px no-repeat ;}
+.smc2 .downloaddiv{ width:20px; display:inline-block; float:right;text-align:center}
+.smc2 .timediv{ width:100px; float:right; text-align:center; }
+a.sma1{color: #000000;font-weight:bold; margin-left:25px }
+a.sma1:hover{color:#000000;font-weight:bold;margin-left:25px }
+
+a.sma2{color:#000000;margin-left:20px; }
+a.sma2:hover{color: #000000;margin-left:20px; }
+
+a.sma3{color: #ffffff;}
+a.sma3:hover{color:#ffffff;}
+
+</style>
+<script language="javascript">
+function showdownloadidv(id)
+{
+	var obj=document.getElementById(id);
+	if (obj.style.display=="none")
+	 {obj.style.display="block";}
+	else
+	 {obj.style.display="none";}
+}
+</script>
+<div class="main_ct">
+<div style=" border:1px #CACACA solid; width:748px; overflow:hidden;">
+
+<{foreach key=key1 item=rows from=$rs_zip name=rs_zip}>
+	<div class="smc1"> 
+	<div class="namediv"><a href="<{$rows.rewrite}>" class="sma1"><{$rows.name}></a></div>
+    <{if $rows.rartime!='1970-01-01'}>
+	<div class="timediv"><{$rows.rartime}></div>
+	<div class="downloaddiv"><a target="_blank" href="<{$rows.download}>"><img align="absmiddle" src="../pic/downloadpic.jpg" vspace="5" /></a></div>
+	<{/if}>
+	</div>
+	<div style="display:none" id="downloadidv<{$rows.id}>" >
+	 <{foreach key=key1 item=orows from=$rows.arrson name=rs_help}>
+	 <div class="smc2">
+	  <div class="namediv"><a href="<{$orows.rewrite}>" class="sma2"><{$orows.name}></a></div>
+	<{if $orows.rartime!='1970-01-01'}>
+	<div class="timediv"><{$orows.rartime}></div>
+	<div class="downloaddiv"><a target="_blank" href="<{$orows.download}>"><img align="absmiddle" src="../pic/downloadpic.jpg" vspace="5" /></a></div>
+	<{/if}>
+	  </div>
+	  <{/foreach}>
+	</div>
+	 <{/foreach}>
+
+</div>
+
+</div>

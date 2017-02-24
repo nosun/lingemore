@@ -1,0 +1,307 @@
+<?php /* Smarty version 2.6.26, created on 2012-07-24 16:49:48
+         compiled from module_country.html */ ?>
+<style type="text/css">
+.select{width:262px; height:22px; border:1px #CCC solid; font-size:12px; font-family:Tahoma; background-color:#FFFFFF}
+.select .inbox{ width:262px; height:22px; cursor:pointer}
+.select .input{width:239px; height:22px; padding:0px; line-height:22px; padding-left:5px; border:none; border-style:none; background:none; float:left; overflow:hidden;}
+.select .button{width:18px; padding:0px; margin:0px; height:18px; border:0px; border-style:none; background:url(../pic/select_box_off.gif) no-repeat 0px 3px; float:left; cursor:pointer;}
+.select .button.cur{background:url(../pic/select_box_on.gif) no-repeat 0px 5px;}
+.select .optbox{width:256px; padding:3px;  height:200px; border:1px #CCC solid; border-top:1px #CCCCCC solid; margin-left:-1px; overflow-y:scroll; overflow-x:hidden; position:absolute; display:none;background-color:#FFFFFF}
+.select ul{list-style:none; padding:0px; margin:0px;  }
+.select ul li{list-style:none; padding:0px; margin:0px; width:235px}
+.select .opt{height:18px; width:231px; padding-left:5px; border:1px #ffffff solid; cursor:pointer; overflow:hidden; line-height:18px; background:#FFF; display:block; }
+.select .opt a{display:inline; color:#105CB6; padding-left:20px; height:18px; line-height:18px; overflow:hidden; text-decoration:none;  }
+.select a{text-decoration:none; color:#333; padding-left:20px;}
+.select a img{border:0px;}
+.selectcountry_af{ background:url(../pic/country_all.gif) 0px 2px no-repeat}
+  .selectcountry_ax{ background:url(../pic/country_all.gif) 0px -22px no-repeat}
+  .selectcountry_al{ background:url(../pic/country_all.gif) 0px -46px no-repeat}
+  .selectcountry_dz{ background:url(../pic/country_all.gif) 0px -70px no-repeat}
+  .selectcountry_as{ background:url(../pic/country_all.gif) 0px -94px no-repeat}
+  .selectcountry_ad{ background:url(../pic/country_all.gif) 0px -118px no-repeat}
+  .selectcountry_ao{ background:url(../pic/country_all.gif) 0px -142px no-repeat}
+  .selectcountry_ai{ background:url(../pic/country_all.gif) 0px -166px no-repeat}
+  .selectcountry_aq{ background:url(../pic/country_all.gif) 0px -190px no-repeat}
+  .selectcountry_ag{ background:url(../pic/country_all.gif) 0px -214px no-repeat}
+  .selectcountry_ar{ background:url(../pic/country_all.gif) 0px -238px no-repeat}
+  .selectcountry_am{ background:url(../pic/country_all.gif) 0px -262px no-repeat}
+  .selectcountry_aw{ background:url(../pic/country_all.gif) 0px -286px no-repeat}
+  .selectcountry_au{ background:url(../pic/country_all.gif) 0px -310px no-repeat}
+  .selectcountry_at{ background:url(../pic/country_all.gif) 0px -334px no-repeat}
+  .selectcountry_az{ background:url(../pic/country_all.gif) 0px -358px no-repeat}
+  .selectcountry_bs{ background:url(../pic/country_all.gif) 0px -382px no-repeat}
+  .selectcountry_bh{ background:url(../pic/country_all.gif) 0px -406px no-repeat}
+  .selectcountry_bd{ background:url(../pic/country_all.gif) 0px -430px no-repeat}
+  .selectcountry_bb{ background:url(../pic/country_all.gif) 0px -454px no-repeat}
+  .selectcountry_by{ background:url(../pic/country_all.gif) 0px -478px no-repeat}
+  .selectcountry_be{ background:url(../pic/country_all.gif) 0px -502px no-repeat}
+  .selectcountry_bz{ background:url(../pic/country_all.gif) 0px -526px no-repeat}
+  .selectcountry_bj{ background:url(../pic/country_all.gif) 0px -550px no-repeat}
+  .selectcountry_bm{ background:url(../pic/country_all.gif) 0px -574px no-repeat}
+  .selectcountry_bt{ background:url(../pic/country_all.gif) 0px -598px no-repeat}
+  .selectcountry_bo{ background:url(../pic/country_all.gif) 0px -622px no-repeat}
+  .selectcountry_ba{ background:url(../pic/country_all.gif) 0px -646px no-repeat}
+  .selectcountry_bw{ background:url(../pic/country_all.gif) 0px -670px no-repeat}
+  .selectcountry_br{ background:url(../pic/country_all.gif) 0px -694px no-repeat}
+  .selectcountry_io{ background:url(../pic/country_all.gif) 0px -718px no-repeat}
+  .selectcountry_bn{ background:url(../pic/country_all.gif) 0px -742px no-repeat}
+  .selectcountry_bg{ background:url(../pic/country_all.gif) 0px -766px no-repeat}
+  .selectcountry_bf{ background:url(../pic/country_all.gif) 0px -790px no-repeat}
+  .selectcountry_bi{ background:url(../pic/country_all.gif) 0px -814px no-repeat}
+  .selectcountry_kh{ background:url(../pic/country_all.gif) 0px -838px no-repeat}
+  .selectcountry_cm{ background:url(../pic/country_all.gif) 0px -862px no-repeat}
+  .selectcountry_ca{ background:url(../pic/country_all.gif) 0px -886px no-repeat}
+  .selectcountry_cv{ background:url(../pic/country_all.gif) 0px -910px no-repeat}
+  .selectcountry_ky{ background:url(../pic/country_all.gif) 0px -934px no-repeat}
+  .selectcountry_cf{ background:url(../pic/country_all.gif) 0px -958px no-repeat}
+  .selectcountry_td{ background:url(../pic/country_all.gif) 0px -982px no-repeat}
+  .selectcountry_cl{ background:url(../pic/country_all.gif) 0px -1006px no-repeat}
+  .selectcountry_cn{ background:url(../pic/country_all.gif) 0px -1030px no-repeat}
+  .selectcountry_co{ background:url(../pic/country_all.gif) 0px -1054px no-repeat}
+  .selectcountry_km{ background:url(../pic/country_all.gif) 0px -1078px no-repeat}
+  .selectcountry_cg{ background:url(../pic/country_all.gif) 0px -1102px no-repeat}
+  .selectcountry_ck{ background:url(../pic/country_all.gif) 0px -1126px no-repeat}
+  .selectcountry_cr{ background:url(../pic/country_all.gif) 0px -1150px no-repeat}
+  .selectcountry_ci{ background:url(../pic/country_all.gif) 0px -1174px no-repeat}
+  .selectcountry_hr{ background:url(../pic/country_all.gif) 0px -1198px no-repeat}
+  .selectcountry_cu{ background:url(../pic/country_all.gif) 0px -1222px no-repeat}
+  .selectcountry_cy{ background:url(../pic/country_all.gif) 0px -1246px no-repeat}
+  .selectcountry_cz{ background:url(../pic/country_all.gif) 0px -1270px no-repeat}
+  .selectcountry_dk{ background:url(../pic/country_all.gif) 0px -1294px no-repeat}
+  .selectcountry_dj{ background:url(../pic/country_all.gif) 0px -1318px no-repeat}
+  .selectcountry_dm{ background:url(../pic/country_all.gif) 0px -1342px no-repeat}
+  .selectcountry_do{ background:url(../pic/country_all.gif) 0px -1366px no-repeat}
+  .selectcountry_ec{ background:url(../pic/country_all.gif) 0px -1390px no-repeat}
+  .selectcountry_eg{ background:url(../pic/country_all.gif) 0px -1414px no-repeat}
+  .selectcountry_sv{ background:url(../pic/country_all.gif) 0px -1438px no-repeat}
+  .selectcountry_gq{ background:url(../pic/country_all.gif) 0px -1462px no-repeat}
+  .selectcountry_er{ background:url(../pic/country_all.gif) 0px -1486px no-repeat}
+  .selectcountry_ee{ background:url(../pic/country_all.gif) 0px -1510px no-repeat}
+  .selectcountry_et{ background:url(../pic/country_all.gif) 0px -1534px no-repeat}
+  .selectcountry_fk{ background:url(../pic/country_all.gif) 0px -1558px no-repeat}
+  .selectcountry_fo{ background:url(../pic/country_all.gif) 0px -1582px no-repeat}
+  .selectcountry_fj{ background:url(../pic/country_all.gif) 0px -1606px no-repeat}
+  .selectcountry_fi{ background:url(../pic/country_all.gif) 0px -1630px no-repeat}
+  .selectcountry_fr{ background:url(../pic/country_all.gif) 0px -1654px no-repeat}
+  .selectcountry_gf{ background:url(../pic/country_all.gif) 0px -1678px no-repeat}
+  .selectcountry_pf{ background:url(../pic/country_all.gif) 0px -1702px no-repeat}
+  .selectcountry_tf{ background:url(../pic/country_all.gif) 0px -1726px no-repeat}
+  .selectcountry_ga{ background:url(../pic/country_all.gif) 0px -1750px no-repeat}
+  .selectcountry_gm{ background:url(../pic/country_all.gif) 0px -1774px no-repeat}
+  .selectcountry_ge{ background:url(../pic/country_all.gif) 0px -1798px no-repeat}
+  .selectcountry_de{ background:url(../pic/country_all.gif) 0px -1822px no-repeat}
+  .selectcountry_gh{ background:url(../pic/country_all.gif) 0px -1846px no-repeat}
+  .selectcountry_gi{ background:url(../pic/country_all.gif) 0px -1870px no-repeat}
+  .selectcountry_gr{ background:url(../pic/country_all.gif) 0px -1894px no-repeat}
+  .selectcountry_gl{ background:url(../pic/country_all.gif) 0px -1918px no-repeat}
+  .selectcountry_gd{ background:url(../pic/country_all.gif) 0px -1942px no-repeat}
+  .selectcountry_gp{ background:url(../pic/country_all.gif) 0px -1966px no-repeat}
+  .selectcountry_gu{ background:url(../pic/country_all.gif) 0px -1990px no-repeat}
+  .selectcountry_gt{ background:url(../pic/country_all.gif) 0px -2014px no-repeat}
+  .selectcountry_gn{ background:url(../pic/country_all.gif) 0px -2038px no-repeat}
+  .selectcountry_gw{ background:url(../pic/country_all.gif) 0px -2062px no-repeat}
+  .selectcountry_gy{ background:url(../pic/country_all.gif) 0px -2086px no-repeat}
+  .selectcountry_ht{ background:url(../pic/country_all.gif) 0px -2110px no-repeat}
+  .selectcountry_va{ background:url(../pic/country_all.gif) 0px -2134px no-repeat}
+  .selectcountry_hn{ background:url(../pic/country_all.gif) 0px -2158px no-repeat}
+  .selectcountry_hk{ background:url(../pic/country_all.gif) 0px -2182px no-repeat}
+  .selectcountry_hu{ background:url(../pic/country_all.gif) 0px -2206px no-repeat}
+  .selectcountry_is{ background:url(../pic/country_all.gif) 0px -2230px no-repeat}
+  .selectcountry_in{ background:url(../pic/country_all.gif) 0px -2254px no-repeat}
+  .selectcountry_id{ background:url(../pic/country_all.gif) 0px -2278px no-repeat}
+  .selectcountry_ir{ background:url(../pic/country_all.gif) 0px -2302px no-repeat}
+  .selectcountry_iq{ background:url(../pic/country_all.gif) 0px -2326px no-repeat}
+  .selectcountry_ie{ background:url(../pic/country_all.gif) 0px -2350px no-repeat}
+  .selectcountry_im{ background:url(../pic/country_all.gif) 0px -2374px no-repeat}
+  .selectcountry_il{ background:url(../pic/country_all.gif) 0px -2398px no-repeat}
+  .selectcountry_it{ background:url(../pic/country_all.gif) 0px -2422px no-repeat}
+  .selectcountry_jm{ background:url(../pic/country_all.gif) 0px -2446px no-repeat}
+  .selectcountry_jp{ background:url(../pic/country_all.gif) 0px -2470px no-repeat}
+  .selectcountry_jo{ background:url(../pic/country_all.gif) 0px -2494px no-repeat}
+  .selectcountry_kz{ background:url(../pic/country_all.gif) 0px -2518px no-repeat}
+  .selectcountry_ke{ background:url(../pic/country_all.gif) 0px -2542px no-repeat}
+  .selectcountry_ki{ background:url(../pic/country_all.gif) 0px -2566px no-repeat}
+  .selectcountry_kr{ background:url(../pic/country_all.gif) 0px -2590px no-repeat}
+  .selectcountry_kw{ background:url(../pic/country_all.gif) 0px -2614px no-repeat}
+  .selectcountry_kg{ background:url(../pic/country_all.gif) 0px -2638px no-repeat}
+  .selectcountry_la{ background:url(../pic/country_all.gif) 0px -2662px no-repeat}
+  .selectcountry_lv{ background:url(../pic/country_all.gif) 0px -2686px no-repeat}
+  .selectcountry_lb{ background:url(../pic/country_all.gif) 0px -2710px no-repeat}
+  .selectcountry_ls{ background:url(../pic/country_all.gif) 0px -2734px no-repeat}
+  .selectcountry_lr{ background:url(../pic/country_all.gif) 0px -2758px no-repeat}
+  .selectcountry_ly{ background:url(../pic/country_all.gif) 0px -2782px no-repeat}
+  .selectcountry_li{ background:url(../pic/country_all.gif) 0px -2806px no-repeat}
+  .selectcountry_lt{ background:url(../pic/country_all.gif) 0px -2830px no-repeat}
+  .selectcountry_lu{ background:url(../pic/country_all.gif) 0px -2854px no-repeat}
+  .selectcountry_mo{ background:url(../pic/country_all.gif) 0px -2878px no-repeat}
+  .selectcountry_mk{ background:url(../pic/country_all.gif) 0px -2902px no-repeat}
+  .selectcountry_mg{ background:url(../pic/country_all.gif) 0px -2926px no-repeat}
+  .selectcountry_mw{ background:url(../pic/country_all.gif) 0px -2950px no-repeat}
+  .selectcountry_my{ background:url(../pic/country_all.gif) 0px -2974px no-repeat}
+  .selectcountry_mv{ background:url(../pic/country_all.gif) 0px -2998px no-repeat}
+  .selectcountry_ml{ background:url(../pic/country_all.gif) 0px -3022px no-repeat}
+  .selectcountry_mt{ background:url(../pic/country_all.gif) 0px -3046px no-repeat}
+  .selectcountry_mh{ background:url(../pic/country_all.gif) 0px -3070px no-repeat}
+  .selectcountry_mq{ background:url(../pic/country_all.gif) 0px -3094px no-repeat}
+  .selectcountry_mr{ background:url(../pic/country_all.gif) 0px -3118px no-repeat}
+  .selectcountry_mu{ background:url(../pic/country_all.gif) 0px -3142px no-repeat}
+  .selectcountry_yt{ background:url(../pic/country_all.gif) 0px -3166px no-repeat}
+  .selectcountry_mx{ background:url(../pic/country_all.gif) 0px -3190px no-repeat}
+  .selectcountry_fm{ background:url(../pic/country_all.gif) 0px -3214px no-repeat}
+  .selectcountry_md{ background:url(../pic/country_all.gif) 0px -3238px no-repeat}
+  .selectcountry_mc{ background:url(../pic/country_all.gif) 0px -3262px no-repeat}
+  .selectcountry_mn{ background:url(../pic/country_all.gif) 0px -3286px no-repeat}
+  .selectcountry_me{ background:url(../pic/country_all.gif) 0px -3310px no-repeat}
+  .selectcountry_ms{ background:url(../pic/country_all.gif) 0px -3334px no-repeat}
+  .selectcountry_ma{ background:url(../pic/country_all.gif) 0px -3358px no-repeat}
+  .selectcountry_mz{ background:url(../pic/country_all.gif) 0px -3382px no-repeat}
+  .selectcountry_mm{ background:url(../pic/country_all.gif) 0px -3406px no-repeat}
+  .selectcountry_na{ background:url(../pic/country_all.gif) 0px -3430px no-repeat}
+  .selectcountry_nr{ background:url(../pic/country_all.gif) 0px -3454px no-repeat}
+  .selectcountry_np{ background:url(../pic/country_all.gif) 0px -3478px no-repeat}
+  .selectcountry_nl{ background:url(../pic/country_all.gif) 0px -3502px no-repeat}
+  .selectcountry_an{ background:url(../pic/country_all.gif) 0px -3526px no-repeat}
+  .selectcountry_nc{ background:url(../pic/country_all.gif) 0px -3550px no-repeat}
+  .selectcountry_nz{ background:url(../pic/country_all.gif) 0px -3574px no-repeat}
+  .selectcountry_ni{ background:url(../pic/country_all.gif) 0px -3598px no-repeat}
+  .selectcountry_ne{ background:url(../pic/country_all.gif) 0px -3622px no-repeat}
+  .selectcountry_ng{ background:url(../pic/country_all.gif) 0px -3646px no-repeat}
+  .selectcountry_nu{ background:url(../pic/country_all.gif) 0px -3670px no-repeat}
+  .selectcountry_nf{ background:url(../pic/country_all.gif) 0px -3694px no-repeat}
+  .selectcountry_mp{ background:url(../pic/country_all.gif) 0px -3718px no-repeat}
+  .selectcountry_no{ background:url(../pic/country_all.gif) 0px -3742px no-repeat}
+  .selectcountry_om{ background:url(../pic/country_all.gif) 0px -3766px no-repeat}
+  .selectcountry_pk{ background:url(../pic/country_all.gif) 0px -3790px no-repeat}
+  .selectcountry_pw{ background:url(../pic/country_all.gif) 0px -3814px no-repeat}
+  .selectcountry_ps{ background:url(../pic/country_all.gif) 0px -3838px no-repeat}
+  .selectcountry_pa{ background:url(../pic/country_all.gif) 0px -3862px no-repeat}
+  .selectcountry_pg{ background:url(../pic/country_all.gif) 0px -3886px no-repeat}
+  .selectcountry_py{ background:url(../pic/country_all.gif) 0px -3910px no-repeat}
+  .selectcountry_pe{ background:url(../pic/country_all.gif) 0px -3934px no-repeat}
+  .selectcountry_ph{ background:url(../pic/country_all.gif) 0px -3958px no-repeat}
+  .selectcountry_pl{ background:url(../pic/country_all.gif) 0px -3982px no-repeat}
+  .selectcountry_pt{ background:url(../pic/country_all.gif) 0px -4006px no-repeat}
+  .selectcountry_pr{ background:url(../pic/country_all.gif) 0px -4030px no-repeat}
+  .selectcountry_qa{ background:url(../pic/country_all.gif) 0px -4054px no-repeat}
+  .selectcountry_re{ background:url(../pic/country_all.gif) 0px -4078px no-repeat}
+  .selectcountry_ro{ background:url(../pic/country_all.gif) 0px -4102px no-repeat}
+  .selectcountry_ru{ background:url(../pic/country_all.gif) 0px -4126px no-repeat}
+  .selectcountry_rw{ background:url(../pic/country_all.gif) 0px -4150px no-repeat}
+  .selectcountry_kn{ background:url(../pic/country_all.gif) 0px -4174px no-repeat}
+  .selectcountry_lc{ background:url(../pic/country_all.gif) 0px -4198px no-repeat}
+  .selectcountry_vc{ background:url(../pic/country_all.gif) 0px -4222px no-repeat}
+  .selectcountry_ws{ background:url(../pic/country_all.gif) 0px -4246px no-repeat}
+  .selectcountry_sm{ background:url(../pic/country_all.gif) 0px -4270px no-repeat}
+  .selectcountry_st{ background:url(../pic/country_all.gif) 0px -4294px no-repeat}
+  .selectcountry_sa{ background:url(../pic/country_all.gif) 0px -4318px no-repeat}
+  .selectcountry_sn{ background:url(../pic/country_all.gif) 0px -4342px no-repeat}
+  .selectcountry_rs{ background:url(../pic/country_all.gif) 0px -4366px no-repeat}
+  .selectcountry_sc{ background:url(../pic/country_all.gif) 0px -4390px no-repeat}
+  .selectcountry_sl{ background:url(../pic/country_all.gif) 0px -4414px no-repeat}
+  .selectcountry_sg{ background:url(../pic/country_all.gif) 0px -4438px no-repeat}
+  .selectcountry_sk{ background:url(../pic/country_all.gif) 0px -4462px no-repeat}
+  .selectcountry_si{ background:url(../pic/country_all.gif) 0px -4486px no-repeat}
+  .selectcountry_sb{ background:url(../pic/country_all.gif) 0px -4510px no-repeat}
+  .selectcountry_so{ background:url(../pic/country_all.gif) 0px -4534px no-repeat}
+  .selectcountry_za{ background:url(../pic/country_all.gif) 0px -4558px no-repeat}
+  .selectcountry_gs{ background:url(../pic/country_all.gif) 0px -4582px no-repeat}
+  .selectcountry_es{ background:url(../pic/country_all.gif) 0px -4606px no-repeat}
+  .selectcountry_lk{ background:url(../pic/country_all.gif) 0px -4630px no-repeat}
+  .selectcountry_sd{ background:url(../pic/country_all.gif) 0px -4654px no-repeat}
+  .selectcountry_sr{ background:url(../pic/country_all.gif) 0px -4678px no-repeat}
+  .selectcountry_sz{ background:url(../pic/country_all.gif) 0px -4702px no-repeat}
+  .selectcountry_se{ background:url(../pic/country_all.gif) 0px -4726px no-repeat}
+  .selectcountry_ch{ background:url(../pic/country_all.gif) 0px -4750px no-repeat}
+  .selectcountry_sy{ background:url(../pic/country_all.gif) 0px -4774px no-repeat}
+  .selectcountry_tw{ background:url(../pic/country_all.gif) 0px -4798px no-repeat}
+  .selectcountry_tj{ background:url(../pic/country_all.gif) 0px -4822px no-repeat}
+  .selectcountry_tz{ background:url(../pic/country_all.gif) 0px -4846px no-repeat}
+  .selectcountry_th{ background:url(../pic/country_all.gif) 0px -4870px no-repeat}
+  .selectcountry_tg{ background:url(../pic/country_all.gif) 0px -4894px no-repeat}
+  .selectcountry_tk{ background:url(../pic/country_all.gif) 0px -4918px no-repeat}
+  .selectcountry_to{ background:url(../pic/country_all.gif) 0px -4942px no-repeat}
+  .selectcountry_tt{ background:url(../pic/country_all.gif) 0px -4966px no-repeat}
+  .selectcountry_tn{ background:url(../pic/country_all.gif) 0px -4990px no-repeat}
+  .selectcountry_tr{ background:url(../pic/country_all.gif) 0px -5014px no-repeat}
+  .selectcountry_tm{ background:url(../pic/country_all.gif) 0px -5038px no-repeat}
+  .selectcountry_tc{ background:url(../pic/country_all.gif) 0px -5062px no-repeat}
+  .selectcountry_tv{ background:url(../pic/country_all.gif) 0px -5086px no-repeat}
+  .selectcountry_ug{ background:url(../pic/country_all.gif) 0px -5110px no-repeat}
+  .selectcountry_ua{ background:url(../pic/country_all.gif) 0px -5134px no-repeat}
+  .selectcountry_ae{ background:url(../pic/country_all.gif) 0px -5158px no-repeat}
+  .selectcountry_je{ background:url(../pic/country_all.gif) 0px -5182px no-repeat}
+  .selectcountry_us{ background:url(../pic/country_all.gif) 0px -5206px no-repeat}
+  .selectcountry_uy{ background:url(../pic/country_all.gif) 0px -5230px no-repeat}
+  .selectcountry_uz{ background:url(../pic/country_all.gif) 0px -5254px no-repeat}
+  .selectcountry_vu{ background:url(../pic/country_all.gif) 0px -5278px no-repeat}
+  .selectcountry_ve{ background:url(../pic/country_all.gif) 0px -5302px no-repeat}
+  .selectcountry_vn{ background:url(../pic/country_all.gif) 0px -5326px no-repeat}
+  .selectcountry_vi{ background:url(../pic/country_all.gif) 0px -5350px no-repeat}
+  .selectcountry_ye{ background:url(../pic/country_all.gif) 0px -5374px no-repeat}
+  .selectcountry_yu{ background:url(../pic/country_all.gif) 0px -5398px no-repeat}
+  .selectcountry_zm{ background:url(../pic/country_all.gif) 0px -5422px no-repeat}
+  .selectcountry_zw{ background:url(../pic/country_all.gif) 0px -5446px no-repeat}
+</style><div class="select notranslate">
+  <div class="inbox">
+      <div class="input">Please Select Country</div>
+      <div class="button"></div>
+  </div>
+  <div class="optbox">
+    <ul>
+     
+    <li class="opt" title="">Please Select Country</li>
+  <?php echo $this->_tpl_vars['countryhtml']; ?>
+
+  </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+   $(".opt").hover(
+      function(){
+	     $(this).css("border","1px #C4D8E6 solid");
+		  $(this).find("a").css("color","#FF6600");
+	  },
+      function(){
+	     $(this).css("border","1px #ffffff solid");
+		 $(this).find("a").css("color","#105CB6");
+	  }
+   );
+   $(".select .button:first").click(function(){
+	  if($(".optbox").css("display")=="none")
+	  {
+      	$(".optbox").css("display","block"); 
+	  }
+	  else
+	  $(".optbox").css("display","none"); 
+   });
+   $(".select .input").click(function(){
+	  if($(".optbox").css("display")=="none")
+	  {
+      $(".optbox").css("display","block"); 
+	  }
+	  else
+	  $(".optbox").css("display","none"); 
+   });
+
+   $(".opt").click(function(){
+      $(".inbox .input").html($(this).html()); 
+    //  $("#country").val($(this).attr("title")); 
+	  setCountryValue($(this).attr("title"));
+	  //alert($("#country").val());
+      $(".optbox").css("display","none");	  
+   });
+
+
+
+function changeCountry(countryname)
+{
+	$(".opt").each(function(){
+	   if($(this).attr("title")==countryname)
+	   {
+		   $(this).click();
+	   }
+	});
+}
+</script>

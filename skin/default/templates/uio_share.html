@@ -1,0 +1,59 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="main_ct">
+<{if $action=="step_1"}>
+		 <table border="0" cellpadding="0" cellspacing="10">
+            <form name="reginfo" onsubmit="return CheckForm()" method="post" action="<{$folder}>share.php?action=step_2" >
+
+              <tr>
+                <td align="right"   ><{$lg.username}>&nbsp;:</td>
+                <td><input name="fromname" value="<{$user.firstname}>"  type="text"  class="input001" maxlength="100"></td>
+              </tr>
+              <tr>
+                <td align="right"   ><{$lg.your_e_mail}>&nbsp;:</td>
+                <td><input name="fromemail"  value="<{$user.name}>"  type="text"  class="input001" maxlength="100"><input name="pid" type="hidden" value="<{$pid}>" />
+                *</td>
+              </tr>
+              <tr>
+                <td align="right"   ><{$lg.friends_name}>&nbsp;:</td>
+                <td><input name="toname"    type="text"  class="input001" maxlength="100"></td>
+              </tr>
+              <tr>
+                <td align="right"   ><{$lg.friends_e_mail}>&nbsp;:</td>
+                <td><input name="toemail"  type="text"   class="input001" maxlength="100">
+                    *                  </td>
+              </tr>
+             
+              <tr>
+                <td align="right"   ><{$lg.content}>&nbsp;:</td>
+                <td><textarea name="content"  class="input003" id="content"></textarea>
+                *</td>
+              </tr> 
+			  <{if $config[43]!=""}>
+			   <tr>
+                <td align="right"   ><{$lg.code}>:</td>
+                <td><input name="code" type="text" size="4" maxlength="4" /> <img src="inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			  <{/if}>
+              <tr>
+                <td   >&nbsp;</td>
+                <td><input class="inputButton" type="submit" name="submit" value="<{$lg.submit}>"  ></td>
+              </tr>
+            </form>
+  </table>
+
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+if(!CheckIsNull("reginfo","fromemail","<{$lg.msg_your_email_null}>")) return false;
+if(!CheckIsEmail("reginfo","fromemail","<{$lg.msg_email_error}>")) return false;
+if(!CheckIsNull("reginfo","toemail","<{$lg.msg_friends_email_null}>")) return false;
+if(!CheckIsEmail("reginfo","toemail","<{$lg.msg_friends_email_error}>")) return false;
+if(!CheckIsNull("reginfo","content","<{$lg.msg_content_null}>")) return false;
+ <{if $config[43]!=""}> if(!CheckIsNull("reginfo","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>	 
+  <{elseif $action=="step_3"}>
+<div style="background:url(../pic/checkmail_right.jpg) no-repeat center left; font-size:16px; height:50px; line-height:50px; font-weight:bold; padding-left:40px"><{$lg.shareproductsuccess}></div>
+<div style="line-height:22px"><{$lg.shareproductcontent}></div>
+<{/if}>
+</div>

@@ -1,0 +1,16 @@
+drwxr-xr-x    6 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    7 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       4385 Aug 27  2010 2dbarcodes.php
+-rw-r--r--    1 48       apache      47035 Aug 27  2010 CHANGELOG.TXT
+-rw-r--r--    1 48       apache      26430 Aug 27  2010 LICENSE.TXT
+-rw-r--r--    1 48       apache       4001 Aug 27  2010 README.TXT
+-rw-r--r--    1 48       apache      60515 Aug 27  2010 barcodes.php
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 cache
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:16 config
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:16 fonts
+-rw-r--r--    1 48       apache       5958 Aug 27  2010 htmlcolors.php
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 images
+-rw-r--r--    1 48       apache       2290 Aug 27  2010 tcpdf.crt
+-rw-r--r--    1 48       apache       1286 Aug 27  2010 tcpdf.fdf
+-rw-r--r--    1 48       apache     569720 Aug 27  2010 tcpdf.php
+-rw-r--r--    1 48       apache     227811 Aug 27  2010 unicode_data.php

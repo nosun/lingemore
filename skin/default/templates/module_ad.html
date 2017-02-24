@@ -1,0 +1,48 @@
+ <script type="text/javascript" src="../pic/jquery.KinSlideshow-1.2.min.js"></script><script type="text/javascript"> 
+
+$(function(){
+
+	$("#KinSlideshow").KinSlideshow({
+
+			moveStyle:"left",
+
+			intervalTime:8,
+
+			mouseEvent:"mouseover",
+
+			titleBar:{titleBar_height:30,titleBar_bgColor:"#08355c",titleBar_alpha:0.9,TitleFont_weight:"bold"},
+
+			titleFont:{TitleFont_size:14,TitleFont_color:"#666668",TitleFont_weight:"bold"},
+
+			btn:{btn_bgColor:"#393939",btn_bgHoverColor:"#CF1010",btn_fontColor:"#FFF",btn_fontHoverColor:"#FFFFFF",btn_borderColor:"#DADEDD",btn_borderHoverColor:"#DADEDD",btn_borderWidth:0,btn_bgAlpha:1}
+
+	});
+
+})
+
+</script>
+
+<style type="text/css">
+
+.KinSlideshow_titleBar{display:none;}
+
+</style>
+
+<div class="w772">
+
+    <div style="height:280px; width:772px; float:left; overflow:hidden; margin-bottom:10px;">
+
+        <div id="KinSlideshow" style="z-index:0;">
+
+            <{section name=flash start=0 loop=$rs_ad[1].pic }><a href="<{$rs_ad[1].url[$smarty.section.flash.index]}>" target="_blank"><img src="<{$rs_ad[1].pic[$smarty.section.flash.index]}>" width="772" height="280" /></a><{/section}>
+
+        </div>
+
+    </div>
+
+<div style="padding:0px;font-family:Arial;font-size:13px;color:#FF0000;font-weight:bold;">
+<marquee onMouseOver="this.stop()" onMouseOut="this.start()" scrollamount="4"><{$content_225}></marquee>
+</div>
+    <div class="clear1"></div>
+
+</div>

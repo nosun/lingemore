@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<{$cnlogin_script}>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$title}></title>
+<meta name="robots" content="all" />
+<{if $keywords!=""}><meta name="keywords" content="<{$keywords}>" /><{/if}>
+<{if $descript!=""}><meta name="description" content="<{$descript}>" /><{/if}>
+<link href="../pic/style.css" type="text/css"  rel="stylesheet" />
+<meta name="google-site-verification" content="ebREanKIBvD0amfiSSEhBt_L43VhXu3GbIJZTxSMxbQ" />
+<link rel="shortcut icon" href="<{$folder}>favicon.ico"/>
+<link rel="stylesheet" href="../pic/jquery.lightbox-0.5.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../pic/jquery.autocomplete.css" type="text/css" media="screen" />
+<{foreach item=rows from=$statscript name=statscript}> 
+<script language="javascript" type="text/javascript" src="<{$rows}>"></script>
+<{/foreach}>
+<script language="javascript">
+var openapi = "<{$config[64]}>";
+</script>
+<script language="javascript" type="text/javascript" src="../pic/codetocountry.js"></script>
+<script language="javascript" type="text/javascript" src="../pic/fun_normal2.js"></script>
+<script language="javascript" type="text/javascript" src="../pic/jquery.min.js"></script>
+<script type="text/javascript">
+//$(document).ready(function (){$("input[type='submit']").addClass("inputSubmit");});
+//$(document).ready(function (){$("input[type='button']").addClass("inputButton");});
+</script>
+
+<{ if $config[48]!=""}>
+<script type="text/javascript">
+
+function clickIE4(){
+        if (event.button==2){
+                return false;
+        }//end if
+}//end func
+ 
+function clickNS4(e){
+        if (document.layers||document.getElementById&&!document.all){
+                if (e.which==2||e.which==3){
+                        return false;
+                }//end if
+        }//end if
+}//end func
+ 
+function OnDeny(){
+        if(event.ctrlKey || event.keyCode==78 && event.ctrlKey || event.altKey || event.altKey && event.keyCode==115){
+                return false;
+        }//end if
+}
+ 
+if (document.layers){
+        document.captureEvents(Event.MOUSEDOWN);
+        document.onmousedown=clickNS4;
+        document.onkeydown=OnDeny();
+}else if (document.all&&!document.getElementById){
+        document.onmousedown=clickIE4;
+        document.onkeydown=OnDeny();
+}//end if
+ 
+document.oncontextmenu=new Function("return false");
+</script>
+<{/if}>
+</head>
+<body  <{ if $config[49]!=""}> ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" <{/if}>  >
+<noscript><style type="text/css">body{display:none;}</style></script></noscript>
+<div style="height:0px; overflow:hidden; width:1px; font-size:1px; line-height:1px; background:url(../pic/country_all.gif)"></div>

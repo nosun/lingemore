@@ -1,0 +1,65 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<script language="javascript">
+function CheckProfileForm()
+{
+	if(!CheckIsNull("ProfileForm","name","Username")) return false;
+	if(!CheckIsNull("ProfileForm","pwd","Password")) return false;
+	if(!CheckIsNull("ProfileForm","code","code")) return false;
+}
+</script>
+<table width="250" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px; background:url(../pic/module_title.jpg) no-repeat">
+  <tr>
+    <td  valign="middle" height="48"><span class="index_title" style="color:#FFFFFF">Categories</span></td>
+  </tr>
+  <tr>
+    <td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:url(../pic/module_bg.jpg) repeat-y">
+  <tr>
+    <td style="padding-left:40px"><{if $userid!=-1}>
+	<div class="linh" >welcome ! <{$username}></div>
+	<div>
+	<li><a href="<{$folder}>profile.php">My proflie</a></li>
+	<li><a href="<{$folder}>profile.php?action=info_view">Information Change</a></li>
+	<li><a href="<{$folder}>profile.php?action=order_list">My Order</a></li>
+	<li><a href="<{$folder}>profile.php?action=message_list">My Message</a></li>
+	<li><a href="<{$folder}>profile.php?action=address_list">My Address</a></li>
+	<li><a href="<{$folder}>index.php?action=logout">Login out</a></li>
+	</div>
+	<{else}>
+	<table  border="0" cellspacing="5" cellpadding="0">
+ <form id="form1" name="ProfileForm" method="post" action="<{$folder}>index.php?action=login"> 
+ <tr>
+    <td >Username:</td>
+    <td >
+      <input type="text" style="width:130px" name="name" />    </td>
+  </tr>
+  <tr>
+    <td>Pwd:</td>
+    <td><input type="password" style="width:130px" name="pwd" /></td>
+  </tr>
+  <tr>
+    <td>Code:</td>
+	<td ><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+    </tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" name="Submit" onclick="return CheckProfileForm();" value="Login" /></td>
+  </tr>
+  
+  <tr>
+    <td colspan="2"><a href="<{$folder}>get-pwd.php">Forget password?</a> - <a href="<{$folder}>register.php">Register</a></td>
+    </tr>
+  </form>
+</table>
+	<{/if}></td>
+  </tr>
+</table>
+	
+	</td>
+  </tr>
+  <tr>
+    <td height="7" style="background:url(../pic/module_bom.jpg)">
+	</td>
+  </tr>
+</table>
+

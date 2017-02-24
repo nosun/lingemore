@@ -1,0 +1,12 @@
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:18 .
+drwxr-xr-x    4 48       apache       4096 Oct 23 00:46 ..
+drwxr-xr-x   10 48       apache       4096 Oct 11 12:18 editor
+-rw-r--r--    1 48       apache      14152 Nov  7  2011 fckconfig.js
+-rw-r--r--    1 48       apache       9608 Nov  7  2011 fckeditor.js
+-rw-r--r--    1 48       apache        994 Jul 25  2010 fckeditor.php
+-rw-r--r--    1 48       apache       6182 Jul  7  2009 fckeditor_php4.php
+-rw-r--r--    1 48       apache       6156 Jul  7  2009 fckeditor_php5.php
+-rw-r--r--    1 48       apache      13201 Jul  7  2009 fckpackager.xml
+-rw-r--r--    1 48       apache       3450 Jul  7  2009 fckstyles.xml
+-rw-r--r--    1 48       apache       2959 Jul  7  2009 fcktemplates.xml
+-rw-r--r--    1 48       apache      67713 Jul  7  2009 license.txt

@@ -1,0 +1,90 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<{include file="module_class.html"}>
+
+<{if 1==2}>
+
+<div class="w220" style="margin-bottom:10px;">
+
+  <div class="boxtop_220">Service Online</div>
+
+  <div class="w218 boxborder_gray1">
+
+    <{$content_71}>
+
+  </div>
+
+</div>
+
+<{/if}>
+
+
+
+
+
+<div class="w220" style="margin-bottom:10px;">
+
+  <div class="boxtop_220">News</div>
+
+  <div class="w218 boxborder_gray1">
+
+        <ul class="newsul">         
+
+         <{foreach key=key1 item=rows from=$rs_n_1 name=rs_n_1}>
+
+            <li style="line-height:22px;"><a href="<{$rows.rewrite}>" title="<{$rows.name}>"><{$rows.name|truncate:35:"...":true}></a></li>
+
+         <{/foreach}>
+
+         </ul>
+
+  </div>
+
+</div>
+
+
+
+
+
+<div class="w220" style="">
+
+  <div class="boxtop_220">Best Sellers</div>
+
+  <div class="w218 boxborder_gray1">
+
+	<{foreach key=key1 item=rows from=$rs_p_4 name=rs_p_4}>
+
+    <table width="168" border="0"  cellspacing="5" cellpadding="0" style="background:url(../pic/productbg.gif); margin:auto; border-bottom:1px #DEDBDB solid; margin-bottom:10px;">  
+
+       <tr>
+
+        <td align="center" valign="top"><a href="<{$rows.rewrite}>"><img  width="60"  src="<{$rows.realpic}>" border="0"/></a></td>
+
+        <td class="linh" valign="top">
+
+          <a class="producta" href="<{$rows.rewrite}>"><{$rows.name}></a><br />
+
+          <span class="gray" style="text-decoration:line-through;"><{$coin}><{$rows.price2}></span><br />
+
+          <span class="price"><{$coin}><{$rows.price}></span>
+
+    </td>
+
+      </tr>
+
+    </table>
+
+    <{if $smarty.foreach.rs_p_4.iteration%5==0}>
+
+    <div class="clear1"></div>
+
+    <{/if}>
+
+    <{/foreach}>
+    <div style="text-align:right; padding-right:10px; line-height:25px;">
+     <a style="color:#F69" href="<{$folder}>Best-Sellers-s3.html">more &raquo;</a>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,60 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<{if $userid!=-1}>
+<script language="javascript">
+function CheckProfileForm()
+{
+	if(!CheckIsNull("ProfileForm","name","Username")) return false;
+	if(!CheckIsNull("ProfileForm","pwd","Password")) return false;
+	if(!CheckIsNull("ProfileForm","code","code")) return false;
+}
+</script>
+<table width="200" border="0" style="border:1px #FFD27B solid; background-color:#FFFCE8" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+	<div style="background:url(../pic/module_profile_main.jpg) repeat-x; height:22px; line-height:22px; margin-bottom:10px; text-align:center; color:#FF0000"><strong><{$lg.my_summary}></strong></div>
+	<div style=" height:20px; line-height:20px; margin-bottom:10px; text-align:center; background-color:#FFF7D5; border-bottom:1px #FFDB96 solid;border-top:1px #FFDB96 solid; "><strong><{$lg.my_account}></strong></div>
+	<div  style="margin-left:22px;line-height:22px; margin-bottom:5px">
+	<div><a href="<{$folder}>profile.php"><{$lg.account_summary}></a></div>
+	<div><a href="<{$folder}>profile.php?action=info_view"><{$lg.my_profile}></a></div>
+	<div><a href="<{$folder}>profile.php?action=account_view"><{$lg.change_password}></a></div>
+     <div><a href="<{$folder}>profile.php?action=newsletter_sub"><{$lg.newsletter_sub}></a></div>
+	<div><a target="_blank" href="<{$folder}>shopcart.php"><{$lg.my_shopping_cart}> (<span class="red"><{$totalnum}></span>)</a> </div>
+	<div><a href="<{$folder}>profile.php?action=address_list"><{$lg.my_address_books}> (<span class="red"><{$sum_a.total}></span>)</a></div>
+	
+    <div><a href="<{$folder}>index.php?action=logout"><{$lg.log_out}></a></div>
+   
+	</div>
+	<div style=" height:20px; line-height:20px; margin-bottom:10px; text-align:center; background-color:#FFF7D5; border-bottom:1px #FFDB96 solid;border-top:1px #FFDB96 solid; "><strong><{$lg.my_orders}></strong></div>
+	<div style="margin-left:15px; margin-bottom:5px">
+	<div style="margin-left:5px; line-height:22px"><a href="<{$folder}>profile.php?action=order_list"><{$lg.all_orders}> (<span class="red"><{$sum_o.total}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=0"><{$lg.pending}> (<span class="red"><{$sum_o[0]}></span>)</a></div>
+	<div><img align="absmiddle"  hspace="5"src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=1"><{$lg.unpaid}> (<span class="red"><{$sum_o[1]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=2"><{$lg.paid}> (<span class="red"><{$sum_o[2]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=3"><{$lg.processing}> (<span class="red"><{$sum_o[3]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=4"><{$lg.shipped}> (<span class="red"><{$sum_o[3]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=5"><{$lg.completed}> (<span class="red"><{$sum_o[5]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre_last.jpg" /><a href="<{$folder}>profile.php?action=order_list&state=6"><{$lg.canceled}> (<span class="red"><{$sum_o[4]}></span>)</a></div>
+	</div>
+	<div style=" height:20px; line-height:20px; margin-bottom:10px; text-align:center; background-color:#FFF7D5; border-bottom:1px #FFDB96 solid;border-top:1px #FFDB96 solid; "><a href="<{$folder}>profile.php?action=favorite_list"><strong><{$lg.my_wishlist}></strong> (<span class="red"><{$sum_f.total}></span>)</a></div>
+    
+    <div style=" height:20px; display:none; line-height:20px; margin-bottom:10px; text-align:center; background-color:#FFF7D5; border-bottom:1px #FFDB96 solid;border-top:1px #FFDB96 solid; "><a href="<{$folder}>profile.php?action=coupon_list"><strong><{$lg.my_coupon}></strong> (<span class="red"><{$sum_c.total}></span>)</a></div>
+    
+	<div style=" height:20px; line-height:20px; margin-bottom:10px; text-align:center; background-color:#FFF7D5; border-bottom:1px #FFDB96 solid;border-top:1px #FFDB96 solid; "><strong><{$lg.message_center}></strong></div>
+	
+	<div style="margin-left:15px; margin-bottom:5px">
+    <div style="margin-left:5px; line-height:22px"><a href="<{$folder}>profile.php?action=leave_message"><{$lg.leave_a_message}></a></div>
+	<div style="margin-left:5px; line-height:22px"><a href="<{$folder}>profile.php?action=message_list"><{$lg.all_messages}>  (<span class="red"><{$sum_m.total}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=message_list&cid=5"><{$lg.announcement}> (<span class="red"><{$sum_m[5]}></span>)</a></div>
+    <div><img align="absmiddle"  hspace="5"src="../pic/module_order_pre.jpg" /><a href="<{$folder}>profile.php?action=message_list&cid=0"><{$lg.member_feedback}> (<span class="red"><{$sum_m[0]}></span>)</a></div>
+	<div><img align="absmiddle" hspace="5" src="../pic/module_order_pre_last.jpg" /><a href="<{$folder}>profile.php?action=message_list&cid=4"><{$lg.orders}> (<span class="red"><{$sum_m[4]}></span>)</a></div>
+	</div>
+	
+	
+	</td>
+  </tr>
+</table>
+<{else}>
+<{include file="module_left.html"}>
+<{/if}>
+
+

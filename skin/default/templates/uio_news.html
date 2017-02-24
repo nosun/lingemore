@@ -1,0 +1,13 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<ul class="news_list">
+    <{foreach key=key1 item=rows from=$rs_n}>
+      <li>
+      	<div class="shield">
+			<p class="date month<{$rows.monthsNumTime}>"><span><{$rows.monthsTime}></span><{$rows.dayTime}><span>th</span></p>
+		</div>
+          <h3><a title="<{$rows.name}>"  class="newsdiva" href="<{$rows.rewrite}>"><{$rows.name}></a></h3>
+          <div class="news_base_info"><{$rows.s_content}>
+          </div>
+      </li>
+  <{/foreach}>
+</ul>

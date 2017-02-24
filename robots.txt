@@ -1,0 +1,13 @@
+User-agent: * 
+Allow: /
+
+Disallow: /sexy-underwear*
+Disallow: /honeymoon-lingerie*
+Disallow: /sexy-sleepwear*
+Disallow: /sexy-dresses-for-sale*
+Disallow: /sexy-swimwear*
+Disallow: /sheer-lingerie*
+Disallow: /sexy-cosplay-costumes*
+Disallow: /clubwear-dresses*
+Disallow: /french-maid-costumes*
+Disallow: /bondage-lingerie*

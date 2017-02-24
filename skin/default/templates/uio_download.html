@@ -1,0 +1,15 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="main_ct">
+<table border="0" cellspacing="0" class="list_table">
+              <tr>
+              <td > 
+			<{foreach key=key1 item=rows from=$rs_d name=rs_d}>
+			  <div class="divitem">
+			  		<div class="div1"><div class="div11"><{$rows.name}></div><div class="div12"><{$rows.addtime}></div><div class="div12"><a target="_blank" href="<{$folder}>download/<{$rows.path}>"><strong>Download</strong></a></div></div>
+			  </div>
+			<{/foreach}>
+			  </td>
+            </tr>
+			
+          </table>
+</div>

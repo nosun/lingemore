@@ -1,0 +1,63 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<style>
+
+.zoom2 { border:1px #A6A6A6 solid}
+
+</style>
+
+<script type="text/JavaScript">
+
+<!--
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+
+  if (restore) selObj.selectedIndex=0;
+
+}
+
+//-->
+
+</script>
+
+<{include file="module_product_relative_class.html"}>
+
+
+
+
+
+
+
+
+
+
+
+  <{foreach key=key1 item=rows from=$rs_p name=rs_p}>
+
+       <div class="productdiv1">
+         <div class="productdiv1box">
+             <div class="productdiv1img">
+              <p><a  href="<{$rows.rewrite}>"><img title="<{$rows.name}>" alt="<{$rows.name}>" lazy_data_src="<{$rows.realpic}>"  src="<{$rows.realpic}>"  border="0"/></a></p>
+             </div>
+              <{if $rows.showicon==1}><div class="phot"></div><{/if}>
+              <{if $rows.showicon==2}><div class="pnew"></div><{/if}>
+              <div class="productdiv1info">
+                 <a href="<{$rows.rewrite}>"><{$rows.name}></a>
+                 <span class="gray" style="text-decoration:line-through;"><{$coin}><{$rows.price2}></span> <span class="price"><{$coin}><{$rows.price}></span>
+                 <a href="<{$rows.rewrite}>"><img src="../pic/smallcart.jpg" border="0" style="vertical-align:middle;" /></a>
+              </div>
+          </div>
+        </div>
+
+        <{if $smarty.foreach.rs_p.iteration%5==0}>
+
+        <div class="clear1"></div>
+
+        <{/if}>
+
+  <{/foreach}>
+
+ <div class="clear1"></div>
+

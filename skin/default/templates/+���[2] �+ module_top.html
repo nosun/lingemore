@@ -1,0 +1,84 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div id="topbar">
+  <div class="topbar_left"><{$content_68}></div>
+  <div class="topbar_right">
+      <{if $userid==-1}>
+      <a class="menu1" rel="nofollow" href="<{$folder}>profile.php"><{$lg.login}></a>|
+      <a class="menu1" rel="nofollow" href="<{$folder}>register.php"><{$lg.reg}></a>|
+      <{else}>
+      <a class="menu1" rel="nofollow" href="<{$folder}>profile.php?action=logout">Log Out</a>|
+      <{/if}>
+      <a class="menu1" rel="nofollow" href="<{$folder}>shopcart.php">Cart</a> 
+      |
+      <a class="menu1" rel="nofollow" href="<{$folder}>profile.php">Member Center</a> 
+      |
+      <a class="menu1" rel="nofollow" href="<{$folder}>feedback.php"><{$lg.feedback}></a> 
+  </div>
+</div>
+<div id="top">
+	<div id="logo"><a href="<{$rs_ad[2].url[0]}>"><img src="<{$rs_ad[2].pic[0]}>"  /></a></div>
+    <div id="top_right_box">
+        <div class="right_con">
+                <div id="search">
+                      <div class="search_box">
+                      <form action="<{$folder}>products.php" method="get" enctype="application/x-www-form-urlencoded">
+                        <div class="search_box_input">
+                           <input name="name" type="text" value="<{$search_keywords}>" />
+                           <input name="is_search" type="hidden" value="1" />
+                        </div>                    
+                       
+                        <div class="search_box_right"><input type="image"  src="../pic/searchbtn1.jpg" /></div>
+                      </form>
+                      </div>
+                      <div class="carbox">
+                         <a class="cart" rel="nofollow" href="<{$folder}>shopcart.php"><{$lg.cart}>: <span style="color:#F00" id="_ajax_div_items"><{$totalnum}></span> <{$lg.items}></a>
+                      </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div id="nav">
+  <div class="nav_left"></div>
+  <div class="nav_mid">
+     <ul class="menulist">
+       <li class="item"><a class="first" href="<{$folder}>"><{$lg.home}></a></li>
+     <{foreach key=key1 item=rows from=$rs_top name=rs_top}>
+       <li class="item"><a class="first" href="<{$rows.url}>"><{$rows.name}></a></li>
+     <{/foreach}>
+     </ul>
+     <script type="text/javascript">
+/*       $(".item").each(function(){
+		  $(this).hover(
+			  function(){
+				 $(this).addClass("item_cur");  
+				 $(this).find(".subnavbox").css("display",""); 
+			  },
+			  function(){
+				 $(this).removeClass("item_cur"); 
+				 $(this).find(".subnavbox").css("display","none");  
+			  }
+		  ); 						
+	   });*/
+     </script>
+  </div>
+  <div class="nav_right"></div>
+</div>
+
+<div id="subnav">
+  <div class="subnav_left"></div>
+  <div class="subnav_mid">
+     <{foreach key=key1 item=rows from=$rs_top_2 name=rs_top_2}>
+       <a class="top2" href="<{$rows.url}>"><{$rows.name}></a>
+     <{/foreach}>
+  </div>
+  <div class="subnav_right"></div>
+</div>
+
+<div class="w1004" style="height:20px; line-height:20px;">
+        <marquee width="1004" scrollamount="3" onmouseout="this.start()" onmouseover="this.stop()">
+        <{$content_32}>
+        </marquee>
+</div>
+
+ 

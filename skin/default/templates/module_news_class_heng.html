@@ -1,0 +1,79 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<script language=javascript>
+function cshow(id)
+{
+var obj=document.getElementById(id);
+if (obj.style.display=="none")
+ {obj.style.display="";}
+else
+ {obj.style.display="none";}
+}
+function startlist(root)
+{  
+  for(var i=0;i<=root.childNodes.length-1;i++)
+    {
+          if(root.childNodes[i].lastChild.nodeName.toLowerCase()=="ul")
+	        { 
+			  root.childNodes[i].onmouseover=function(){  this.lastChild.style.display='block';}
+	          root.childNodes[i].onmouseout=function(){  this.lastChild.style.display='none'; }
+			  startlist(root.childNodes[i].lastChild);
+			}
+	}
+}
+window.onload=function(){startlist(document.getElementById("nav"));}
+</script>
+<style>
+.aul {margin:0px;padding:0px;width:216px; position:relative}
+.aliul1 {margin:0px;padding:0px;position:absolute;left:210px; display:none; top:2px;width:216px; border:1px #CCCCCC solid;}
+.aliul2 {margin:0px;padding:0px;position:absolute;left:214px; display:none; top:2px;width:216px; border:1px #CCCCCC solid;}
+.aliul3 {margin:0px;padding:0px;position:absolute;left:214px; display:none; top:2px;width:216px; border:1px #CCCCCC solid;}
+.aliul4 {margin:0px;padding:0px;position:absolute;left:212px; display:none; top:2px;width:216px; border:1px #CCCCCC solid;}
+
+.aulli { list-style-type:none; margin:0px;float:left;height:25px;line-height:25px;width:206px;}
+.aulli1 {list-style-type:none; padding-left:20px;margin:0px;float:left;height:25px; position:relative;line-height:25px; width:196px;background-image:url(../pic/class_bg.gif); }
+.aulli2 {list-style-type:none; padding-left:20px;margin:0px;float:left;height:25px;position:relative; border-top:1px #ffffff solid;border-bottom:1px #dddddd solid;background:#eeeeee;line-height:25px;width:196px; }
+.aulli3 {list-style-type:none; padding-left:20px;margin:0px;float:left;height:25px; position:relative;border-top:1px #ffffff solid;border-bottom:1px #dddddd solid;background:#eeeeee;line-height:25px;width:196px; }
+.aulli4 { list-style-type:none;padding-left:20px;margin:0px;float:left;height:25px;position:relative; border-top:1px #ffffff solid;border-bottom:1px #dddddd solid;background:#eeeeee;line-height:25px;width:196px; }
+
+a.a1:link{color: #000000;font-weight:bold;}
+a.a1:visited{color:#000000;font-weight:bold;}
+a.a1:hover{color:#000000;font-weight:bold;}
+a.a1:active{color:#000000;font-weight:bold;}
+
+a.a2:link{color:#000000;}
+a.a2:visited{color:#000000;}
+a.a2:hover{color: #CC0000;}
+a.a2:active{color:#000000;}
+
+a.a3:link{color: #000000;}
+a.a3:visited{color:#000000;}
+a.a3:hover{color:#CC0000;}
+a.a3:active{color:#000000;}
+
+a.a4:link{color: #000000;}
+a.a4:visited{color:#000000;}
+a.a4:hover{color:#CC0000;}
+a.a4:active{color:#000000;}
+
+a.a5:link{color: #000000;}
+a.a5:visited{color:#000000;}
+a.a5:hover{color:#CC0000;}
+a.a5:active{color:#000000;}
+
+
+</style>
+<table width="216" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;">
+  <tr>
+    <td height="38" background="../pic/us8.gif" style="padding-left:20px; font-weight:bold; color:#FFFFFF;">Categories</td>
+  </tr>
+  <tr>
+    <td style=" background-image: url(../pic/m_tb_bg.gif);">
+	<ul id='nav' class='aul'>
+	<{$nclass_html}>
+	</ul>
+	</td>
+  </tr>
+  <tr>
+    <td  height="5" background="../pic/us10.gif"></td>
+  </tr>
+</table>

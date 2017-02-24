@@ -1,0 +1,73 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<div class="w998 boxborder_gray" style="border-top-width:5px; margin:auto; margin-bottom:10px;">
+
+    <{foreach key=key1 item=rows from=$rs_help name=rs_help}>
+
+     <div style="width:180px; padding-left:50px; padding-right:5px; float:left; margin-bottom:10px;">
+
+        <div style="height:30px; text-align:left; line-height:30px; font-weight:bold; background:url(../pic/fkwhite.jpg) no-repeat 0px center;">
+
+           <a style="font-weight:bold; color:#B50000;" href="<{$rows.url}>"><{$rows.name}></a>
+
+        </div>
+
+        <div style="<{if $smarty.foreach.rs_help.iteration%4!=0}>background:url(../pic/bomsplit.jpg) no-repeat right center;<{/if}>">
+
+            <{foreach key=key1 item=orows from=$rows.arrson name=rs_arrson}>
+
+               <div style=" line-height:20px; text-align:left;; background:url(../pic/bomlistli.jpg) left center no-repeat;">
+
+               <a title="<{$orows.name}>" href="<{$orows.url}>"><{$orows.name}></a>
+
+               </div>
+
+            <{/foreach}>
+
+        </div>
+
+     </div>
+
+       <{if $smarty.foreach.rs_help.iteration%4==0}>
+
+        <div class="clear1"></div>
+
+       <{/if}>
+
+    <{/foreach}>
+
+</div>
+
+<div class="w1000" style="margin-bottom:10px; text-align:center"><{$content_67}></div>
+
+<div class="w1000 weight" style="margin-bottom:10px; color:#B50000; text-align:center;">
+
+           <a class="bom" href="<{$folder}>"><{$lg.home}></a>
+
+         <{foreach key=key1 item=rows from=$rs_bom name=rs_bom}>
+
+           |
+
+           <a class="bom" href="<{$rows.url}>"><{$rows.name}></a>
+
+         <{/foreach}>
+
+</div>
+
+<div class="w998" style="">
+
+    <div class="text-align-center">        
+
+        <{$content_25}>
+
+        <div style="display:none;"><br />Process Time:<{$process}> ms , Memery:<{$memry}>K ,  <br />
+
+         <{$queryHTML}></div>
+
+         <div style="display:none;"><{$kfcode}><{$tjcode}></div>
+
+         <div class="clear"></div>
+
+    </div>
+
+</div>

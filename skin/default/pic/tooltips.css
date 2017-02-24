@@ -1,0 +1,48 @@
+
+/*global*/
+*{padding:0;margin:0;}
+
+body{background:#fff;color:#444;font:12px Arial,Helvetica,sans-serif;margin:0 20px;}
+a{color:#444;text-decoration:none;}
+a:hover{color:#900;text-decoration:underline;}
+img{border:0;}
+ul{list-style-type:none;}
+h1{font-size:16px;}
+
+/*list is row*/
+.box_warp{border:0;}
+.box{height:150px; width:150px; position:relative;}
+
+.box_lt{width:147px;position:absolute; left:0px;}
+
+.box_con{margin:0 155px 0 114px;}
+
+.box_ri{padding-right:2px;width:150px;position:absolute;right:0;top:13px;}
+
+.box_lt dl dt{overflow:hidden;background:#fff;}
+
+.box_lt dl dt a{display:table-cell;vertical-align:middle;*display:block;*font-size:87px;*font-family:Arial;height:150px;width:150px;background:#fff;overflow:hidden;}
+
+.box_lt dl dt img{vertical-align:middle; max-height:100px; max-width:100px;_width: expression(this.width > 100 ? 100: true);_height: expression(this.width > 100 ? 100: true);}
+
+.box_lt dl dd{text-align:center;font:10px/12px Verdana,Geneva,sans-serif;}
+
+.box_lt dl dd a{text-decoration:underline}
+
+.box_lt dl dd.res{text-align:center;font:11px/16px Arial;}
+
+.box_lt dl dd.res a{text-decoration:underline;font-family:Verdana,Geneva,sans-serif;}
+
+
+/*popup*/a.load_list{position:absolute; left:0px; top:0px; width:150px;height:150px;display:block;background:url(blank.gif);}
+a.load_list:hover{text-decoration:none;}
+.box_col a.load_list{width:150px;height:150px;}
+#pop{position:absolute;z-index:999;left:0;top:0;padding:0 0 0 21px;width:296px;height:293px;background:url(blank.gif);display:none;}
+#pop.ri{padding:0 21px 0 0;}
+#pop .bg{position:absolute;z-index:997;height:293px;width:296px;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='loadimage_bg.png',sizingMethod='image');background:url(loadimage_bg.png) no-repeat !important;}
+#pop .con{position:absolute;z-index:998;padding:13px;width:270px;}
+#pop .big_picture{overflow:hidden;height:263px;width:263px;border:solid 1px #ccc;}
+#pop .big_picture a{display:table-cell;vertical-align:middle;text-align:center;*display:block;*font-size:229px;*font-family:Arial;width:263px;height:263px;}
+#pop .big_picture a img{vertical-align:middle;}
+#pointer{position:absolute;z-index:1000;height:21px;width:22px;background:url(list_bg.gif) no-repeat right 0;display:none;}
+#pointer.ri{background-position:right -50px;}

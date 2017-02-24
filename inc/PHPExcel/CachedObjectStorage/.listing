@@ -1,0 +1,12 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x   12 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       7029 Aug 27  2010 APC.php
+-rw-r--r--    1 48       apache       4798 Aug 27  2010 CacheBase.php
+-rw-r--r--    1 48       apache       5140 Aug 27  2010 DiscISAM.php
+-rw-r--r--    1 48       apache       3054 Aug 27  2010 ICache.php
+-rw-r--r--    1 48       apache       8041 Aug 27  2010 Memcache.php
+-rw-r--r--    1 48       apache       2913 Aug 27  2010 Memory.php
+-rw-r--r--    1 48       apache       3599 Aug 27  2010 MemoryGZip.php
+-rw-r--r--    1 48       apache       3589 Aug 27  2010 MemorySerialized.php
+-rw-r--r--    1 48       apache       5163 Aug 27  2010 PHPTemp.php
+-rw-r--r--    1 48       apache       7533 Aug 27  2010 Wincache.php

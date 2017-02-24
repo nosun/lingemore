@@ -1,0 +1,8 @@
+drwxr-xr-x    4 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    3 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache      12914 Jun 19  2009 Config_File.class.php
+-rw-r--r--    1 48       apache      65561 Oct 13  2011 Smarty.class.php
+-rw-r--r--    1 48       apache      96726 Jun 28  2011 Smarty_Compiler.class.php
+-rw-r--r--    1 48       apache       3562 Jun 19  2009 debug.tpl
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 internals
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 plugins

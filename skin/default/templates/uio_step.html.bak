@@ -1,0 +1,1629 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<style type="text/css">
+.submitbtn{padding:5px 20px; font-size:14px; font-weight:bold;}
+</style>
+<script>
+
+var weight = "<{$totalweight}>" ; 
+
+var totalnum = "<{$totalnum}>" ;
+
+var totalprice = "<{$totalprice}>";
+
+var coin = "<{$coin}>" ;
+
+var rate = <{$rate}> ;
+
+var isAjax = false ;
+
+function getNewAddress(obj)
+
+{
+
+	if(parseInt(obj.value)==0)
+
+	{
+
+		document.getElementById("divAdress").style.display='block';
+
+		if(openapi!="")
+
+			includeJsFile("script_api",openapi+"/cgi-bin/?do=iptocountryselect&verson=2&fun=changeCountry&param=2");
+
+		else
+
+			changeCountry(""); 
+
+	}
+
+	else
+
+	{
+
+		document.getElementById("divAdress").style.display='none';
+
+	}
+
+}
+
+function changeExpressPrice(sub1)
+
+{
+
+	document.getElementById("sub1").value=sub1;
+
+}
+
+function getAjaxExpress(str)
+
+{
+
+	
+
+	$('#sumbitbutton').css('cursor','wait');
+
+	var country;
+
+	if(str=="")
+
+	{
+
+		$('#address5').val("");
+
+		$('#sub1').val(0);
+
+		$('#expressdiv').html("Please Select Country");
+
+		$('#sumbitbutton').css('cursor','pointer');
+
+		return ;
+
+	} 
+
+	else
+
+	{
+
+		if( str==$('#address5').val())
+
+			return ;
+
+		country = str ;
+
+	}
+
+	isAjax = true ;
+
+	$('#expressdiv').html( $('#expressdivloading').html() );
+
+	$('#address5').val(country);
+
+	var url="express.php";
+
+	var query='country=' + escape(country) + "&totalnum=" + totalnum + "&weight=" + weight + "&coin=" + escape(coin) +"&rate=" + rate;
+
+	//alert(query);
+
+	var ajax=new Ajax(url,query,function(xml){sth_changeState(xml);});
+
+	ajax.get();
+
+	
+
+}
+
+
+
+function sth_changeState(xml)
+
+{
+
+	isAjax = false ;
+
+	$('#sumbitbutton').css('cursor','pointer');
+
+	$('#expressdiv').html(xml.responseText);
+
+	//executeScript(xml.responseText);
+
+}
+
+
+
+
+
+</script>
+
+
+
+<style>
+
+.r1{
+
+position:fixed !important; top/**/:0px; 
+
+position:absolute; top:expression(offsetParent.scrollTop); } 
+
+</style>
+
+<div class="main_ct2">
+
+<{if $action=="step_1"}>
+
+<div style="margin-top:5px; margin-bottom:10px; font-size:14px; font-weight:bold"><img src="../pic/step1-pic.gif" align="absmiddle" />&nbsp;&nbsp;<{$lg.step1_tips}></div>
+
+<script>function showOrHideProdcut()
+
+{
+
+	for(var indexI=4;indexI<=4;indexI++)
+
+	{
+
+		var obj=document.getElementById("tr_"+indexI);
+
+		if(obj.style.display=="none")
+
+			obj.style.display="block"
+
+		else
+
+			obj.style.display="none"
+
+	}
+
+}
+
+</script>
+
+<form name="stepinfo" method="post" onsubmit="return CheckForm()" action="<{$folder}>step.php?action=step_confirm">
+
+<div class="step_div_header"><span style="margin-left:20px;"><{$lg.shipping_address}></span></div>
+
+<div style="padding:8px">
+
+ 		 <{foreach key=index item=rows from=$rs_address}>
+
+		<div> <input name="address"   onclick="getAjaxExpress('<{$rows.arraddress[5]}>');getNewAddress(this)"  type="radio" value="<{$rows.id}>" /> <strong><{$rows.arraddress[0]}> <{$rows.arraddress[8]}></strong> <a href="profile.php?action=address_edit&id=<{$rows.id}>"><img src="../pic/edit_address.gif" hspace="10" align="absmiddle" /></a>
+
+<div style="margin-left:23px; font-size:11px">
+
+<{$lg.address}> : <{$rows.arraddress[1]}> <{$rows.arraddress[3]}> <{$rows.arraddress[4]}> <{$rows.arraddress[5]}> <br /> 
+
+<{$lg.zip}> : <{$rows.arraddress[2]}> <br />
+
+<{$lg.tel}> : <{$rows.arraddress[6]}> , <{$lg.email}> : <{$rows.arraddress[7]}>
+
+</div></div>
+
+		<{/foreach}>
+
+         <{if $user.id==-1}> <{$lg.step1__newaddress_tips}><{/if}>
+
+        <div > <input name="address"  onclick="getNewAddress(this)"  type="radio" value="0" /><strong> <{$lg.new_shipping_address}></strong>&nbsp;&nbsp;<span class="red weight">* <{$lg.required_information}></span></div>
+
+		<div id="divAdress"  style=" background-color:#F1F8FF;  padding:0; margin:0">
+
+  <table width="95%" border="0" cellpadding="0" cellspacing="6">
+
+  <tr>
+
+    <td width="130" align="right"><strong><{$lg.first_name}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address0" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+   <tr>
+
+    <td width="130" align="right"><strong><{$lg.last_name}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address8" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.address}> : </strong> <span class="red">*</span></td>
+
+    <td><textarea name="address1" class="input003"></textarea></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.zip}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address2" type="text" class="input001" maxlength="20" /></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.city}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address3" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+  
+
+  <tr>
+
+    <td align="right"><strong><{$lg.province}>: </strong> <span class="white">*</span></td>
+
+    <td><input name="address4" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+  
+
+  <tr>
+
+    <td align="right"><strong><{$lg.country}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address5" id="address5" type="hidden" value="" autocomplete="off" /><{include file="module_country.html"}>
+
+	<script language="javascript">
+
+	function setCountryValue(str)
+
+{
+
+	//$("#address5").val(str);
+
+	getAjaxExpress(str);	// ---------------------
+
+}
+
+	</script>
+
+	</td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.tel}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address6" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+ <tr>
+
+    <td align="right"><strong><{$lg.email}> : </strong> <span class="red">*</span></td>
+
+    <td><input name="address7" type="text" class="input001" maxlength="50" /></td>
+
+  </tr>
+
+<{if $userid!=-1}>
+
+  <tr>
+
+    <td align="left">&nbsp;</td>
+
+    <td>
+
+      <input name="addressupdate" type="checkbox" checked="checked" value="1" /> <{$lg.is_addto_addressbook}> </td>
+
+  </tr>
+
+<{/if}> 
+
+</table>
+
+  </div>
+
+   <script language="javascript">
+
+  
+
+   EnterRadioIndex("address",0); 
+
+   </script>
+
+</div>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.shipping_method}></span></div>
+
+<div style="padding:8px">
+
+ <div id="expressdiv"></div>
+
+	  <input name="sub1" id="sub1" type="hidden" value="0" />
+
+	 <script language="javascript">
+
+   EnterRadioIndex("express",0); 
+
+</script>
+
+</div>
+
+<div style="display:none" id="expressdivloading">
+
+<div style=" background:url(../pic/loadingpic.gif) 9px 8px #FFFBD1 no-repeat; font-size:11px; color:#000000; border:1px #FDDC9B solid; padding:5px; padding-left:40px">
+
+The system now is on calculating the delivery charge . <br />
+
+please wait. If your page has no response for a long time, please <a class="red" href="#" style="text-decoration:underline" onclick="getAjaxExpress($('#address5').val())">click here</a> to refresh the page</div>
+
+</div>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.add_remark}></span></div>
+
+<div style="padding:8px">
+
+<textarea name="content"  class="input003" id="content" style="width:98%;"></textarea>
+
+</div>
+
+<div style="margin-top:20px; border-bottom:2px #cccccc solid;"></div>
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+
+<tr>
+
+	<td align="right" ><a href="products.php"><img src="../pic/continueshopping.jpg" /></a></td>
+
+    <td width="100" align="center" >&nbsp;</td>
+
+    <td align="left" ><input id="sumbitbutton" src="../pic/checkout_button1.gif" type="image" /></td>
+
+</tr>
+
+  </table>
+
+
+
+</form>
+
+
+
+
+
+ <script language="javascript" type="text/javascript">
+
+  function CheckForm()
+
+  { 
+
+var temp=document.getElementsByName("address");
+
+var strtemp="";
+
+  for (i=0;i<temp.length;i++)
+
+  //遍历Radio
+
+    if(temp[i].checked)
+
+     	strtemp=temp[i].value;
+
+	if((strtemp+"")=="0")
+
+	{
+
+		if(!CheckIsNull("stepinfo","address0","<{$lg.msg_firstname_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address8","<{$lg.msg_lastname_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address1","<{$lg.msg_address_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address2","<{$lg.msg_zipcode_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address3","<{$lg.msg_city_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address5","<{$lg.msg_country_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address6","<{$lg.msg_tel_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address7","<{$lg.msg_email_null}>")) return false;
+
+		if(!CheckIsEmail("stepinfo","address7","<{$lg.msg_email_error}>")) return false;
+
+	}
+
+}
+
+  </script>	
+
+<{elseif $action=="step_confirm"}>
+
+<div style="margin-top:5px; margin-bottom:10px; font-size:14px; font-weight:bold"><img src="../pic/step1-pic.gif"  align="absmiddle" />&nbsp;&nbsp;<{$lg.step2_tips}></div>
+
+<form name="stepinfo" method="post" onsubmit="return CheckForm()" action="<{$folder}>step.php?action=step_2">
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.items_ordered}></span></div>
+
+<div style="padding:8px">
+
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+ <{foreach key=index item=rows from=$rs_sc}>
+
+                <tr>
+
+                  <td align="center"  >
+
+				  
+
+				  <table width="100%" border="0" cellspacing="0" cellpadding="5" class="xuxian">
+
+  <tr>
+
+    <td width="100" align="center" valign="top"> <a  href="<{$rows.rewrite}>"><img  title="<{$rows.name}>" src="<{$rows.realpic}>" border="0" /></a></td>
+
+    <td align="left" valign="top"><a  href="<{$rows.rewrite}>" style="font-weight:bold;">
+
+     <span class="mainc"><{$rows.name}></span>
+
+    </a><br />
+
+    <br />
+
+    <em>
+
+    <{$rows.pstyle}><br />
+
+<{$lg.remark}>:<{$rows.pcontent}></em></td>
+
+    <td align="right"><{$coin}><{$rows.price}> x <{$rows.pnum}> = <span><{$coin}><{$rows.itemprice}></span></td>
+
+  </tr>
+
+</table>				 </td>
+
+                </tr>
+
+				<{/foreach}>
+
+               <tr><td align="right">
+
+               <table border="0" cellspacing="0" cellpadding="5">
+
+                <tr>
+
+                  <td height="20" align="right"><span class="impc weight"><{$lg.products_price}> : <{$coin}> <{$totalprice}></span></td>
+
+                </tr>
+
+                 <tr>
+
+                  <td height="20" align="right">+ <{$lg.express_fee}> (<span class="impc"><{$express}></span>) : <span class="impc"><{$coin}> <{$sub1}></span></td>
+
+                </tr> 
+
+                <{if $sub3!=0}>
+
+                 <tr>
+
+                   <td align="right" >+ <{$lg.order_additional_price}> : <span class="impc"><{$coin}> <{$sub3}></span></td>
+
+                 </tr>
+
+                 <{/if}>
+
+                 <tr>
+
+                   <td align="right"  class="shixian">+ <{$lg.discount_price}> : <span class="impc"><{$coin}> <{$sub4}></span></td>
+
+                 </tr>
+
+                   <{if $sub_coupon!=0}>
+
+                  <tr>
+
+                   <td align="right"  class="shixian">- <{$lg.coupon_price}> (<span class="red"><{$coupon_code}></span>) : <span class="impc"><{$coin}> <{$sub_coupon}></span></td>
+
+                 </tr>
+
+                  <{/if}>
+
+                 <tr>
+
+                  <td align="right" ><input value="<{$express}>" type="hidden" name="express" />
+
+                    <input name="sub1" type="hidden" value="<{$sub1}>" /><input name="sub3" type="hidden" value="<{$sub3}>" /><input name="sub4" type="hidden" value="<{$sub4-$sub_coupon}>" /><input name="coupon_code" type="hidden" value="<{$coupon_code}>" />
+
+                  <{$lg.total}>: <span class="impc weight bigs"><{$coin}> <{$sub1+$totalprice+$sub3+$sub4-$sub_coupon}></span></td>
+
+                </tr>
+
+                </table>
+
+                </td>
+
+               </tr>
+
+</table>
+
+</div>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.shipping_address}></span></div>
+
+<div style="background-color:#F1F8FF;">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="13">
+
+      <td width="130" align="right"><strong><{$lg.first_name}> : </strong></td>
+
+        <td align="left"><{$address[0]}><input type="hidden" name="address0" value="<{$address[0]}>" />
+
+        <input type="hidden" name="address" value="<{$addressid}>" /> <input name="addressupdate" type="hidden" value="<{$addressupdate}>" /></td>
+
+        </tr>
+
+		<tr>
+
+    <td align="right"><strong><{$lg.last_name}> : </strong></td>
+
+    <td align="left"><{$address[8]}><input type="hidden" name="address8" value="<{$address[8]}>" /></td>
+
+  </tr>
+
+		<tr>
+
+    <td align="right"><strong><{$lg.address}> : </strong></td>
+
+    <td align="left"><{$address[1]}><input type="hidden" name="address1" value="<{$address[1]}>" /></td>
+
+  </tr>
+
+  
+
+  <tr>
+
+    <td align="right"><strong><{$lg.zip}> : </strong></td>
+
+    <td align="left"><{$address[2]}><input type="hidden" name="address2" value="<{$address[2]}>" /></td>
+
+    </tr><tr>
+
+    <td align="right"><strong><{$lg.city}> : </strong></td>
+
+    <td align="left"><{$address[3]}><input type="hidden" name="address3" value="<{$address[3]}>" /></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.province}> : </strong></td>
+
+    <td align="left"><{$address[4]}><input type="hidden" name="address4" value="<{$address[4]}>" /></td>
+
+    </tr><tr>
+
+    <td align="right"><strong><{$lg.country}> : </strong></td>
+
+    <td align="left"><{$address[5]}><input type="hidden" name="address5" value="<{$address[5]}>" /></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="right"><strong><{$lg.tel}> : </strong></td>
+
+    <td align="left"><{$address[6]}><input type="hidden" name="address6" value="<{$address[6]}>" /></td>
+
+    </tr><tr>
+
+    <td align="right"><strong><{$lg.email}> : </strong></td>
+
+    <td align="left"><{$address[7]}><input type="hidden" name="address7" value="<{$address[7]}>" /></td>
+
+  </tr>
+
+</table>
+
+</div>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.your_remark}></span></div>
+
+<div style="padding:8px">
+
+<{$content}>
+
+<input name="content" type="hidden" class="input003" id="content" style="width:99%;" value="<{$content}>" />
+
+</div>
+
+
+
+ <script language="javascript" type="text/javascript">
+
+  function CheckForm()
+
+  { 
+
+var temp=document.getElementsByName("address");
+
+var strtemp="";
+
+  for (i=0;i<temp.length;i++)
+
+  //遍历Radio
+
+    if(temp[i].checked)
+
+     	strtemp=temp[i].value;
+
+	if((strtemp+"")=="0")
+
+	{
+
+		if(!CheckIsNull("stepinfo","address0","<{$lg.msg_firstname_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address8","<{$lg.msg_lastname_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address1","<{$lg.msg_address_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address2","<{$lg.msg_zipcode_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address3","<{$lg.msg_city_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address5","<{$lg.msg_country_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address6","<{$lg.msg_tel_null}>")) return false;
+
+		if(!CheckIsNull("stepinfo","address7","<{$lg.msg_email_null}>")) return false;
+
+		if(!CheckIsEmail("stepinfo","address7","<{$lg.msg_email_error}>")) return false;
+
+	}
+
+}
+
+  </script>	 <div style="margin-top:20px; border-bottom:2px #cccccc solid;"></div>
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+
+<tr>
+
+	<td align="right" ><a href="javascript:history.back();"><img src="../pic/backtochange.gif" /></a></td>
+
+    <td width="160"  >&nbsp;</td>
+
+    <td align="left" ><input src="../pic/check_out_new_btn3.gif" type="image" /></td>
+
+</tr>
+
+  </table><br />
+
+<br />
+
+
+
+</form>
+
+
+
+
+
+<{elseif $action=="step_3"}>
+
+<{$mailscript1}>
+
+<{$mailscript2}>
+
+<div style="background:url(../pic/check_out_new_success_bg.gif) #F5F5F5 left top no-repeat;padding-left:70px; margin-bottom:10px; padding-top:15px; padding-bottom:20px">
+
+<div>
+
+ <span style=" color:#F67A16; font-weight:bold; font-size:18px"><{$lg.step3_tips}></span><br /><br />
+
+
+
+  <span style="font-size:14px"><{$lg.order_number_is}>: <{$order.itemno}></span><br /><br />
+
+
+
+<span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span><br />
+
+
+
+<{if $order.create_coupon_code!=""}><span class="linh"><{$lg.msg_coupon_system}></span><{/if}>
+
+
+
+<div></div>
+
+</div>
+
+</div>
+
+
+
+<form name="stepinfo" method="post" action="<{$folder}>step.php?action=step_4&itemno=<{$order.itemno}>">
+
+ <div  class="step_div_header"><span style="margin-left:20px;"><{$lg.payment_method}></span></div>
+
+<div style="padding:8px">
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" style="background-color:#CCCCCC">
+
+   <{foreach key=index item=rows from=$rs_payment}> 
+
+  <tr>
+
+    <td width="8%" align="center" bgcolor="#EEEEEE"><input type="radio"  onclick="changeFees('<{$rows.pprice}>')" name="payment" value="<{$rows.name}>" /></td>
+
+    <td width="92%" bgcolor="#EEEEEE"><a target="_blank" href="<{$rows.url}>"><img src="<{$rows.realpic}>" border="0" align="absmiddle" /></a> <strong><{$rows.name}></strong> ( <{$lg.payment_fees}>:  <span class="impc"><{$order.coin}><{$rows.pprice}></span> )</td>
+
+  </tr>
+
+  <{if $rows.descript!=""}>
+
+  <tr>
+
+    <td colspan="2" bgcolor="#FFFFFF"><div class="linh small"><{$rows.descript}></div></td>
+
+    </tr>
+
+	<{/if}>
+
+	 <{/foreach}>
+
+</table>
+
+	   <input name="sub2" id="sub2" type="hidden" value="<{$rs_payment[0].pprice}>" />
+
+	    <script language="javascript">
+
+   EnterRadioIndex("payment",0); 
+
+   </script>
+
+</div>
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+
+<tr>
+
+    <td align="center" ><input name="image" type="image" src="../pic/check_out_new_btn2.gif" /></td>
+
+</tr>
+
+  </table>
+
+</form>
+
+<script>
+
+	function changeFees(pri)
+
+	{
+
+		document.getElementById("sub2").value=pri;
+
+	}
+
+</script>
+
+
+
+
+
+<{elseif $action=="step_5"}>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.checkout}> &gt;&gt; <{$paymenttype}></span></div>
+
+<div style="padding:8px; background-color: #F5F5F5; font-size:14px; line-height:20px">
+
+<{if $paymenttype=="paypal"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://www.paypal.com/row/cgi-bin/webscr" method="post" target="_blank">
+
+<input type="hidden" name="cmd" value="_xclick">
+
+<input type="hidden" name="business" value="<{$order.payonline.paypal.business}>">
+
+<input type="hidden" name="item_name" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="currency_code" value="<{$order.payonline.paypal.currency_code}>">
+
+<input type="hidden" name="return" value="<{$order.payonline.paypal.return}>">
+
+<input type="hidden" name="notify_url" value="<{$order.payonline.paypal.return}>">
+
+<input type="hidden" name="amount" value="<{$order.payonline.paypal.amount}>">
+
+<input type="hidden" name="item_number" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="invoice" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="charset" value="utf-8">
+
+<input type="hidden" name="no_note" value="1">
+
+<input type="hidden" name="rm" value="2">
+
+<input class="submitbtn" type="submit" name="Submit3" value="<{$lg.use_cc_payment}>">
+
+</form></div>
+
+
+
+<{elseif $paymenttype=="gspay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form method="POST" action="https://secure.sslgateways.com/payment/index.php" target="_blank">
+
+<input type="hidden" name="returnUrl" value="<{$order.payonline.gspay.returnUrl}>">
+
+<input type="hidden" name="siteID" value="<{$order.payonline.gspay.siteID}>">
+
+<input type="hidden" name="OrderID" value="<{$order.payonline.gspay.OrderID}>">
+
+<input type="hidden" name="OrderDescription" value="<{$order.payonline.gspay.OrderDescription}>">
+
+<input type="hidden" name="Amount" value="<{$order.payonline.gspay.Amount}>">
+
+<input type="hidden" name="Qty" value="<{$order.payonline.gspay.Qty}>">
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="ctopay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form name="payForm" target="_blank" action="https://payment.ttopay.com/payment/Interface" method="post">
+
+    <input type="hidden" name="MerNo" value="<{$order.payonline.ctopay.MerNo}>">
+
+    <input type="hidden" name="BillNo" value="<{$order.payonline.ctopay.BillNo}>">
+
+    <input type="hidden" name="Amount" value="<{$order.payonline.ctopay.Amount}>">
+
+    <input type="hidden" name="ReturnURL" value="<{$order.payonline.ctopay.ReturnURL}>">
+
+    <input type="hidden" name="Language" value="<{$order.payonline.ctopay.Language}>">
+
+    <input type="hidden" name="Currency" value="<{$order.payonline.ctopay.Currency}>">
+
+    <input type="hidden" name="MD5info" value="<{$order.payonline.ctopay.MD5info}>">
+
+    <input type="hidden" name="Remark" value="<{$order.payonline.ctopay.Remark}>"><input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="moneybookers"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://www.moneybookers.com/app/payment.pl" method="post" target="_blank">
+
+<input type="hidden" name="pay_to_email" value="ENTER_YOUR_USER_EMAIL@MERCHANT.COM">
+
+<input type="hidden" name="status_url" value="EMAIL_TO_RECEIVE_PAYMENT_NOTIFICATION@MERCHANT.COM"> 
+
+<input type="hidden" name="language" value="EN">
+
+<input type="hidden" name="amount" value="<{$order.totalprices}>">
+
+<input type="hidden" name="currency" value="<{$order.paypalcoin}>">
+
+<input type="hidden" name="detail1_description" value="<{$order.itemno}>">
+
+<input type="hidden" name="detail1_text" value="<{$order.itemno}>">
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form> 
+
+</div>
+
+<{elseif $paymenttype=="payease"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form name="form" method="post" target="_blank" action="http://pay.beijing.com.cn/prs/e_user_payment.checkit">
+
+ <input type="hidden" name="v_mid" value="<{$order.payonline.payease.v_mid}>">
+
+ <input type="hidden" name="v_oid" value="<{$order.payonline.payease.v_oid}>">
+
+ <input type="hidden" name="v_rcvname" value="<{$order.payonline.payease.v_rcvname}>">
+
+ <input type="hidden" name="v_rcvaddr" value="<{$order.payonline.payease.v_rcvaddr}>">
+
+ <input type="hidden" name="v_rcvtel" value="<{$order.payonline.payease.v_rcvtel}>">
+
+ <input type="hidden" name="v_rcvpost" value="<{$order.payonline.payease.v_rcvpost}>">	
+
+ <input type="hidden" name="v_amount" value="<{$order.payonline.payease.v_amount}>">
+
+ <input type="hidden" name="v_ymd" value="<{$order.payonline.payease.v_ymd}>">
+
+ <input type="hidden" name="v_orderstatus" value="<{$order.payonline.payease.v_orderstatus}>">
+
+ <input type="hidden" name="v_ordername" value="<{$order.payonline.payease.v_ordername}>">
+
+ <input type="hidden" name="v_moneytype" value="<{$order.payonline.payease.v_moneytype}>">         
+
+ <input type="hidden" name="v_url" value="<{$order.payonline.payease.v_url}>">
+
+ <input type="hidden" name="v_md5info" value="<{$order.payonline.payease.v_md5info}>">
+
+<input type="hidden" name="v_shipstreet" value="<{$order.payonline.payease.v_shipstreet}>">
+
+<input type="hidden" name="v_shipcity" value="<{$order.payonline.payease.v_shipcity}>">
+
+<input type="hidden" name="v_shipstate" value="<{$order.payonline.payease.v_shipstate}>">
+
+<input type="hidden" name="v_shippost" value="<{$order.payonline.payease.v_shippost}>">
+
+<input type="hidden" name="v_shipcountry" value="<{$order.payonline.payease.v_shipcountry}>">
+
+<input type="hidden" name="v_shipphone" value="<{$order.payonline.payease.v_shipphone}>">
+
+<input type="hidden" name="v_shipemail" value="<{$order.payonline.payease.v_shipemail}>">
+
+ <input class="submitbtn" name="" type="submit" value="<{$lg.use_cc_payment}>"  />
+
+ </form>
+
+
+
+</div>
+
+
+
+
+
+<{elseif $paymenttype=="95epay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://www.95epay.com/PayReduceRequestAction.action" target="_blank" method="post">
+
+	<input type="hidden" name="MerNo" value="<{$order.payonline.95epay.MerNo}>" />
+
+	<input type="hidden" name="BillNo" value="<{$order.payonline.95epay.BillNo}>" />
+
+	<input type="hidden" name="Currency" value="<{$order.payonline.95epay.Currency}>" />
+
+	<input type="hidden" name="Amount" value="<{$order.payonline.95epay.Amount}>" />
+
+	
+
+	<input type="hidden" name="Language" value="<{$order.payonline.95epay.Language}>" />
+
+	<input type="hidden" name="MerWebsite" value="<{$order.payonline.95epay.MerWebsite}>" />
+
+	<input type="hidden" name="Remark" value="<{$order.payonline.95epay.Remark}>" />
+
+	<input type="hidden" name="ReturnURL" value="<{$order.payonline.95epay.ReturnURL}>"/>
+
+	<input type="hidden" name="MD5info" value="<{$order.payonline.95epay.MD5info}>" />
+
+	
+
+	<!--收货人信息-->
+
+	<input name="DeliveryFirstName" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryFirstName}>">
+
+	<input name="DeliveryLastName" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryLastName}>">
+
+	<input name="DeliveryEmail" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryEmail}>">
+
+	<input name="DeliveryPhone" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryPhone}>">
+
+	<input name="DeliveryZipCode" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryZipCode}>">
+
+	<input name="DeliveryAddress" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryAddress}>">
+
+	<input name="DeliveryCity" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryCity}>">
+
+	<input name="DeliveryState" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryState}>">
+
+	<input name="DeliveryCountry" type="hidden" class="input" value="<{$order.payonline.95epay.DeliveryCountry}>">
+
+    
+
+    <input name="FirstName" type="hidden" class="input" value="<{$order.payonline.95epay.FirstName}>">
+
+	<input name="LastName" type="hidden" class="input" value="<{$order.payonline.95epay.LastName}>">
+
+	<input name="Email" type="hidden" class="input" value="<{$order.payonline.95epay.Email}>">
+
+	<input name="Phone" type="hidden" class="input" value="<{$order.payonline.95epay.Phone}>">
+
+	<input name="ZipCode" type="hidden" class="input" value="<{$order.payonline.95epay.ZipCode}>">
+
+	<input name="Address" type="hidden" class="input" value="<{$order.payonline.95epay.Address}>">
+
+	<input name="City" type="hidden" class="input" value="<{$order.payonline.95epay.City}>">
+
+	<input name="State" type="hidden" class="input" value="<{$order.payonline.95epay.State}>">
+
+	<input name="Country" type="hidden" class="input" value="<{$order.payonline.95epay.Country}>">
+
+    <input name="Products" type="hidden" class="input" value="<{$order.products}>">
+
+    <input class="submitbtn" type="submit" name="b1" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="ips"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form name="payForm" target="_blank" action="https://pay.ips.com.cn/icpay/customization/foreigntrade/payment.aspx" method="post">
+
+<input type="hidden" name="pMerchantCode" value="<{$order.payonline.ips.pMerchantCode}>" />
+
+<input type="hidden" name="pICPayReq" value="<{$order.payonline.ips.pICPayReq}>" />
+
+<input type="hidden" name="pICPayReqHashValue" value="<{$order.payonline.ips.pICPayReqHashValue}>" />
+
+<input type="hidden" name="pAFSReq" value="<{$order.payonline.ips.pAFSReq}>" />
+
+<input type="hidden" name="pAFSReqHashValue" value="<{$order.payonline.ips.pAFSReqHashValue}>" />
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="ecpss"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://security.sslepay.com/sslpayment" target="_blank" method="post" name="E_FORM">
+
+	<input type="hidden" name="MerNo" value="<{$order.payonline.ecpss.MerNo}>">
+
+	  <input type="hidden" name="Currency" value="<{$order.payonline.ecpss.Currency}>">
+
+	  <input type="hidden" name="BillNo" value="<{$order.payonline.ecpss.BillNo}>">
+
+	  <input type="hidden" name="Amount" value="<{$order.payonline.ecpss.Amount}>">
+
+	  <input type="hidden" name="ReturnURL" value="<{$order.payonline.ecpss.ReturnURL}>" >
+
+	  <input type="hidden" name="Language" value="<{$order.payonline.ecpss.Language}>">
+
+	  <input type="hidden" name="MD5info" value="<{$order.payonline.ecpss.MD5info}>">
+
+	  <input type="hidden" name="Remark" value="<{$order.payonline.ecpss.Remark}>">
+
+	  <input type="hidden" name="shippingFirstName" value="<{$order.payonline.ecpss.shippingFirstName}>">
+
+	  <input type="hidden" name="shippingLastName" value="<{$order.payonline.ecpss.shippingLastName}>">
+
+	  <input type="hidden" name="shippingEmail" value="<{$order.payonline.ecpss.shippingEmail}>">
+
+	  <input type="hidden" name="shippingPhone" value="<{$order.payonline.ecpss.shippingPhone}>">
+
+	  <input type="hidden" name="shippingZipcode" value="<{$order.payonline.ecpss.shippingZipcode}>">
+
+	  <input type="hidden" name="shippingAddress" value="<{$order.payonline.ecpss.shippingAddress}>">
+
+	  <input type="hidden" name="shippingCity" value="<{$order.payonline.ecpss.shippingCity}>">
+
+	  <input type="hidden" name="shippingSstate" value="<{$order.payonline.ecpss.shippingSstate}>">
+
+	  <input type="hidden" name="shippingCountry" value="<{$order.payonline.ecpss.shippingCountry}>">
+
+	  <input type="hidden" name="products" value="<{$order.payonline.ecpss.products}>">
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="ttopay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form name="payForm" target="_blank" action="<{$order.payonline.ttopay.actionUrl}>" method="post">
+
+    <input type="hidden" name="MerNo" value="<{$order.payonline.ttopay.MerNo}>">
+
+    <input type="hidden" name="BillNo" value="<{$order.payonline.ttopay.BillNo}>">
+
+    <input type="hidden" name="Amount" value="<{$order.payonline.ttopay.Amount}>">
+
+    <input type="hidden" name="ReturnURL" value="<{$order.payonline.ttopay.ReturnURL}>">
+
+    <input type="hidden" name="Language" value="<{$order.payonline.ttopay.Language}>">
+
+    <input type="hidden" name="Currency" value="<{$order.payonline.ttopay.Currency}>">
+
+    <input type="hidden" name="MD5info" value="<{$order.payonline.ttopay.MD5info}>">
+
+    <input type="hidden" name="Remark" value="<{$order.payonline.ttopay.Remark}>">
+
+	<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="paypaloff"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="<{$folder}>step.php?action=paypaloff_save&itemno=<{$order.itemno}>" method="post" name="E_FORM">
+
+<span style="font-size:14px; color:#FF0000; font-weight:bold"><{$payment_content}></span>
+
+<br />
+
+<input name="payment" type="hidden" value="paypal" /><input type="text" style="width:200px" name="paypalaccount" >
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="yourspay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div>
+
+<form name="payForm" target="_blank" action="<{$order.payonline.yourspay.actionUrl}>" method="post">
+
+    <input type="hidden" name="MerNo" value="<{$order.payonline.yourspay.MerNo}>">
+
+    <input type="hidden" name="BillNo" value="<{$order.payonline.yourspay.BillNo}>">
+
+    <input type="hidden" name="Amount" value="<{$order.payonline.yourspay.Amount}>">
+
+    <input type="hidden" name="ReturnURL" value="<{$order.payonline.yourspay.ReturnURL}>">
+
+    <input type="hidden" name="Language" value="<{$order.payonline.yourspay.Language}>">
+
+    <input type="hidden" name="Currency" value="<{$order.payonline.yourspay.Currency}>">
+
+    <input type="hidden" name="MD5info" value="<{$order.payonline.yourspay.MD5info}>">
+
+    <input type="hidden" name="Remark" value="<{$order.payonline.yourspay.Remark}>">
+
+	<input type="hidden" name="CurrencyCode" value="<{$order.payonline.yourspay.CurrencyCode}>">
+
+	<input type="hidden" name="GoodsName" value="<{$order.payonline.yourspay.GoodsName}>">
+
+	<input type="hidden" name="shipAddress" value="<{$order.payonline.yourspay.shipAddress}>">
+
+	<input type="hidden" name="shipCity" value="<{$order.payonline.yourspay.shipCity}>">
+
+	<input type="hidden" name="shipState" value="<{$order.payonline.yourspay.shipState}>">
+
+	<input type="hidden" name="shipCountry" value="<{$order.payonline.yourspay.shipCountry}>">
+
+	<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="fashionpay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : USD$ <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://www.fashionpay.com/fashionpayRequestAction.action" target="_blank" method="post" name="E_FORM">
+
+	<input type="hidden" name="MerNo" value="<{$order.payonline.fashionpay.MerNo}>">
+
+	  <input type="hidden" name="Currency" value="<{$order.payonline.fashionpay.Currency}>">
+
+	  <input type="hidden" name="BillNo" value="<{$order.payonline.fashionpay.BillNo}>">
+
+	  <input type="hidden" name="Amount" value="<{$order.payonline.fashionpay.Amount}>">
+
+	  <input type="hidden" name="ReturnURL" value="<{$order.payonline.fashionpay.ReturnURL}>" >
+
+	  <input type="hidden" name="Language" value="<{$order.payonline.fashionpay.Language}>">
+
+	  <input type="hidden" name="MD5info" value="<{$order.payonline.fashionpay.MD5info}>">
+
+	  <input type="hidden" name="Remark" value="<{$order.payonline.fashionpay.Remark}>">
+
+	  <input type="hidden" name="DeliveryFirstName" value="<{$order.payonline.fashionpay.DeliveryFirstName}>">
+
+	  <input type="hidden" name="DeliveryLastName" value="<{$order.payonline.fashionpay.DeliveryLastName}>">
+
+	  <input type="hidden" name="DeliveryEmail" value="<{$order.payonline.fashionpay.DeliveryEmail}>">
+
+	  <input type="hidden" name="DeliveryPhone" value="<{$order.payonline.fashionpay.DeliveryPhone}>">
+
+	  <input type="hidden" name="DeliveryZipCode" value="<{$order.payonline.fashionpay.DeliveryZipCode}>">
+
+	  <input type="hidden" name="DeliveryAddress" value="<{$order.payonline.fashionpay.DeliveryAddress}>">
+
+	  <input type="hidden" name="DeliveryCity" value="<{$order.payonline.fashionpay.DeliveryCity}>">
+
+	  <input type="hidden" name="DeliveryState" value="<{$order.payonline.fashionpay.DeliveryState}>">
+
+	  <input type="hidden" name="DeliveryCountry" value="<{$order.payonline.fashionpay.DeliveryCountry}>">
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+</div>
+
+<{elseif $paymenttype=="rppay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : USD$ <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="<{$order.payonline.rppay.submit_url}>" method="post" target="_blank" id="rppay_form" class="hidden">
+
+			<input type="hidden" name="order_sn" value="<{$order.payonline.rppay.order_sn}>" />
+
+			<input type="hidden" name="siteid" value="<{$order.payonline.rppay.siteid}>" />
+
+			<input type="hidden" name="verifyCode" value="<{$order.payonline.rppay.verifyCode}>" />
+
+			<input type="hidden" name="ShippingFee" value="<{$order.payonline.rppay.ShippingFee}>" />
+
+			<input type="hidden" name="currency" value="<{$order.payonline.rppay.currency}>" />
+
+			<input type="hidden" name="returnUrl" value="<{$order.payonline.rppay.returnUrl}>" />
+
+			<input type="hidden" name="backurl" value="<{$order.payonline.rppay.backurl}>" />
+
+			<input type="hidden" name="product_no[1]" value="<{$order.payonline.rppay.product_no}>" />
+
+			<input type="hidden" name="product_name[1]" value="<{$order.payonline.rppay.product_name}>" />
+
+			<input type="hidden" name="price_unit[1]" value="<{$order.payonline.rppay.price_unit}>" />
+
+			<input type="hidden" name="quantity[1]" value="<{$order.payonline.rppay.quantity}>" />
+
+			
+
+			<input type="hidden" name="email" value="<{$order.payonline.rppay.email}>" />
+
+			<input type="hidden" name="customername" value="<{$order.payonline.rppay.customername}>" />
+
+			<input type="hidden" name="state" value="<{$order.payonline.rppay.state}>" />
+
+			<input type="hidden" name="city" value="<{$order.payonline.rppay.city}>" />
+
+			<input type="hidden" name="address" value="<{$order.payonline.rppay.address}>" />
+
+			<input type="hidden" name="country" value="<{$order.payonline.rppay.country}>" />
+
+			<input type="hidden" name="postcode" value="<{$order.payonline.rppay.postcode}>" />
+
+			<input type="hidden" name="tel" value="<{$order.payonline.rppay.tel}>" />
+
+			<input type="hidden" name="mobile" value="<{$order.payonline.rppay.mobile}>" />
+
+<input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+		</form>
+
+
+
+</div>
+
+<{elseif $paymenttype=="wedopay"}>
+
+
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : USD$ <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://secure.wedopay.net/sslpayment" target="_blank" method="post" name="E_FORM">
+
+		<input type="hidden" name="MerNo" value="<{$order.payonline.wedopay.MerNo}>">
+
+		<input type="hidden" name="Currency" value="<{$order.payonline.wedopay.Currency}>">
+
+	  <input type="hidden" name="BillNo" value="<{$order.payonline.wedopay.BillNo}>">
+
+	  <input type="hidden" name="Amount" value="<{$order.payonline.wedopay.Amount}>">
+
+	  <input type="hidden" name="ReturnURL" value="<{$order.payonline.wedopay.ReturnURL}>" >
+
+	  <input type="hidden" name="Language" value="<{$order.payonline.wedopay.Language}>">
+
+	  <input type="hidden" name="MD5info" value="<{$order.payonline.wedopay.MD5info}>">
+
+	  <input type="hidden" name="Remark" value="<{$order.payonline.wedopay.Remark}>">
+
+	  <input type="hidden" name="shippingFirstName" value="<{$order.payonline.wedopay.shippingFirstName}>">
+
+	  <input type="hidden" name="shippingLastName" value="<{$order.payonline.wedopay.shippingLastName}>">
+
+	  <input type="hidden" name="shippingEmail" value="<{$order.payonline.wedopay.shippingEmail}>">
+
+	  <input type="hidden" name="shippingPhone" value="<{$order.payonline.wedopay.shippingPhone}>">
+
+	  <input type="hidden" name="shippingZipcode" value="<{$order.payonline.wedopay.shippingZipcode}>">
+
+	  <input type="hidden" name="shippingAddress" value="<{$order.payonline.wedopay.shippingAddress}>">
+
+	  <input type="hidden" name="shippingCity" value="<{$order.payonline.wedopay.shippingCity}>">
+
+	  <input type="hidden" name="shippingSstate" value="<{$order.payonline.wedopay.shippingSstate}>">
+
+	  <input type="hidden" name="shippingCountry" value="<{$order.payonline.wedopay.shippingCountry}>">
+
+	  <input type="hidden" name="products" value="<{$order.payonline.wedopay.products}>">
+
+	  <input class="submitbtn" type="submit" value="<{$lg.use_cc_payment}>">
+
+</form>
+
+
+
+</div>
+
+<{elseif $paymenttype=="99bill"}>
+
+
+
+<div>Order number is : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight">Subtotal : USD$ <{$order.totalprices}></span></div>
+
+<div>
+
+		<form name="kqPay" method="post" target="_blank" action="https://cpay.99bill.com/fgw/payment/purchase.htm">
+
+			<input type="hidden" name="inputCharset" value="<{$order.payonline.99bill.inputCharset}>"/>
+
+            <input type="hidden" name="pageUrl" value="<{$order.payonline.99bill.pageUrl}>"/>
+
+			<input type="hidden" name="bgUrl" value="<{$order.payonline.99bill.bgUrl}>"/>
+
+			<input type="hidden" name="version" value="<{$order.payonline.99bill.version}>"/>
+
+			<input type="hidden" name="language" value="<{$order.payonline.99bill.language}>"/>
+
+			<input type="hidden" name="signType" value="<{$order.payonline.99bill.signType}>"/>
+
+			<input type="hidden" name="signMsg" value="<{$order.payonline.99bill.signMsg}>"/>
+
+			<input type="hidden" name="merchantAcctId" value="<{$order.payonline.99bill.merchantAcctId}>"/>
+
+            <input type="hidden" name="termId" value="<{$order.payonline.99bill.termId}>"/>
+
+            <input type="hidden" name="firstName" value="<{$order.payonline.99bill.firstName}>"/>
+
+            <input type="hidden" name="lastName" value="<{$order.payonline.99bill.lastName}>"/>
+
+            <input type="hidden" name="fullName" value="<{$order.payonline.99bill.fullName}>"/>
+
+            <input type="hidden" name="issuingBank" value="<{$order.payonline.99bill.issuingBank}>"/>
+
+            <input type="hidden" name="issuingCountry" value="<{$order.payonline.99bill.issuingCountry}>"/>
+
+            <input type="hidden" name="email" value="<{$order.payonline.99bill.email}>"/>
+
+            <input type="hidden" name="phoneNumber" value="<{$order.payonline.99bill.phoneNumber}>"/>
+
+            <input type="hidden" name="zipCode" value="<{$order.payonline.99bill.zipCode}>"/>
+
+            <input type="hidden" name="shippingAddress" value="<{$order.payonline.99bill.shippingAddress}>"/>
+
+            <input type="hidden" name="billingAddress" value="<{$order.payonline.99bill.billingAddress}>"/>
+
+            <input type="hidden" name="billingCity" value="<{$order.payonline.99bill.billingCity}>"/>
+
+            <input type="hidden" name="billingState" value="<{$order.payonline.99bill.billingState}>"/>
+
+            <input type="hidden" name="billingCountry" value="<{$order.payonline.99bill.billingCountry}>"/>
+
+            <input type="hidden" name="orderId" value="<{$order.payonline.99bill.orderId}>"/>
+
+            <input type="hidden" name="pricingCurrency" value="<{$order.payonline.99bill.pricingCurrency}>"/>
+
+            <input type="hidden" name="pricingAmount" value="<{$order.payonline.99bill.pricingAmount}>"/>
+
+            <input type="hidden" name="billingCurrency" value="<{$order.payonline.99bill.billingCurrency}>"/>
+
+            <input type="hidden" name="billingAmount" value="<{$order.payonline.99bill.billingAmount}>"/>
+
+            <input type="hidden" name="exchangeRateFlag" value="<{$order.payonline.99bill.exchangeRateFlag}>"/>
+
+            <input type="hidden" name="exchangeRateDirection" value="<{$order.payonline.99bill.exchangeRateDirection}>"/>
+
+            <input type="hidden" name="exchangeRate" value="<{$order.payonline.99bill.exchangeRate}>"/>
+
+            <input type="hidden" name="orderTime" value="<{$order.payonline.99bill.orderTime}>"/>
+
+            <input type="hidden" name="productName" value="<{$order.payonline.99bill.productName}>"/>
+
+            <input type="hidden" name="productNum" value="<{$order.payonline.99bill.productNum}>"/>
+
+            <input type="hidden" name="productId" value="<{$order.payonline.99bill.productId}>"/>
+
+            <input type="hidden" name="productDesc" value="<{$order.payonline.99bill.productDesc}>"/>
+
+            <input type="hidden" name="payType" value="<{$order.payonline.99bill.payType}>"/>
+
+            <input type="hidden" name="bankId" value="<{$order.payonline.99bill.bankId}>"/>
+
+            <input type="hidden" name="redoFlag" value="<{$order.payonline.99bill.redoFlag}>"/>
+
+            <input type="hidden" name="ext1" value="<{$order.payonline.99bill.ext1}>"/>
+
+			<input type="hidden" name="ext2" value="<{$order.payonline.99bill.ext2}>"/>
+
+            <input type="hidden" name="pid" value="<{$order.payonline.99bill.pid}>"/>
+
+			<input class="submitbtn" type="submit" name="submit" value="Use 99bill payment">
+
+		</form>
+
+</div>
+
+<{/if}>
+
+</div>
+
+<{elseif $action=="step_6"}>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.checkout}> &gt;&gt; <{$lg.order_complete}></span></div>
+
+<div style="padding:8px; background-color: #F5F5F5; font-size:14px; line-height:20px">
+
+<div><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : <{$order.coin}> <{$order.totalprices}></span></div>
+
+<div class="linh"><{$payment_content}></div>
+
+</div>
+
+
+
+<{elseif $action=="step_paypalto"}>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.checkout}> &gt;&gt; <{$lg.go_to_paypal}></span></div>
+
+<div style="padding:8px; background-color: #F5F5F5; font-size:14px; line-height:20px">
+
+<div ><{$lg.order_number_is}> : <span class="impc"><{$order.itemno}></span></div>
+
+<div><span style="font-size:14px" class="red weight"><{$lg.subtotal}> : USD <{$order.totalprices}></span></div>
+
+<div>
+
+<form action="https://www.paypal.com/row/cgi-bin/webscr" method="post" target="_blank">
+
+<input type="hidden" name="cmd" value="_xclick">
+
+<input type="hidden" name="business" value="<{$order.payonline.paypal.business}>">
+
+<input type="hidden" name="item_name" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="currency_code" value="<{$order.payonline.paypal.currency_code}>">
+
+<input type="hidden" name="return" value="<{$order.payonline.paypal.return}>">
+
+<input type="hidden" name="notify_url" value="<{$order.payonline.paypal.return}>">
+
+<input type="hidden" name="amount" value="<{$order.payonline.paypal.amount}>">
+
+<input type="hidden" name="item_number" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="invoice" value="<{$order.payonline.paypal.item_name}>">
+
+<input type="hidden" name="charset" value="utf-8">
+
+<input type="hidden" name="no_note" value="1">
+
+<input type="hidden" name="rm" value="2">
+
+<input class="submitbtn" type="submit" name="Submit3" value="<{$lg.use_cc_payment}>">
+
+</form></div>
+
+</div>
+
+<{elseif $action=="step_return"}>
+
+<div  class="step_div_header"><span style="margin-left:20px;"><{$lg.checkout}> &gt;&gt; <{$lg.order_complete}></span></div>
+
+<div style="padding:8px; background-color: #F5F5F5; font-size:14px; line-height:20px">
+
+<div class="linh"><{$payment_content}></div>
+
+<{/if}>
+
+</div>

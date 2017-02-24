@@ -1,0 +1,20 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div style="margin-bottom:5px">
+<div style="text-align:right; padding:2px"><a href="javascript:void(0)" onclick="_close_divShoppingcart()"><strong><{$lg.close}></strong></a></div>
+<span style="font-size:14px; font-weight:bold"><{$lg.success_add_cart}></span>  
+<div style="font-size:11px">
+
+<{$lg.minicart_items}> , <{$lg.sub_total}>: <span class="red"><{$coin}> <{$totalprice}></span><br />
+
+</div>
+<a style="text-decoration:underline;" href='<{$folder}>shopcart.php'><strong><{$lg.go_cart_settle}></strong></a>
+<script language="javascript">
+try
+{
+$('#_ajax_div_items').html("<{$totalnum}>");
+}
+catch(e)
+{
+
+}
+</script></div>

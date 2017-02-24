@@ -1,0 +1,1842 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+
+
+<div class="main_ct">
+
+
+
+<script language="javascript"  src="../pic/jquery.lightbox-0.5.min.js" type="text/javascript"></script>
+
+
+
+<script language="javascript">
+
+
+
+function _ajax_quick_addtoshopcart()
+
+
+
+{
+
+
+
+if( ! checkShopCartStyle() )
+
+
+
+	return ;
+
+
+
+var pars = ''; 
+
+
+
+$('#ajax_result_div').html("<{$lg.loading}>");
+
+
+
+var surl = '<{$folder}>miniShopcart.php?action=add&alert=1'; 
+
+
+
+for(var i=0;i<document.formshopcart.elements.length;i++ )
+
+
+
+{
+
+
+
+	if( document.formshopcart.elements[i].type.toLowerCase()!="checkbox" )
+
+
+
+		pars += document.formshopcart.elements[i].name + "=" + document.formshopcart.elements[i].value + "&";
+
+
+
+	else if( document.formshopcart.elements[i].checked )
+
+
+
+	{
+
+
+
+		pars += document.formshopcart.elements[i].name + "=" + document.formshopcart.elements[i].value + "&";
+
+
+
+	}
+
+
+
+}
+
+
+
+$.ajax({ url: surl,async: true,cache: false,data:pars,type:'post',success: ajax_getResultContent}); 
+
+
+
+var p = $("#btn_quick");
+
+
+
+var offset = p.offset();
+
+
+
+var top2 = offset.top + $("#btn_quick").height() + 1 ;
+
+
+
+$("#_divShoppingcart").css("left",offset.left - 213 + "px");
+
+
+
+$("#_divShoppingcart").css("top",top2 + "px");
+
+
+
+$("#_divShoppingcart").show();
+
+
+
+return false;
+
+
+
+}
+
+
+
+
+
+
+
+function ajax_getResultContent(xmlhttp)
+
+
+
+{
+
+
+
+	$('#ajax_result_div').html(xmlhttp);
+
+
+
+	//xmlhttp.evalScripts();
+
+
+
+	//executeScript(xmlhttp);
+
+
+
+	//window.setTimeout( "_close_divShoppingcart()" , 2000 );
+
+
+
+}
+
+
+
+
+
+
+
+function _close_divShoppingcart()
+
+
+
+{
+
+
+
+	$("#_divShoppingcart").hide();
+
+
+
+}
+
+
+
+
+
+
+
+function span_style_chekck2(obj,style,indexm,total,pic)
+
+
+
+{
+
+
+
+	for(index=0;index<total;index++)
+
+
+
+	{
+
+
+
+		//$("#span_style_" +indexm + "_" + index).attr('class','span_bg');
+
+
+
+		$("#span_style_" +indexm + "_" + index).removeClass('span_bg_check2');
+
+
+
+	}
+
+
+
+	$(obj).addClass('span_bg_check2');
+
+
+
+	//obj.style.border="2px #FF6701 solid";
+
+
+
+	//obj.style.border="2px #FF6701 solid";
+
+
+
+	document.formshopcart["style" + indexm].value = style;
+
+
+
+	strs="";
+
+
+
+	for(index=0;index<=10;index++)
+
+
+
+	{
+
+
+
+		var sobj = $FF("formshopcart","style" + index) ;
+
+
+
+		if( sobj )
+
+
+
+		{
+
+
+
+			if(sobj!="")
+
+
+
+			{
+
+
+
+				strs += "\"" + sobj + "\" " ;
+
+
+
+			}
+
+
+
+		}
+
+
+
+		//else
+
+
+
+			//break;
+
+
+
+	}
+
+
+
+	//$('#img1').src(pic);
+
+
+
+	$('#img1').attr('src',pic);
+
+
+
+	$('#span_select').html(strs);
+
+
+
+}
+
+
+
+
+
+
+
+function span_style_chekck(obj,style,indexm,total)
+
+
+
+{
+
+
+
+	for(index=0;index<total;index++)
+
+
+
+	{
+
+
+
+		$("#span_style_" +indexm + "_" + index).attr('class','span_bg');
+
+
+
+	}
+
+
+
+	$(obj).attr('class','span_bg_check')
+
+
+
+	document.formshopcart["style" + indexm].value = style;
+
+
+
+	strs="";
+
+
+
+	for(index=0;index<=10;index++)
+
+
+
+	{
+
+
+
+		var sobj = $FF("formshopcart","style" + index) ;
+
+
+
+		if( sobj )
+
+
+
+		{
+
+
+
+			if(sobj!="")
+
+
+
+			{
+
+
+
+				strs += "\"" + sobj + "\" " ;
+
+
+
+			}
+
+
+
+		}
+
+
+
+		//else
+
+
+
+			//break;
+
+
+
+	}
+
+
+
+	$('#span_select').html(strs);
+
+
+
+}
+
+
+
+
+
+
+
+function $FF(form,name)
+
+
+
+{
+
+
+
+	var objform = document.forms[form] ;
+
+
+
+	var arr = document.getElementsByName( name );
+
+
+
+	if( arr.length>0 )
+
+
+
+	{
+
+
+
+		if( arr[0].type=="hidden" )
+
+
+
+		{
+
+
+
+			return arr[0].value ;
+
+
+
+		}
+
+
+
+		else if( arr[0].type=="select-one" )
+
+
+
+		{
+
+
+
+			return arr[0].value ;
+
+
+
+		}
+
+
+
+		else if( arr[0].type=="checkbox" )
+
+
+
+		{
+
+
+
+			var arrosj = [] ; 
+
+
+
+			for(sindex=0;sindex<arr.length;sindex++)
+
+
+
+			{
+
+
+
+				if( arr[sindex].checked )
+
+
+
+				{
+
+
+
+					arrosj.push( arr[sindex].value );
+
+
+
+				}
+
+
+
+			}
+
+
+
+			//return arrosj.join(',');
+
+
+
+			return "@";
+
+
+
+		}
+
+
+
+		else if( arr[0].type=="radio" )
+
+
+
+		{
+
+
+
+			for(sindex=0;sindex<arr.length;sindex++)
+
+
+
+			{
+
+
+
+				if( arr[sindex].checked )
+
+
+
+				{
+
+
+
+					return arr[0].value ;
+
+
+
+				}
+
+
+
+			}
+
+
+
+		}
+
+
+
+		else if( arr[0].type=="text" )
+
+
+
+		{
+
+
+
+			return arr[0].value ;
+
+
+
+		}
+
+
+
+	}
+
+
+
+	else
+
+
+
+	{
+
+
+
+		return null;
+
+
+
+	}
+
+
+
+}
+
+
+
+
+
+
+
+function checkShopCartStyle()
+
+
+
+{
+
+
+
+	var allcheck = false ;
+
+
+
+	if( document.getElementById('paddtocart') )
+
+
+
+	{
+
+
+
+		for(index=0;index<=30;index++)
+
+
+
+		{
+
+
+
+			if( $('#property'+index) )
+
+
+
+			{
+
+
+
+				if( $('#property'+index).attr("checked") )
+
+
+
+				{
+
+
+
+					allcheck = true;
+
+
+
+					break;
+
+
+
+				}
+
+
+
+			}
+
+
+
+			else
+
+
+
+				break;
+
+
+
+		}
+
+
+
+		if( !allcheck )
+
+
+
+		{
+
+
+
+			alert("Please Select " +  document.formshopcart["key0"].value );
+
+
+
+			return false;
+
+
+
+		}
+
+
+
+	}
+
+
+
+	for(index=0;index<=10;index++)
+
+
+
+	{
+
+
+
+		var obj = $FF("formshopcart","style" + index) ;
+
+
+
+		if(obj!=null)
+
+
+
+		{
+
+
+
+			if(obj=="")
+
+
+
+			{
+
+
+
+				alert("<{$lg.please_select}> " +  document.formshopcart["key" + index].value );
+
+
+
+				return false;
+
+
+
+			}
+
+
+
+		}
+
+
+
+		else
+
+
+
+			return true;
+
+
+
+	}
+
+
+
+}
+
+
+
+
+
+
+
+function changePnum(action)
+
+
+
+{
+
+
+
+	var pnum=document.getElementById("num").value;
+
+
+
+	if(pnum=="" || isNaN(pnum))
+
+
+
+	{
+
+
+
+		document.getElementById("num").value=1;
+
+
+
+		return;
+
+
+
+	}
+
+
+
+	pnum=parseInt(pnum);
+
+
+
+	if(action=="add")
+
+
+
+	{
+
+
+
+		if(pnum<1)
+
+
+
+		{
+
+
+
+			document.getElementById("num").value=1;
+
+
+
+		}
+
+
+
+		else
+
+
+
+		{
+
+
+
+			pnum++;
+
+
+
+			document.getElementById("num").value=pnum;
+
+
+
+		}
+
+
+
+	}
+
+
+
+	else
+
+
+
+	{
+
+
+
+		if(pnum>=2)
+
+
+
+		{
+
+
+
+			pnum--;
+
+
+
+			document.getElementById("num").value=pnum;
+
+
+
+		}
+
+
+
+		else if(pnum<1)
+
+
+
+		{
+
+
+
+			document.getElementById("num").value=1;
+
+
+
+		}		
+
+
+
+	}
+
+
+
+}
+
+
+
+function numOnblur(obj)
+
+
+
+{
+
+
+
+	if(obj.value=="")
+
+
+
+	{obj.value=1;}
+
+
+
+	else if(isNaN(obj.value))
+
+
+
+	{obj.value=1;}
+
+
+
+	else
+
+
+
+	{
+
+
+
+		obj.value=parseInt(obj.value);
+
+
+
+		if(obj.value<1)
+
+
+
+		{
+
+
+
+			obj.value=1;
+
+
+
+		}
+
+
+
+	}
+
+
+
+}
+
+
+
+</script>
+
+
+
+<div class="w770 boxborder_pink" style="margin-bottom:10px;">
+
+  <div style="padding:8px;">
+
+    <div id="pro_bese_info">
+
+
+
+        <div class="pro_bese_info_left">
+
+
+
+        	<a title="<{$p.name}>" id="lightbox"  href="<{$p.pic1}>"  ><img  alt="<{$p.name}>" src="<{$p.realpic}>" name="img1"  border="0" id="img1"></a>
+
+
+
+            <{if $rs_o[0]!=""}>   
+
+
+
+              	<div class="small_img_box">
+
+
+
+                	<div class="small_img_box_left"><img style="cursor:pointer;" onmouseout="javascript:gogo=false;bln=false;" onmousemove="javascript:gogo=true;bln=false;"  src="../pic/gundong_left1.jpg" /></div>
+
+
+
+                    <div class="small_img_box_main">
+
+
+
+                    	<div id=demo style="overflow:hidden;width:300px;">
+
+
+
+               			   <table  border="0" cellpadding="0" cellspacing="0">
+
+
+
+                              <tr>
+
+
+
+                                <td id=demo1 valign="top">
+
+
+
+                                <table  border="0" cellspacing="0" cellpadding="0">
+
+
+
+                                    <tr>
+
+
+
+                                      <td>
+
+
+
+                                      <table width="65" border="0"  cellspacing="0" cellpadding="0" style="margin-left:5px; margin-right:5px;">  <tr>
+
+
+
+                                          <td class="otherimagelist" width="65" height="74"  align="center" style="padding:12px 5px 5px 5px;"><a href="<{$p.pic1}>" title="<{$p.name}>" rel="lightbox[roadtrip]">
+
+
+
+                                  <img alt="<{$p.name}>" src="<{$p.smallpic}>"  />
+
+
+
+                                         <input type="hidden" value="<{$p.realpic}>" />
+
+
+
+                                         </a></td>
+
+
+
+                                        </tr>
+
+
+
+                                      </table>
+
+
+
+                                      </td>
+
+
+
+                                      <{foreach key=key1 item=rows from=$rs_o[0] name=otherimage}>
+
+
+
+                                      <td>
+
+
+
+                                      <table width="65" border="0"  cellspacing="0" cellpadding="0" style="margin-left:5px; margin-right:5px;">  <tr>
+
+
+
+                                          <td class="otherimagelist" width="65" height="74"  align="center" style="padding:12px 5px 5px 5px;"><a href="<{$rows.bigpic}>" title="<{$rows.name}>"   rel="lightbox[roadtrip]" >
+
+
+
+                                  <img alt="<{$rows.name}>" src="<{$rows.realpic}>"  />
+
+
+
+                                         <input type="hidden" value="<{$rows.realpic1}>" />
+
+
+
+                                         </a></td>
+
+
+
+                                        </tr>
+
+
+
+                                      </table>
+
+
+
+                                      </td>
+
+
+
+                                      <{/foreach}>
+
+
+
+                                    </tr>
+
+
+
+                                </table>
+
+
+
+                                </td>
+
+
+
+                              </tr>
+
+
+
+                            </table>
+
+
+
+             			</div>
+
+
+
+              		</div>
+
+
+
+                    <div class="small_img_box_right"><img style="cursor:pointer" onmouseout="javascript:gogo=false;bln=true;" onmousemove="javascript:gogo=true;bln=true;" src="../pic/gundong_right1.jpg" /></div>
+
+
+
+                </div>             
+
+
+
+              <script language="javascript">
+
+
+
+                $(".otherimagelist").hover(
+
+
+
+                   function(){
+
+
+
+                      $(this).css("background","url(../pic/gundong_picbg.jpg) no-repeat"); 
+
+
+
+                   },
+
+
+
+                   function(){$(this).css("background",""); }
+
+
+
+                );
+
+
+
+                var speed=10;
+
+
+
+                var gogo= false;
+
+
+
+                var bln=true;
+
+
+
+                var demo = document.getElementById("demo");
+
+
+
+                var demo1 = document.getElementById("demo1");
+
+
+
+                //var demo2 = document.getElementById("demo2");
+
+
+
+                
+
+
+
+                //demo2.innerHTML=demo1.innerHTML
+
+
+
+                function Marquee(){
+
+
+
+                if(!gogo)
+
+
+
+                  return ;
+
+
+
+                if(bln)
+
+
+
+                {
+
+
+
+                    if(demo.offsetWidth-demo.scrollLeft<=0)
+
+
+
+                    {
+
+
+
+                    
+
+
+
+                    //demo.scrollLeft-=demo1.offsetWidth
+
+
+
+                    demo.scrollLeft=demo1.offsetWidth
+
+
+
+                     }
+
+
+
+                     else{
+
+
+
+                    demo.scrollLeft++
+
+
+
+                    }
+
+
+
+                  }
+
+
+
+                  else
+
+
+
+                  {
+
+
+
+                      if(demo.scrollLeft<=0)
+
+
+
+                           {
+
+
+
+                           demo.scrollLeft=0;//demo1.offsetWidth
+
+
+
+                           }
+
+
+
+                       else
+
+
+
+                       {
+
+
+
+                          demo.scrollLeft--;
+
+
+
+                       }
+
+
+
+                  }
+
+
+
+                }
+
+
+
+                var MyMar=setInterval(Marquee,speed)
+
+
+
+                demo.onmouseover=function() {clearInterval(MyMar)}
+
+
+
+                demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+
+
+
+              </script>	
+
+
+
+            <{/if}> 
+
+
+
+        </div>
+
+
+
+        <div class="pro_bese_info_right">
+
+
+
+             <div class="pro_base_info">
+
+
+
+            <ul class="pro_base_info_list">
+
+
+
+                <li style="border-bottom:1px dashed #D56E26;"><h1><{$p.name}> <a rel="nofollow" href="<{$folder}>index.php?action=add_favorite&pid=<{$p.id}>"><img src="../pic/file.gif" alt="Add to Favorites" hspace="10" border="0" /></a></h1></li>
+
+
+
+                <li>
+
+                <span class="gray" style="text-decoration:line-through;font-weight:bold; font-size:14px; "><{$coin}><{$p.price2}></span> 
+
+                <span style="font-weight:bold; font-size:14px; color:#333; padding-right:10px;"><{$coin}> <{$p.price1}></span></li>
+
+
+
+
+
+                <li><{$lg.itemno}> :  <{$p.itemno}></li>
+
+
+
+                <li><{$lg.category}> : <a target="_blank" href="<{$p.categoryRewrite}>"><{$p.categoryName}></a></li>
+
+
+
+                <{if $p.store!=""}><li>Fabric  : <{$p.store}></li><{/if}>
+
+
+
+                <li style=" overflow:hidden;"><{foreach key=index item=rows from=$p.pkey2}><div style="line-height:22px"><{$p.pkey2[$index]}> : <{$p.pvalue2[$index]}></div><{/foreach}></li>
+
+
+
+                
+
+
+
+                <li><span style="color:#FF3300; "><{$lg.pls}></span></li>
+
+
+
+            </ul>
+
+
+
+        </div>
+
+
+
+            <div class="clear"></div>
+
+
+
+            <form method="post" name="formshopcart" action="<{$folder}>shopcart.php?action=add" enctype="application/x-www-form-urlencoded">					  
+
+
+
+                <div class="check_order_box">
+
+
+
+                    <ul>
+
+
+
+                        <{foreach key=index item=rows from=$p.ckey}>
+
+
+
+                        <li>
+
+
+
+                            <div class="check_order_box_left"><{$p.ckey[$index]}> : <input name="key<{$index}>" type="hidden" value="<{$p.ckey[$index]}>" /></div>
+
+
+
+                            <div class="check_order_box_right"><{$p.cHTML[$index]}></div>
+
+
+
+                        </li>
+
+
+
+                        <{/foreach}>
+
+			<li>
+                            <div class="check_order_box_left">Color :</div>
+                            <div class="check_order_box_right">As Shown</div>
+                        </li>
+
+                        <{if $showAmount}> 
+
+
+
+                         <li>
+
+
+
+                            <div class="check_order_box_left"><{$lg.iselect}> : </div>
+
+
+
+                            <div class="check_order_box_right red" id="span_select"><{$lg.pls1}></div>
+
+
+
+                        </li>
+
+
+
+                        <li>
+
+
+
+                            <div class="check_order_box_left"><{$lg.quantity}> : </div>
+
+
+
+                            <div class="check_order_box_right">
+
+
+
+                               <div style="height:19px; border:1px #D3D3D1 solid;display:inline;float:left;">
+
+
+
+                                <div style="display:inline;float:left;height:19px;"><img style="cursor:pointer;" src="../pic/p_num_mius.jpg" onclick="changePnum('minus');" /></div>
+
+
+
+                                <div style="display:inline;float:left;height:19px; padding-right:5px; padding-left:5px; background:#FFF;"><input style="border:0px; padding:0px; height:18px; margin:0; width:28px; line-height:18px;" id="num" name="num" value="1"  maxlength="5" type="text" onblur="numOnblur(this)" /></div>
+
+
+
+<div style="display:inline;float:left;height:19px;"><img style="cursor:pointer;" src="../pic/p_num_add.jpg" onclick="changePnum('add');" /></div>
+
+
+
+                              </div>
+
+
+
+                            </div>
+
+
+
+                        </li>
+
+
+
+                        <{/if}>
+
+
+
+                        <li class="liClear">&nbsp;</li>
+
+
+
+                        <li>
+
+
+
+                            <div class="check_order_box_left">&nbsp;</div>
+
+
+
+                            <div class="check_order_box_right">
+
+                              <a href="javascript:void(0)" onclick="_ajax_quick_addtoshopcart()"><img id="btn_quick" src="../pic/addtocart.gif"  /></a>
+
+                             </div>
+
+
+
+                        </li>
+
+
+
+                        <li class="liClear">&nbsp;</li>
+
+
+
+
+
+                        <li>
+
+
+
+                            <div class="check_order_box_left">&nbsp;</div>
+
+
+
+                            <div class="check_order_box_right">
+
+                            <a href="products.php?classid=<{$p.classid}>"><img src="../pic/continueshopping.gif" border="0"  /></a>
+
+                             <a href="shopcart.php"><img src="../pic/2checkout.gif" border="0"  /></a>
+
+                                <input name="id" type="hidden" value="<{$pid}>" />
+
+                             </div>
+
+
+
+                        </li>
+
+
+
+                    </ul>
+
+
+
+                </div>	  
+
+
+
+            </form>
+
+
+
+            <div class="clear"></div>
+
+
+
+            <div class="divShoppingcart" id="_divShoppingcart">
+
+
+
+                <div class="divShoppingcart_inner">
+
+
+
+                    <div id="ajax_result_div"></div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="clear"></div>
+
+
+
+	<div style=" border-bottom:1px dashed #D56E26; font-size:18px; margin-bottom:8px; height:27px; font-weight:bold;">Product Description:</div>
+
+
+
+    <div class="linh" style=" line-height:1.5em; overflow:hidden;"><{$p.content}></div>
+
+
+
+    
+
+
+
+    <table align="center" border="0" cellpadding="0" cellspacing="8">
+
+
+
+      <tr>
+
+
+
+        <td colspan="3" align="center">Product <{$pindex}>/<{$ptotal}></td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td><a href="<{$prev}>"><img src="../pic/button_prev.gif" border="0" /></a></td>
+
+
+
+        <td><a href="<{$listing}>"><img src="../pic/button_return_to_product_list.gif" border="0" /></a></td>
+
+
+
+        <td><a href="<{$next}>"><img src="../pic/button_next.gif" border="0" /></a></td>
+
+
+
+      </tr>
+
+
+
+    </table>
+
+  
+
+ </div>
+
+</div>
+
+  
+
+    <div class="w772" style="margin-bottom:10px;">
+
+      <div class="boxtop_772">
+
+        <div class="boxtop_772_left">Similar Products</div>
+
+        <div class="boxtop_772_right"></div>
+
+      </div>
+
+      <div class="w770 boxborder1_pink">
+
+    <{foreach key=key1 item=rows from=$rs_relative name=rs_relative}>
+
+
+
+       <div class="productdiv1">
+
+         <div class="productdiv1box">
+
+             <div class="productdiv1img">
+
+              <p><a  href="<{$rows.rewrite}>"><img title="<{$rows.name}>" alt="<{$rows.name}>" lazy_data_src="<{$rows.realpic}>"  src="<{$rows.realpic}>"  border="0"/></a></p>
+
+             </div>
+
+              <{if $rows.showicon==1}><div class="phot"></div><{/if}>
+
+              <{if $rows.showicon==2}><div class="pnew"></div><{/if}>
+
+              <div class="productdiv1info">
+
+                 <a href="<{$rows.rewrite}>"><{$rows.name}></a>
+
+                 <span class="gray" style="text-decoration:line-through;"><{$coin}><{$rows.price2}></span> <span class="price"><{$coin}><{$rows.price}></span>
+
+                 <a href="<{$rows.rewrite}>"><img src="../pic/smallcart.jpg" border="0" style="vertical-align:middle;" /></a>
+
+              </div>
+
+          </div>
+
+        </div>
+
+
+
+        <{if $smarty.foreach.rs_relative.iteration%5==0}>
+
+
+
+        <div class="clear1"></div>
+
+
+
+        <{/if}>
+
+    <{/foreach}>
+
+        <div class="clear1"></div>
+
+    </div>
+
+  </div>
+
+  
+
+  <div class="w770 boxborder_pink">
+
+      <table width="100%" border="0" cellspacing="10" cellpadding="0">
+
+    
+
+        <tr>
+
+    
+
+           <td align="left"><img src="../pic/button_write_review.gif" border="0" /></td>
+
+    
+
+           <td align="right"><a href="<{$folder}>share.php?pid=<{$p.id}>"><img src="../pic/button_TellAFriend.gif" border="0" /></a></td>
+
+    
+
+        </tr>
+
+    
+
+      </table>
+
+      
+
+      <{include file="module_product_comment.html"}>
+
+      
+
+  </div>
+
+  
+
+  
+
+
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+
+	$('#lightbox').lightBox();
+
+
+
+	//$('#demo a').lightBox();
+
+
+
+	
+
+
+
+var data=$("#img1").attr("src");
+
+
+
+$(document).ready(function(){	
+
+
+
+   $('#demo a').click(function(){
+
+
+
+      $('#lightbox').attr("href",$(this).attr("href"));
+
+
+
+	  $("img[id=img1]").attr("src",$(this).find("input:first").val());
+
+
+
+//	  $('.jqzoom').attr("href",$(this).attr("href"));
+
+
+
+//	  //$('.jqzoom img:first').attr("src",$(this).find("input:first").val());
+
+
+
+//      $(".jqZoomWindow").remove();//关键操作1   
+
+
+
+//      $(".jqZoomPup").remove(); //关键操作2   
+
+
+
+//      $("img[id=img1]").attr("src",$(this).find("input:first").val());   
+
+
+
+//      $("a[id=jqzoom]").unbind(); //关键操作3   
+
+
+
+//      $("img[id=img1]").unbind(); //关键操作4   
+
+
+
+//  
+
+
+
+//      $("a[id=jqzoom]").attr("href",$(this).attr("href")).attr("title","<{$p.name}>").jqzoom();    
+
+
+
+
+
+
+
+	  //$(".jqzoom").jqzoom();
+
+
+
+	  //data=$("img[id=img1]").attr("src");
+
+
+
+	  return false;
+
+
+
+   });
+
+
+
+   
+
+
+
+});
+
+
+
+</script>

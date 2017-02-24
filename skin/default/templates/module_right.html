@@ -1,0 +1,27 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="right_box">
+	<{$content_68}>
+</div>
+<div class="clear"></div>
+<div class="right_box">
+	<div class="right_box_title">Hot Wholesale Products</div>
+    <div class="right_box_main">
+    	<ul class="hot_pro_list">
+    	<{foreach key=key1 item=rows from=$rs_p_8 name=rs_p_8}>
+        	<li>
+            	<a href="<{$rows.rewrite}>" class="pic"><img src="<{$rows.realpic}>" border="0"/></a>
+                <div class="info">
+                	<div class="info_top"><a href="<{$rows.rewrite}>"><{$rows.name}></a></div>
+                    <div class="info_bottom red"><{$coin}><{$rows.price}></div>
+                </div>
+            </li>
+        <{/foreach}>
+        </ul>
+    </div>
+    <div class="right_box_bottom"></div>
+</div>
+<div class="clear"></div>
+<div class="right_box">
+	<{$content_69}>
+</div>
+

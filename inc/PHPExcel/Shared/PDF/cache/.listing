@@ -1,0 +1,6 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    6 48       apache       4096 Oct 11 12:16 ..
+-rw-r--r--    1 48       apache       5504 Aug 27  2010 chapter_demo_1.txt
+-rw-r--r--    1 48       apache       7284 Aug 27  2010 chapter_demo_2.txt
+-rw-r--r--    1 48       apache        427 Aug 27  2010 table_data_demo.txt
+-rw-r--r--    1 48       apache       4542 Aug 27  2010 utf8test.txt

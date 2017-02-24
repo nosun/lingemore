@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^Sexy-Club-Dresses-c650\.html$ http://www.lingeriemore.com/Sexy-Club-Dresses-c705.html [L,R=301]
+RewriteRule ^(.*)-p([0-9]*)\.html$ /product-view.php?id=$2
+
+RewriteRule ^(.*)-n([0-9]*)\.html$ /news-view.php?id=$2
+RewriteRule ^(.*)-n([0-9]*)-([0-9]*)\.html$ /news-view.php?id=$2&page=$3
+
+RewriteRule ^(.*)-i([0-9]*)\.html$ /info-view.php?id=$2
+RewriteRule ^(.*)-i([0-9]*)-([0-9]*)\.html$ /info-view.php?id=$2&page=$3
+
+RewriteRule ^(.*)-nc([0-9]*)\.html$ /news.php?nclassid=$2
+RewriteRule ^(.*)-nc([0-9]*)-([0-9]*)\.html$ /news.php?nclassid=$2&page=$3
+RewriteRule ^(.*)-nc([0-9]*)-(.*)-([0-9]*)\.html$ /news.php?nclassid=$2&page=$4&query=$3
+
+RewriteRule ^(.*)-c([0-9]*)\.html$ /products.php?classid=$2
+RewriteRule ^(.*)-c([0-9]*)-([0-9]*)\.html$ /products.php?classid=$2&page=$3
+RewriteRule ^(.*)-c([0-9]*)-(.*)-([0-9]*)\.html$ /products.php?classid=$2&page=$4&query=$3
+
+
+RewriteRule ^(.*)-s([0-9]*)\.html$ /products.php?disp=$2
+RewriteRule ^(.*)-s([0-9]*)-([0-9]*)\.html$ /products.php?disp=$2&page=$3
+
+RewriteRule ^(.*)-ptag([0-9]*)\.html$ /tag-view.php?id=$2
+RewriteRule ^(.*)-ptag([0-9]*)-([0-9]*)\.html$ /tag-view.php?id=$2&page=$3
+
+RewriteRule ^attr-([0-9]*)-(.*)-([0-9]*)\.html$ /attribute.php?classid=$1&page=$3&tags=$2
+
+RewriteRule ^(cnlogin|comment|download|error|feedback|quick-step|get-pwd|image-view|index|news|products|profile|register|search|shopcart|sitemap|step).html(.*)$ /$1.php$3
+</IfModule>

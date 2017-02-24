@@ -1,0 +1,11 @@
+<ul class="pro_list">
+   <{foreach key=key1 item=rows from=$rs_p name=rs_p}>
+        <li>
+        <a class="pic" title="<{$rows.name}>" href="<{$rows.rewrite}>"><img title="<{$rows.name}>" alt="<{$rows.name}>" src="<{$rows.realpic}>" border="0"/></a>
+        <div class="pro_info">
+            <a href="<{$rows.rewrite}>" title="<{$rows.name}>"><{$rows.name}></a><br />
+            <span class="red"><{$coin}><{$rows.price}></span>
+        </div>
+         </li>
+    <{/foreach}>
+</ul>

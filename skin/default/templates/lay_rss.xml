@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+<channel>
+	<title><{$tilte}></title>
+	<atom:link href="<{$linkhref}>" rel="self" type="application/rss+xml" />
+	<link>http://<{$hostname}></link>
+	<description><{$descript}></description>
+	<lastBuildDate><{$lastBuildDate}></lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>Rss Generator By <{$hostname}></generator>
+	<{foreach key=key1 item=rows from=$rs_p name=rs_p}>
+		<item>
+		<title><![CDATA[<{$rows.name}>]]></title>
+		<link>http://<{$hostname}><{$rows.rewrite}></link>
+		<dc:creator><{$hostname}></dc:creator>
+		<pubDate><{$rows.addtime}></pubDate>
+		<guid isPermaLink="false">#comment-1</guid>
+		<description>
+		<![CDATA[
+		<a href="http://<{$hostname}><{$rows.rewrite}>"><img  src="<{$rows.realpic}>" border="0" /></a><br>
+		<p><{$rows.descript}></p>
+		]]>
+		</description>
+	    </item>
+		<{/foreach}>
+</channel>
+</rss>

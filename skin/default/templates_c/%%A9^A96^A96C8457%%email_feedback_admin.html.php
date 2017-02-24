@@ -1,0 +1,72 @@
+<?php /* Smarty version 2.6.26, created on 2013-01-17 10:40:16
+         compiled from email_feedback_admin.html */ ?>
+<div style="border-bottom: #9edcf4 1px solid; border-left: #9edcf4 1px solid; padding-bottom: 3px; background-color: #c7ecff; padding-left: 3px; width: 700px; padding-right: 3px; border-top: #9edcf4 1px solid; border-right: #9edcf4 1px solid; padding-top: 3px">
+<div style="border-bottom: #88bedc 1px solid; border-left: #88bedc 1px solid; padding-bottom: 3px; background-color: #ffffff; padding-left: 3px; padding-right: 3px; border-top: #88bedc 1px solid; border-right: #88bedc 1px solid; padding-top: 3px">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center">
+    <tbody>
+        <tr>
+            <td colspan="2">
+            <div style="border-bottom: #5ecbef 1px dotted; border-left: #5ecbef 1px dotted; padding-bottom: 4px; background-color: #f3fcff; padding-left: 4px; padding-right: 4px; border-top: #5ecbef 1px dotted; border-right: #5ecbef 1px dotted; padding-top: 4px">Attention ! You have a new message from <strong><?php echo $this->_tpl_vars['message']['username']; ?>
+</strong><br />
+            You can to log in to Admin Control Panel and manage your website information. <br />
+            <br />
+            <table border="0" cellspacing="1" cellpadding="2" width="100%" style="background-color: #cccccc">
+                <tbody>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">username：</td>
+                        <td bgcolor="#ffffff" width="566"><?php echo $this->_tpl_vars['message']['username']; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">Title：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['name']; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">Addtime：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['addtime']; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">E-mail：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['contact'][0]; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">Msn：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['contact'][1]; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" width="97" align="right">Ip：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['ip']; ?>
+</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" valign="top" width="97" align="right">Content：</td>
+                        <td bgcolor="#ffffff"><?php echo $this->_tpl_vars['message']['content']; ?>
+</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            This Email was automatically sent by system to remind you what happened to you . Please do not reply to this email as we are unable to respond to messages sent to this address. For any questions</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center">
+    <tbody>
+        <tr>
+            <td width="405" style="padding-left: 10px">
+            <div style="line-height: 18px">Best regards , <br />
+            Website : <?php echo $this->_tpl_vars['domain']; ?>
+</div>
+            </td>
+            <td valign="middle" width="279" align="center"><img alt="" src="<?php echo $this->_tpl_vars['httpdomain']; ?>
+systemImage/email_bom_bg.jpg" /></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

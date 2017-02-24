@@ -1,0 +1,26 @@
+<div id="currency" style="width:60px; display:inline-block; float:left; overflow:hidden; background:url(../pic/tabs_3_.gif) no-repeat;">
+                    <div style="width:140px; float:none; clear:both; text-align:left;"><span style="color:#333;padding-left:12px; line-height:20px; text-align:left;"><span style="text-decoration:underline"><{$coin}></span> <img style="vertical-align:middle" align="absmiddle" width="16" height="12" src="<{$coinpic}>" border="0" /></span>
+                    </div>
+                    <div id="currencybox" style="width:128px; clear:both; padding:5px;  z-index:1000; border:1px #979797 solid; border-top:0px; position:absolute; margin-left:0px;  margin-top:0px; display:none; background:#FFF;">
+                        <{foreach key=key1 item=rows from=$rs_coin name=rs_coin}>
+                           <div style="line-height:20px; font-size:11px; text-align:left; margin-left:6px">
+                             <img align="absmiddle" hspace="3" src="<{$rows.pic}>"> <a rel="nofollow" href="<{$rows.href}>"><{$rows.title}></a>
+                           </div>
+                        <{/foreach}>
+                    </div>   
+                    <script type="text/javascript">
+
+$("#currency").hover(
+   function(){
+	   $("#currencybox").css("display","");
+	   $("#currency").css("width","140px");
+	   $(this).css("background","url(../pic/tabs_3_.gif) 0px -28px no-repeat");
+   },			
+   function(){
+	   $("#currencybox").css("display","none");
+	   $("#currency").css("width","60px");
+	   $(this).css("background","url(../pic/tabs_3_.gif) no-repeat");
+   }			 
+);
+</script>                 
+                   </div>

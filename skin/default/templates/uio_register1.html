@@ -1,0 +1,183 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<link type="text/css" href="../aaaaa/demo/css/screen.css" rel="stylesheet">
+<div class="main_ct">
+	<div style="width:350px; overflow:hidden; float:left">
+    <td id="td_login" width="40%"  bgcolor="#FFFFFF" valign="top"><div style="background-color:#F9F9F9; border:1px #DBDBDB solid; padding:15px; margin-right:10px">
+	<div style=" color:#D15400; font-weight:bold; font-size:18px; padding-left:45px"><{$lg.login}></div><table width="100%" border="0" cellpadding="0" cellspacing="10" >
+  <form  name="formlogin"  onsubmit="return CheckForm()" enctype="application/x-www-form-urlencoded" method="post" action="<{$folder}>index.php?action=login&redirectURL=<{$page_redirectURL}>">
+    <tr>
+      <td width="100" align="right"><{$lg.email}>&nbsp;&nbsp;:</td>
+      <td><input name="name" type="text" class="input001" style="width:160px" maxlength="100" />      </td>
+    </tr>
+    <tr>
+      <td align="right"><{$lg.password}>&nbsp;&nbsp;:</td>
+      <td><input name="pwd" type="password"  class="input001" style="width:160px" maxlength="20" /></td>
+    </tr>
+   
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" class="profilebutton"  name="Submit" value="<{$lg.login}>" /><br />
+<a href="get-pwd.php"><span  style="padding-bottom:3px"><{$lg.porget_password}></span></a></td>
+    </tr> 
+	<{if $items!=0}>
+
+	  <{/if}>
+  </form>
+</table>
+    </div></td>
+    </div>
+    <div style="width:580px; overflow:hidden; float:right">
+    <form id="reginfo"  method="post" action="<{$folder}>index.php?action=register_save&redirectURL=<{$page_redirectURL}>">
+    <td  id="td_register"  ><div style=" color:#D15400; border-bottom:2px #ED8C1A solid ;font-weight:bold; font-size:18px; padding-bottom:4px">Registration</div><table width="100%" border="0" cellpadding="0" cellspacing="10">
+<tr>
+              <td width="120" align="right" valign="top"><div style="margin-top:5px"><{$lg.email}>&nbsp;&nbsp;:</div></td>
+<td><input name="username" type="text" id="username"  class="sinput001" maxlength="100">  <br />
+<span class="registerspan"><{$lg.username_format_tips}></span>
+      
+        <div id="divexists" style="display:none; color:#FF0000"><{$lg.msg_user_exists}></div>
+		<div id="divnoexists" style="display:none; color:#00FF00"><{$lg.msg_user_ok}></div>
+</td>
+         </tr>
+              <tr>
+                <td align="right" valign="top"><div style="margin-top:5px"><{$lg.password}>&nbsp;&nbsp;:</div></td>
+                <td><input name="pwd" type="password" id="pwd"  class="sinput001" maxlength="20"> <br />
+<span class="registerspan"><{$lg.password_tips}></span>
+              </td>
+              </tr>
+              <tr>
+                <td align="right"><{$lg.retype_password}>&nbsp;&nbsp;:</td>
+                <td><input name="pwd1" type="password" id="pwd1"  class="sinput001" maxlength="20"> 
+               </td>
+              </tr>
+              <tr>
+                <td align="right"><{$lg.question}>&nbsp;&nbsp;:</td>
+                <td><input name="question" id="cquestion" type="text"    class="sinput001" maxlength="20"> 
+              </td>
+              </tr>
+              <tr>
+                <td align="right"><{$lg.answer}>&nbsp;&nbsp;:</td>
+                <td><input name="answer" id="canswer" type="text"    class="sinput001" maxlength="20">
+
+              </td>
+              </tr>
+			   <tr style="display:none;" >
+                  <td align="right">Choose Server:</td>
+                  <td><{foreach key=index item=rows from=$rs_server}>
+                <input <{if $index==0}>checked="checked"<{/if}>  name="server" id="server"  value="<{$rows.id}>" type="radio" /> <{$rows.nickname}> <br />
+                  
+                  <{/foreach}><br />
+            will provide professional services for you</td>
+                </tr>
+			  
+			    <{if $config[41]!=""}> <tr  >
+                <td align="right"><{$lg.code}>&nbsp;&nbsp;:</td>
+                <td>
+				<img id="registercode" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()"  /> &nbsp; <input name="code" id="ccode" type="text" size="8" maxlength="4" /> </td>
+    </tr>
+<{/if}>
+    <tr >
+    <td align="left">&nbsp;</td>
+    <td><input type="image" src="../pic/reg_ok.gif"  name="uiosubmit"  value="<{$lg.reg}>" /><input name="newsletter" type="hidden" value="yes" /></td>
+  </tr>
+    </table></td>
+    </form>       
+    </div>
+
+
+<script language="JavaScript" type="text/javascript">
+document.getElementById("registercode").src = '<{$folder}>inc/php_inc_code.php?r=' + Math.random() ;
+
+function CheckForm()
+{
+	if(!CheckIsEmail("formlogin","name","<{$lg.msg_email_error}>")) return false;
+	if(!CheckIsNull("formlogin","pwd","<{$lg.msg_pwd_null}>")) return false;
+<{if $config[42]!=""}>	if(!CheckIsNull("formlogin","code","<{$lg.code}>")) return false; <{/if}>
+}
+</script>
+</div>
+
+<script type="text/javascript" src="../pic/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+
+ $(document).ready(function(){
+	$("#reginfo").validate({
+			rules: {
+				username: {
+					required: true,
+					minlength: 5 ,
+					email: true ,
+					remote: {
+						type: "post",
+						url: "service/serviceForCheckRegister.php?action=check",
+						data: {
+							name: function() {
+								return escape($("#username").val());
+							}
+						},
+					dataType: "html",
+					dataFilter: function(data, type) {
+							if (data == "true")
+								return true;
+							else
+								return false;
+						   }
+					}
+				},
+				pwd: {
+					required: true,
+					minlength: 5
+				},
+				pwd1: {
+					required: true,
+					minlength: 5,
+					equalTo: "#pwd"
+				},
+				question: "required",
+				answer: "required",
+				server: "required",
+				code: "required"
+			},
+			messages: {
+				username: {
+					required: "<{$lg.pl_enter_email}>",
+					minlength: "<{$lg.pl_user_length}>",
+					email: "<{$lg.pl_enter_valid_email}>",
+					remote: {
+						remote: "<{$lg.pl_user_used}>"
+						},
+					dataType: "",
+					dataFilter: ""
+				},
+				pwd: {
+					required: "<{$lg.pl_enter_password}>",
+					minlength: "<{$lg.pl_password_lenght}>"
+				},
+				pwd1: {
+					required: "<{$lg.pl_enter_password}>",
+					minlength: "<{$lg.pl_password_lenght}>",
+					equalTo: "<{$lg.pl_enter_samepassword}>"
+				},
+				question: "<{$lg.pl_enter_question}>",
+				answer: "<{$lg.pl_enter_answer}>",
+				server: "Please choose server",
+				code: "<{$lg.pl_enter_code}>"
+			}
+		});
+	});
+
+  </script>
+<style type="text/css">
+#reginfo {}
+#reginfo input.error{ border:1px #FF0000 dotted;background-color:#FFFBDC;height:21px; line-height:21px; }
+#reginfo input.valid{ }
+#reginfo label.error {
+	margin-left: 10px;
+	color: red; font-size:12px;
+	font-style: italic;
+	width: auto;
+	display: inline;
+	height:16px
+}
+.registerspan{ color:#999999; font-size:11px; padding-top:2px }
+</style>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://<{$hostname}><{$folder}></loc>
+<lastmod><{$lastmod}></lastmod>
+<changefreq>daily</changefreq>
+</url>
+<{foreach key=key1 item=rows from=$rs_disp name=rs_disp}>
+<url>
+<loc>http://<{$hostname}><{$rows.rewrite}></loc>
+<lastmod><{$lastmod}></lastmod>
+<changefreq>weekly</changefreq>
+</url>
+<{/foreach}>
+<{foreach key=key1 item=rows from=$rs_map name=rs_map}>
+<url>
+<loc>http://<{$hostname}><{$rows.rewrite}></loc>
+<lastmod><{$lastmod}></lastmod>
+<changefreq>weekly</changefreq>
+</url>
+<{/foreach}>
+<{foreach key=key1 item=rows from=$rs_p name=rs_p}>
+<url>
+<loc>http://<{$hostname}><{$rows.rewrite}></loc>
+<lastmod><{$lastmod}></lastmod>
+<changefreq>weekly</changefreq>
+</url>
+<{/foreach}>
+<{foreach key=key1 item=rows from=$rs_n name=rs_n}>
+<url>
+<loc>http://<{$hostname}><{$rows.rewrite}></loc>
+<lastmod><{$lastmod}></lastmod>
+<changefreq>weekly</changefreq>
+</url>
+<{/foreach}>
+</urlset>

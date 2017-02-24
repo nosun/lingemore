@@ -1,0 +1,14 @@
+drwxr-xr-x    2 48       apache       4096 Oct 11 12:16 .
+drwxr-xr-x    7 48       apache       4096 Oct 23 00:49 ..
+-rw-r--r--    1 48       apache      16468 Oct 21  2011 chinese.php
+-rw-r--r--    1 48       apache      17290 Oct 21  2011 dansk.php
+-rw-r--r--    1 48       apache      20977 Oct 11 16:42 english.php
+-rw-r--r--    1 48       apache      18867 Oct 21  2011 french.php
+-rw-r--r--    1 48       apache      17940 Oct 21  2011 german.php
+-rw-r--r--    1 48       apache      24633 Oct 21  2011 greece.php
+-rw-r--r--    1 48       apache      18631 Oct 21  2011 irish.php
+-rw-r--r--    1 48       apache      18131 Oct 21  2011 italian.php
+-rw-r--r--    1 48       apache      20482 Oct 21  2011 japanese.php
+-rw-r--r--    1 48       apache      17345 Oct 21  2011 netherlands.php
+-rw-r--r--    1 48       apache      18038 Oct 21  2011 portuguese.php
+-rw-r--r--    1 48       apache      18544 Oct 21  2011 spanish.php

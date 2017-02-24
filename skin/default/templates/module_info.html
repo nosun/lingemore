@@ -1,0 +1,13 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<table width="170" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;">
+  <tr>
+    <td  valign="top"  style="height:26px;  background:url(../pic/title_2_bg.gif) no-repeat"><span class="index_title">Infomation</span></td>
+  </tr>
+  <tr>
+    <td style="padding:5px; border:1px #ECECEC solid">
+	<{foreach key=key1 item=rows from=$rs_info}>
+	<div class="divlist" style="width:150px"><{$rows.url}></div>
+	<{/foreach}>
+	</td>
+  </tr>
+</table>

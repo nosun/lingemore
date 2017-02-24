@@ -1,0 +1,75 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+<div class="main_ct">
+         <div class="feedbacktopbox">
+             <div class="feedbacktopbox_con">
+                <{$content_98}>
+             </div>
+         </div>
+
+
+        <form name="reginfo" onsubmit="return CheckForm()" method="post" action="<{$folder}>index.php?action=add_message_save" >
+         <div class="feedbackformbox">
+		 <table border="0" cellpadding="0" cellspacing="10">
+                <tr>
+                  <td width="150" align="right" class="weight"><span class="feedbacktitle"><{$lg.contactinfo}>&nbsp;&nbsp;:</span></td>
+                  <td></td>
+                </tr>
+                <tr>
+                <td  align="right" class="weight"><{$lg.username}>&nbsp;&nbsp;:</td>
+                <td>
+                  <input name="username" value="<{$user.lastname}> <{$user.firstname}>" type="text"   class="contactinput" maxlength="100" />
+                  *				  
+                  <input name="userid" type="hidden" id="userid" value="<{$userid}>" />
+                  <input name="cid" type="hidden" id="cid" value="3" />
+                  <input name="pid" type="hidden" id="pid" value="0" /></td>
+              </tr>
+              <tr>
+                <td align="right"   class="weight"><{$lg.email}>&nbsp;&nbsp;:</td>
+                <td><input name="contact0"  value=""  type="text"  class="contactinput" maxlength="100">
+                *</td>
+              </tr>
+              <tr>
+                <td align="right"  class="weight" >Msn&nbsp;&nbsp;:</td>
+                <td><input name="contact1" value="<{$user.msn}>"  type="text"   class="contactinput" maxlength="100">               </td>
+              </tr>
+                <tr>
+                  <td width="130" align="right"><span class="feedbacktitle"><{$lg.feedbackinfo}>:</span></td>
+                  <td></td>
+                </tr>
+              <tr>
+                <td align="right" class="weight"  ><{$lg.title}>&nbsp;&nbsp;:</td>
+                <td><input name="name"  type="text" id="name"  class="feedbackinput" maxlength="100">
+                    *                  </td>
+              </tr>
+             
+              <tr>
+                <td align="right" valign="top"  class="weight" ><{$lg.content}>&nbsp;&nbsp;:</td>
+                <td><textarea name="content"  class="feedbacktextarea" id="content"></textarea>
+                *</td>
+              </tr> 
+			  <{if $config[43]!=""}>
+			   <tr>
+                <td align="right" class="weight" ><{$lg.code}>&nbsp;&nbsp;:</td>
+                <td><input name="code" type="text" class="feedbackCode" maxlength="4" /> <img src="inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			  <{/if}>
+          </table>
+         </div>
+         <div class="feedbacksubmitbox">
+            <div class="feedbacksubmitbox_left"><{$lg.feedbacknotice}></div>
+            <div class="feedbacksubmitbox_right"><input class="inputButton" type="submit" name="submit" value="<{$lg.submit}>"  ></div>
+            <div class="clear1"></div>
+         </div>
+         </form>
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+if(!CheckIsNull("reginfo","username","<{$lg.msg_username_null}>")) 
+	return false;
+if(!CheckIsEmail("reginfo","contact0","<{$lg.msg_email_error}>")) return false;
+if(!CheckIsNull("reginfo","name","<{$lg.msg_title_null}>")) return false;
+if(!CheckIsNull("reginfo","content","<{$lg.msg_content_null}>")) return false;
+ <{if $config[43]!=""}> if(!CheckIsNull("reginfo","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>	  
+</div>

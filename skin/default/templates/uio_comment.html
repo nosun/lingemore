@@ -1,0 +1,112 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+ <link href="../pic/rating_star.css" rel="stylesheet" type="text/css">
+ <script type="text/javascript" src="../pic/rating_star.js"></script> 
+<div class="main_ct">
+<{foreach key=key1 item=rows from=$rs_comment}>
+			 <div class="comment_item">
+             <div class="rating_div"><img height="11" src="../pic/star-<{$rows.rating}>.gif" /></div>
+             <div>
+             <div class="comment_left"><div><span class="gray">By</span> <span class="username"><{$rows.username}></span></div><div class="gray" style="padding-top:3px"><{$rows.addtime}></div><img vspace="5" width="16" height="11" src="http://img01.open.35zh.com/cgi-bin/?do=iptocountry&type=3&ip=<{$rows.ip}>" align="absmiddle" hspace="2">
+</div>
+             <div  class="comment_content"><{$rows.content}>
+             <{if $rows.state==1}>
+                    <div class="servicereply">Service's Reply</div>
+                    <div class="servicereplycontent"><{$rows.reply}></div><{/if}>
+             </div><div class="clear"></div></div></div>
+	<{/foreach}>
+   <{include file="module_norewritepage.html"}>
+   <div class="clear"></div>
+   <table  border="0" cellspacing="0" cellpadding="0" style="display:none;">
+  <tr>
+    <td style=" font-size:18px; height:27px; font-weight:bold; color:#205194"><{$lg.write_a_review}>:</td>
+  </tr><tr>
+    <td class="linh">
+	<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="linh" style="padding-top:20px; padding-left:20px;"><{$lg.comment_tips}></td>
+  </tr>
+  <tr>
+    <td>
+	<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="240" align="center"><img src="../pic/write_a_review.jpg" /></td>
+    <td valign="top"><table border="0" cellpadding="0" cellspacing="5">
+            <form name="reginfo" enctype="multipart/form-data" onsubmit="return CheckForm()" method="post" action="<{$folder}>index.php?action=add_message_save" >
+                <tr>
+                  <td colspan="2"><{$lg.indicates_required_fields}> <span class="red">*</span></td>
+                  </tr>
+                <tr>
+                  <td><{$lg.rating}>:</td>
+                  <td>
+                  <input name="rating" value="0" id="rating_simple1" type="hidden" />
+                  </td>
+                </tr>
+                <tr>
+                <td width="130"><{$lg.username}> : <span class="red">*	</span></td>
+                <td width="300">
+                  <input name="username" type="text" value="<{$user.firstname}>"  class="input001" maxlength="100" />
+                  			  
+                  <input name="userid" type="hidden" id="userid" value="<{$userid}>" />
+                  <input name="cid" type="hidden" id="cid" value="1" />
+                  <input name="pid" type="hidden" id="pid" value="<{$pid}>" /></td>
+              </tr>
+              <tr>
+                <td   ><{$lg.youremail}>: <span class="red">*	</span></td>
+                <td><input name="contact0"  value="<{$user.name}>"  type="text"  class="input001" maxlength="100"></td>
+              </tr>
+              
+              <tr style="display:none;">
+                <td   ><{$lg.review_title}> : <span class="red">*	</span></td>
+                <td><input name="name"  type="hidden" id="name" value="Review:<{$pname}>"  class="input002" maxlength="100"></td>
+</tr>
+             
+              <tr>
+                <td colspan="2"   ><textarea name="content"  class="input003" style="width:370px" id="content"></textarea></td>
+                </tr> 
+			   
+			   <tr>
+			  <{if $config[43]!=""}>
+			  
+                <td   ><{$lg.code}>:</td>
+                <td><input name="code" type="text" size="4" maxlength="4" /> <img src="<{$folder}>inc/php_inc_code.php" align="absmiddle" style="cursor:pointer" onclick="this.src='<{$folder}>inc/php_inc_code.php?r=' + Math.random()" /></td>
+              </tr>
+			  <{/if}>
+              <tr>
+                <td   >&nbsp;</td>
+                <td><input type="submit" name="submit" value="<{$lg.submit}>"  ></td>
+              </tr>
+            </form>
+          </table></td>
+  </tr>
+ 
+</table>
+
+	</td>
+  </tr>
+</table>
+
+	</td>
+  </tr>
+</table>
+<script language="javascript" type="text/javascript">
+  function CheckForm()
+  { 
+if(!CheckIsNull("reginfo","username","<{$lg.msg_username_null}>")) 
+	return false;
+if(!CheckIsNull("reginfo","contact0","<{$lg.msg_email_null}>")) return false;
+if(!CheckIsEmail("reginfo","contact0","<{$lg.msg_email_error}>")) return false;
+if(!CheckIsNull("reginfo","content","<{$lg.msg_content_null}>")) return false;
+ <{if $config[43]!=""}> if(!CheckIsNull("reginfo","code","<{$lg.msg_code_null}>")) return false; <{/if}>
+}
+  </script>	  
+<script language="javascript" type="text/javascript">
+            $(function() {
+                $("#rating_simple1").webwidget_rating_sex({
+                    rating_star_length: '5',
+                    rating_initial_value: '3',
+                    rating_function_name: '',//this is function name for click
+                    directory: '../pic/'
+                });
+            });
+        </script>
+</div>

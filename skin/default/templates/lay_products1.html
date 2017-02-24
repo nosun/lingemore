@@ -1,0 +1,192 @@
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+
+<{include file="module_head.html"}>
+
+<!--头部开始-->
+
+<div id="header_box">
+
+	<{include file="module_top.html"}>
+
+</div>
+
+<!--头部结束-->
+
+<!--主体开始-->
+
+<div id="body_box">
+
+	<div id="left_box"><{include file="module_left.html"}></div>
+
+    <div id="inner_main_box">
+
+    	<div class="daohang"><{$str_url}></div>
+
+        <div class="w770 boxborder_pink" style="margin-bottom:10px;">
+
+             <div class="pbigdao"><{$str_url_2}></div>
+
+            <{if $category.content!=""}>
+
+             <div style="padding:10px;"><{$category.content}></div>
+
+            <{/if}>
+
+            <{if $recordcount>0}>
+
+              <div style="padding-left:10px;">
+
+                <form action="products.php" enctype="application/x-www-form-urlencoded">
+
+                Filter Results by:
+
+                <select onchange="this.form.submit()" name="p1" id="p1">
+
+                  <option value="">Items starting with ...</option>
+
+                  <option value="a">A</option>
+
+                  <option value="b">B</option>
+
+                  <option value="c">C</option>
+
+                  <option value="d">D</option>
+
+                  <option value="e">E</option>
+
+                  <option value="f">F</option>
+
+                  <option value="g">G</option>
+
+                  <option value="h">H</option>
+
+                  <option value="i">I</option>
+
+                  <option value="j">J</option>
+
+                  <option value="k">K</option>
+
+                  <option value="l">L</option>
+
+                  <option value="m">M</option>
+
+                  <option value="n">N</option>
+
+                  <option value="o">O</option>
+
+                  <option value="p">P</option>
+
+                  <option value="q">Q</option>
+
+                  <option value="r">R</option>
+
+                  <option value="s">S</option>
+
+                  <option value="t">T</option>
+
+                  <option value="u">U</option>
+
+                  <option value="v">V</option>
+
+                  <option value="w">W</option>
+
+                  <option value="x">X</option>
+
+                  <option value="y">Y</option>
+
+                  <option value="z">Z</option>
+
+                  <option value="0">0</option>
+
+                  <option value="1">1</option>
+
+                  <option value="2">2</option>
+
+                  <option value="3">3</option>
+
+                  <option value="4">4</option>
+
+                  <option value="5">5</option>
+
+                  <option value="6">6</option>
+
+                  <option value="7">7</option>
+
+                  <option value="8">8</option>
+
+                  <option value="9">9</option>
+
+                </select>
+
+                <input type="hidden" name="classid" value="<{$classid}>">
+
+                </form>
+
+                <script>
+
+                EnterSelect("p1","<{$p1}>");
+
+                </script>
+
+                </div>
+
+            <{/if}>
+
+            <div>
+
+                <table width="100%" border="0" cellspacing="5" cellpadding="0" style="">
+
+                  <tr>
+
+                    <td width="200"><a class="grid_on" rel="nofollow" href="<{$rewrite.grid}>"></a><!-- <a class="gallery" rel="nofollow" href="<{$rewrite.gallery}>"></a>--></td>
+
+                    <td width="250">
+
+                   <{foreach key=key1 item=rows from=$mode name=mode}>
+
+                  <a class="mode <{if $key1==$numindex}>mode_now<{/if}>" rel="nofollow" href="<{$rewrite[$rows]}>"><{$rows}></a>
+
+                  <{/foreach}>
+
+                    </td>
+
+                    <td></td>
+
+
+
+                  </tr>
+
+                </table>
+
+           </div>
+
+           <div>
+
+              <{include file="module_page.html"}>
+
+           </div>
+
+           <{include file="uio_products1.html"}>
+
+           <div>
+
+              <{include file="module_page.html"}>
+
+           </div>
+
+        </div>
+        
+
+    </div>
+
+</div>
+
+<!--主体结束-->
+
+<!--底部开始-->
+
+<div id="bottom_box"><{include file="module_bom.html"}></div>
+
+<!--底部结束-->
+
+<{include file="module_foot.html"}>

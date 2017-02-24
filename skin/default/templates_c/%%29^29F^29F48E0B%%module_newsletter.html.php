@@ -1,0 +1,26 @@
+<?php /* Smarty version 2.6.26, created on 2012-06-04 14:45:27
+         compiled from module_newsletter.html */ ?>
+<link type="text/css" href="../pic/style.css" rel="stylesheet">
+  <script language="javascript">
+			function CheckNewsletterForm()
+			{ 
+				if( document.newletterform1["email"].value == document.newletterform1["email"].defaultvalue )
+				{
+					alert("Please insert your E-mail");
+					return false;
+				}
+				if(!CheckIsEmail("newletterform1","email","<?php echo $this->_tpl_vars['lg']['msg_email_error']; ?>
+")) return false;
+			}
+			</script>
+<div style="height:25px; overflow:hidden;">
+  <form onsubmit="return CheckNewsletterForm()" action="<?php echo $this->_tpl_vars['folder']; ?>
+index.php?action=add_newsletter" name="newletterform1" method="post"  enctype="application/x-www-form-urlencoded">
+     <div style="height:25px; line-height:25px; float:left; padding-right:10px;">
+        <label>Email:</label>
+        <input name="email" style="width:260px; height:20px; border:1px #DDDDDD solid; padding:1px; line-height:22px;" type="text" />
+     </div>
+	 <div style="float:left; height:25px;"><input type="image" src="../pic/subscribebtn.jpg" /></div>
+     <div class="clear1"></div>
+  </form>   
+</div>
