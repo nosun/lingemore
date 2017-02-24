@@ -212,7 +212,6 @@ if ($this->_foreach['rs_top']['total'] > 0):
 </a></li>
 
          <?php endforeach; endif; unset($_from); ?>
-	   <li class="item"><a id="wholesale-link" class="first" href="#" style="color:#EEEE0E;">Retailer &amp; Wholesaler</a></li>
          </ul>
 
          <script type="text/javascript">
@@ -243,49 +242,49 @@ if ($this->_foreach['rs_top']['total'] > 0):
 	            return "";
         	}
         
-         	$(function() {
-        	 	var username=getCookie("promote");
-        	 	if (username == '') {
-        			$('#overlay').show();
-        			$('#wholesale-box').center().show();
-        			setCookie('promote', 'shown');
-        	 	}
-        		$(window).resize(function() {
-        			$('#wholesale-box').center();
-        		});
-
-        		$('#wholesale-link').click(function(event){
-        			event.preventDefault();
-        			$('#overlay').show();
-        			$('#wholesale-box').center().fadeIn();
-        		});
-
-        		$('#confirm-btn').click(function(event){
-        			event.preventDefault();
-        			$.ajax({
-        				type: "POST",
-        		        url: "/addwholesaleuser.php",
-        		    	data: $("#wholesale-box form").serialize(), // serializes the form's elements.
-        		        success: function(data) {
-        				var ret = JSON.parse(data);
-        		       		if (ret.success) {
-        		       			$('#wholesale-box form').hide();
-        		       			$('#alert_info').hide();
-        						$('#wholesale-box #message').show();
-        						$('#confirm-btn').hide();
-        		       		} else {
-        			       		alert(ret.message);
-        		       		}
-        		       }
-        			});
-        		});
-
-        		$('#cancel-btn').click(function(event){
-        			event.preventDefault();
-        			$('#overlay').hide();
-        			$('#wholesale-box').fadeOut();
-        		});
-        	});
+//         	$(function() {
+//        	 	var username=getCookie("promote");
+//        	 	if (username == '') {
+//        			$('#overlay').show();
+//        			$('#wholesale-box').center().show();
+//        			setCookie('promote', 'shown');
+//        	 	}
+//        		$(window).resize(function() {
+//        			$('#wholesale-box').center();
+//        		});
+//
+//        		$('#wholesale-link').click(function(event){
+//        			event.preventDefault();
+//        			$('#overlay').show();
+//        			$('#wholesale-box').center().fadeIn();
+//        		});
+//
+//        		$('#confirm-btn').click(function(event){
+//        			event.preventDefault();
+//        			$.ajax({
+//        				type: "POST",
+//        		        url: "/addwholesaleuser.php",
+//        		    	data: $("#wholesale-box form").serialize(), // serializes the form's elements.
+//        		        success: function(data) {
+//        				var ret = JSON.parse(data);
+//        		       		if (ret.success) {
+//        		       			$('#wholesale-box form').hide();
+//        		       			$('#alert_info').hide();
+//        						$('#wholesale-box #message').show();
+//        						$('#confirm-btn').hide();
+//        		       		} else {
+//        			       		alert(ret.message);
+//        		       		}
+//        		       }
+//        			});
+//        		});
+//
+//        		$('#cancel-btn').click(function(event){
+//        			event.preventDefault();
+//        			$('#overlay').hide();
+//        			$('#wholesale-box').fadeOut();
+//        		});
+//        	});
          </script>
 
     </div>
